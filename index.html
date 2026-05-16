@@ -177,11 +177,39 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
   nav{padding:0 1.25rem}
   section{padding:3.5rem 1.25rem}
 }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher{display:flex;gap:4px;align-items:center;margin-left:8px}
+.lang-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--text-m);font-size:.75rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;letter-spacing:.03em}
+.lang-btn:hover{color:var(--gold-l);border-color:var(--gold)}
+.lang-btn.active{background:var(--green);color:var(--white);border-color:var(--green)}
+.lang-btn.rtl-btn{font-family:'Noto Naskh Arabic','Noto Sans Arabic',serif;font-size:.85rem}
+
+/* RTL SUPPORT */
+body.rtl{direction:rtl;text-align:right}
+body.rtl .nav-links{flex-direction:row-reverse}
+body.rtl .logo{flex-direction:row-reverse}
+body.rtl .hero-badge{flex-direction:row-reverse}
+body.rtl .ptags{flex-direction:row-reverse}
+body.rtl .pillar::after{transform-origin:right}
+body.rtl .s-sub{margin-right:0}
+body.rtl .hero p{margin-right:auto;margin-left:auto}
+body.rtl .creds{text-align:right}
+body.rtl .cred::before{content:'◂'}
+body.rtl .footer-links{flex-direction:row-reverse}
+body.rtl .guidelines{direction:rtl}
+body.rtl .pub-links{flex-direction:row-reverse}
+body.rtl .about-btns{flex-direction:row-reverse}
+body.rtl .contact-links{flex-direction:row-reverse}
+
+/* DARI/PASHTO FONT */
+.dari-font{font-family:'Noto Naskh Arabic','Noto Sans Arabic','Arial Unicode MS',serif!important}
+
 </style>
 </head>
 <body>
 
-<div class="announce">
+<div class="announce" data-i18n="announce">
   🆕 Policy Brief No. 01 now available — <a href="#publications">Afghanistan Water Security: Crisis, Data and the Path Forward</a>
 </div>
 
@@ -191,16 +219,24 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
     <div><div class="logo-text">ADI</div><div class="logo-sub">Afghanistan Development Initiative</div></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#pillars">Pillars</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#data-sources">Data</a></li>
-    <li><a href="#contribute">Contribute</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact" class="nav-cta">Collaborate</a></li>
+    <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+    <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
+    <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="#data-sources" data-i18n="nav.data">Data</a></li>
+    <li><a href="#contribute" data-i18n="nav.contribute">Contribute</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#contact" class="nav-cta" data-i18n="nav.collaborate">Collaborate</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('nl')">NL</button>
+      <button class="lang-btn rtl-btn" onclick="setLang('dr')">دری</button>
+      <button class="lang-btn rtl-btn" onclick="setLang('ps')">پښتو</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -219,12 +255,12 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">Open Knowledge · Open Data · Open Tools</div>
-    <h1>Building the knowledge infrastructure<br>for <em>Afghanistan</em></h1>
-    <p>ADI is an independent research and data platform — free, open access, and built across six development pillars for practitioners, researchers, and policymakers worldwide.</p>
+    <div class="hero-badge" data-i18n="hero.badge">Open Knowledge · Open Data · Open Tools</div>
+    <h1 data-i18n="hero.title">Building the knowledge infrastructure<br>for <em>Afghanistan</em></h1>
+    <p data-i18n="hero.sub">ADI is an independent research and data platform — free, open access, and built across six development pillars for practitioners, researchers, and policymakers worldwide.</p>
     <div class="hero-btns">
-      <a href="#tools" class="btn btn-p">Explore the Tools</a>
-      <a href="#publications" class="btn btn-o">Read Policy Briefs</a>
+      <a href="#tools" class="btn btn-p" data-i18n="hero.btn1">Explore the Tools</a>
+      <a href="#publications" class="btn btn-o" data-i18n="hero.btn2">Read Policy Briefs</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><span class="stat-num" id="count-pillars">6</span><span class="stat-lbl">Pillars</span></div>
@@ -238,16 +274,16 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- PILLARS -->
 <section id="pillars">
   <div class="container">
-    <div class="s-label">Six Pillars</div>
-    <h2 class="s-title">Every dimension of development</h2>
-    <p class="s-sub">ADI covers Afghanistan's development challenges comprehensively — from soil health to governance, from energy to education.</p>
+    <div class="s-label" data-i18n="pillars.label">Six Pillars</div>
+    <h2 class="s-title" data-i18n="pillars.title">Every dimension of development</h2>
+    <p class="s-sub" data-i18n="pillars.sub">ADI covers Afghanistan's development challenges comprehensively — from soil health to governance, from energy to education.</p>
     <div class="pillars-grid">
-      <div class="pillar" style="--accent:#52a87a"><div class="pillar-icon">🌾</div><h3>Agriculture & Food Security</h3><p>Crop suitability mapping, food security indicators, Khosh Tepa canal data, precision agriculture tools, and rural livelihood analysis.</p><div class="ptags"><span class="ptag">Soil health</span><span class="ptag">Crop mapping</span><span class="ptag">SoilSense</span><span class="ptag">Food systems</span></div></div>
-      <div class="pillar" style="--accent:#4fc3f7"><div class="pillar-icon">💧</div><h3>Water & Environment</h3><p>Kabul groundwater crisis, river basin management, land degradation monitoring, climate adaptation analysis, and disaster risk mapping.</p><div class="ptags"><span class="ptag">Groundwater</span><span class="ptag">LDN</span><span class="ptag">WaterSense</span><span class="ptag">Climate</span></div></div>
-      <div class="pillar" style="--accent:#f4a261"><div class="pillar-icon">⚡</div><h3>Energy</h3><p>Solar and hydro potential mapping, rural electrification data, energy access gap analysis, renewable policy briefs, and infrastructure overlays.</p><div class="ptags"><span class="ptag">Solar mapping</span><span class="ptag">Hydro</span><span class="ptag">Rural access</span><span class="ptag">Renewables</span></div></div>
-      <div class="pillar" style="--accent:#e63946"><div class="pillar-icon">📈</div><h3>Economy & Trade</h3><p>GDP and sector analysis, export diversification, trade corridor data, mining resource maps, FDI environment briefs, and value chain analysis.</p><div class="ptags"><span class="ptag">GDP</span><span class="ptag">Trade</span><span class="ptag">EconomySense</span><span class="ptag">Mining</span></div></div>
-      <div class="pillar" style="--accent:#7209b7"><div class="pillar-icon">🏛️</div><h3>Governance & Policy</h3><p>Policy brief series, SDG progress tracking, aid effectiveness data, institutional analysis, rule of law indicators, and development finance.</p><div class="ptags"><span class="ptag">Policy briefs</span><span class="ptag">SDGs</span><span class="ptag">Aid data</span><span class="ptag">Governance</span></div></div>
-      <div class="pillar" style="--accent:#c4943a"><div class="pillar-icon">🎓</div><h3>Education & Society</h3><p>Literacy and enrolment data, women's rights indicators, youth employment, brain drain analysis, diaspora engagement, and digital access gaps.</p><div class="ptags"><span class="ptag">Education</span><span class="ptag">Women's rights</span><span class="ptag">Youth</span><span class="ptag">Diaspora</span></div></div>
+      <div class="pillar" style="--accent:#52a87a"><div class="pillar-icon">🌾</div><h3 data-i18n="p1.title">Agriculture & Food Security</h3><p data-i18n="p1.desc">Crop suitability mapping, food security indicators, Khosh Tepa canal data, precision agriculture tools, and rural livelihood analysis.</p><div class="ptags"><span class="ptag" data-i18n="p1.t1">Soil health</span><span class="ptag" data-i18n="p1.t2">Crop mapping</span><span class="ptag">SoilSense</span><span class="ptag" data-i18n="p1.t3">Food systems</span></div></div>
+      <div class="pillar" style="--accent:#4fc3f7"><div class="pillar-icon">💧</div><h3 data-i18n="p2.title">Water & Environment</h3><p data-i18n="p2.desc">Kabul groundwater crisis, river basin management, land degradation monitoring, climate adaptation analysis, and disaster risk mapping.</p><div class="ptags"><span class="ptag" data-i18n="p2.t1">Groundwater</span><span class="ptag">LDN</span><span class="ptag">WaterSense</span><span class="ptag" data-i18n="p2.t2">Climate</span></div></div>
+      <div class="pillar" style="--accent:#f4a261"><div class="pillar-icon">⚡</div><h3 data-i18n="p3.title">Energy</h3><p data-i18n="p3.desc">Solar and hydro potential mapping, rural electrification data, energy access gap analysis, renewable policy briefs, and infrastructure overlays.</p><div class="ptags"><span class="ptag" data-i18n="p3.t1">Solar mapping</span><span class="ptag" data-i18n="p3.t2">Hydro</span><span class="ptag" data-i18n="p3.t3">Rural access</span><span class="ptag" data-i18n="p3.t4">Renewables</span></div></div>
+      <div class="pillar" style="--accent:#e63946"><div class="pillar-icon">📈</div><h3 data-i18n="p4.title">Economy & Trade</h3><p data-i18n="p4.desc">GDP and sector analysis, export diversification, trade corridor data, mining resource maps, FDI environment briefs, and value chain analysis.</p><div class="ptags"><span class="ptag">GDP</span><span class="ptag" data-i18n="p4.t1">Trade</span><span class="ptag">EconomySense</span><span class="ptag" data-i18n="p4.t2">Mining</span></div></div>
+      <div class="pillar" style="--accent:#7209b7"><div class="pillar-icon">🏛️</div><h3 data-i18n="p5.title">Governance & Policy</h3><p data-i18n="p5.desc">Policy brief series, SDG progress tracking, aid effectiveness data, institutional analysis, rule of law indicators, and development finance.</p><div class="ptags"><span class="ptag" data-i18n="p5.t1">Policy briefs</span><span class="ptag">SDGs</span><span class="ptag" data-i18n="p5.t2">Aid data</span><span class="ptag" data-i18n="p5.t3">Governance</span></div></div>
+      <div class="pillar" style="--accent:#c4943a"><div class="pillar-icon">🎓</div><h3 data-i18n="p6.title">Education & Society</h3><p data-i18n="p6.desc">Literacy and enrolment data, women's rights indicators, youth employment, brain drain analysis, diaspora engagement, and digital access gaps.</p><div class="ptags"><span class="ptag" data-i18n="p6.t1">Education</span><span class="ptag" data-i18n="p6.t2">Women's rights</span><span class="ptag" data-i18n="p6.t3">Youth</span><span class="ptag" data-i18n="p6.t4">Diaspora</span></div></div>
     </div>
   </div>
 </section>
@@ -255,16 +291,16 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- TOOLS -->
 <section id="tools" class="tools-sec">
   <div class="container">
-    <div class="s-label">Open Source Tools</div>
-    <h2 class="s-title">Built for real decisions</h2>
-    <p class="s-sub">Interactive dashboards — free to use, open source, built for field workers, researchers, and programme managers.</p>
+    <div class="s-label" data-i18n="tools.label">Open Source Tools</div>
+    <h2 class="s-title" data-i18n="tools.title">Built for real decisions</h2>
+    <p class="s-sub" data-i18n="tools.sub">Interactive dashboards — free to use, open source, built for field workers, researchers, and programme managers.</p>
     <div class="tools-grid">
-      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> Live</div><h3>SoilSense</h3><p>Full screening-level soil assessment for any location across 124 countries — soil health score, erosion risk, degradation probability, and FAO-grounded recommendations in under a minute.</p><a href="https://soilsense-npwqirrz7pqkrtq5eidw4v.streamlit.app" target="_blank" class="tool-link">Launch SoilSense →</a></div>
-      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> Live</div><h3>WaterSense</h3><p>Afghanistan water security deep dive and global dashboard — Kabul groundwater crisis, river basin data, and live World Bank water indicators for 80+ countries.</p><a href="https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app" target="_blank" class="tool-link">Launch WaterSense →</a></div>
-      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> Live</div><h3>EconomySense</h3><p>Afghanistan economic dashboard — GDP trends, trade and exports, poverty indicators, and economic development data. Live from World Bank API with global country comparisons.</p><a href="https://economysense-qbgckhbvnoyqywuxbmi7hs.streamlit.app" target="_blank" class="tool-link">Launch EconomySense →</a></div>
-      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> Coming soon</div><h3>CropZone Mapper</h3><p>Geospatial crop suitability and irrigation potential mapping for Afghanistan — supporting Khosh Tepa canal zone planning and agricultural development decisions.</p><span style="font-size:.78rem;color:var(--text-d)">In development</span></div>
-      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> Coming soon</div><h3>EnergySense</h3><p>Solar and hydro potential mapping for Afghanistan — rural electrification gaps, renewable energy potential, and infrastructure overlay analysis.</p><span style="font-size:.78rem;color:var(--text-d)">In development</span></div>
-      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> Coming soon</div><h3>ADI AI Assistant</h3><p>Ask questions about Afghanistan development in natural language — get data-driven answers instantly from live APIs for field officers and researchers.</p><span style="font-size:.78rem;color:var(--text-d)">In development</span></div>
+      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> <span data-i18n="status.live">Live</span></div><h3>SoilSense</h3><p data-i18n="t1.desc">Full screening-level soil assessment for any location across 124 countries — soil health score, erosion risk, degradation probability, and FAO-grounded recommendations in under a minute.</p><a href="https://soilsense-npwqirrz7pqkrtq5eidw4v.streamlit.app" target="_blank" class="tool-link" data-i18n="t1.link">Launch SoilSense →</a></div>
+      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> <span data-i18n="status.live">Live</span></div><h3>WaterSense</h3><p data-i18n="t2.desc">Afghanistan water security deep dive and global dashboard — Kabul groundwater crisis, river basin data, and live World Bank water indicators for 80+ countries.</p><a href="https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app" target="_blank" class="tool-link" data-i18n="t2.link">Launch WaterSense →</a></div>
+      <div class="tool-card"><div class="ts-live"><span class="dot-live"></span> <span data-i18n="status.live">Live</span></div><h3>EconomySense</h3><p data-i18n="t3.desc">Afghanistan economic dashboard — GDP trends, trade and exports, poverty indicators, and economic development data. Live from World Bank API with global country comparisons.</p><a href="https://economysense-qbgckhbvnoyqywuxbmi7hs.streamlit.app" target="_blank" class="tool-link" data-i18n="t3.link">Launch EconomySense →</a></div>
+      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.soon">Coming soon</span></div><h3>CropZone Mapper</h3><p data-i18n="t4.desc">Geospatial crop suitability and irrigation potential mapping for Afghanistan — supporting Khosh Tepa canal zone planning and agricultural development decisions.</p><span style="font-size:.78rem;color:var(--text-d)" data-i18n="status.dev">In development</span></div>
+      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.soon">Coming soon</span></div><h3>EnergySense</h3><p data-i18n="t5.desc">Solar and hydro potential mapping for Afghanistan — rural electrification gaps, renewable energy potential, and infrastructure overlay analysis.</p><span style="font-size:.78rem;color:var(--text-d)" data-i18n="status.dev">In development</span></div>
+      <div class="tool-card" style="opacity:.6"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.soon">Coming soon</span></div><h3>ADI AI Assistant</h3><p data-i18n="t6.desc">Ask questions about Afghanistan development in natural language — get data-driven answers instantly from live APIs for field officers and researchers.</p><span style="font-size:.78rem;color:var(--text-d)" data-i18n="status.dev">In development</span></div>
     </div>
   </div>
 </section>
@@ -272,33 +308,33 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="container">
-    <div class="s-label">Research & Publications</div>
-    <h2 class="s-title">Policy briefs & research notes</h2>
-    <p class="s-sub">Evidence-based analysis and policy recommendations — freely available to practitioners, researchers and policymakers.</p>
+    <div class="s-label" data-i18n="pub.label">Research & Publications</div>
+    <h2 class="s-title" data-i18n="pub.title">Policy briefs & research notes</h2>
+    <p class="s-sub" data-i18n="pub.sub">Evidence-based analysis and policy recommendations — freely available to practitioners, researchers and policymakers.</p>
     <div class="pub-grid">
       <div class="pub-card" style="border-top:3px solid var(--gold-l)">
-        <div class="pub-type">📋 Policy Brief No. 01 · May 2026</div>
-        <h3>Afghanistan Water Security: Crisis, Data and the Path Forward</h3>
+        <div class="pub-type" data-i18n="pb1.type">📋 Policy Brief No. 01 · May 2026</div>
+        <h3 data-i18n="pb1.title">Afghanistan Water Security: Crisis, Data and the Path Forward</h3>
         <div class="pub-meta">Maiwand Jan Alamzoi · FAO UN Roster Specialist · ADI</div>
-        <p>Kabul groundwater depletes at 3m/year. Only 36% of Afghans have safe water access. 13 policy recommendations across three timeframes with practical data tools for implementation support.</p>
+        <p data-i18n="pb1.desc">Kabul groundwater depletes at 3m/year. Only 36% of Afghans have safe water access. 13 policy recommendations across three timeframes with practical data tools for implementation support.</p>
         <div class="pub-links">
-          <a href="https://afghanistan-development-initiative.github.io/publications/ADI_PolicyBrief_WaterSecurity_Afghanistan.pdf" target="_blank" class="pb-p">📥 Download PDF</a>
+          <a href="https://afghanistan-development-initiative.github.io/publications/ADI_PolicyBrief_WaterSecurity_Afghanistan.pdf" target="_blank" class="pb-p" data-i18n="pb1.dl">📥 Download PDF</a>
           <a href="https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app" target="_blank" class="pb-s">💧 WaterSense</a>
         </div>
       </div>
       <div class="pub-card" style="opacity:.58">
-        <div class="pub-type">📋 Policy Brief No. 02 · Coming July 2026</div>
-        <h3>Afghanistan Soil Degradation: Assessment and Recovery Pathways</h3>
-        <div class="pub-meta">Afghanistan Development Initiative · In preparation</div>
-        <p>Soil health indicators across Afghanistan's agricultural zones — linking SoilSense data to land degradation neutrality targets and practical management recommendations.</p>
-        <span style="font-size:.78rem;color:var(--text-d)">In preparation</span>
+        <div class="pub-type" data-i18n="pb2.type">📋 Policy Brief No. 02 · Coming July 2026</div>
+        <h3 data-i18n="pb2.title">Afghanistan Soil Degradation: Assessment and Recovery Pathways</h3>
+        <div class="pub-meta" data-i18n="pb.prep.meta">Afghanistan Development Initiative · In preparation</div>
+        <p data-i18n="pb2.desc">Soil health indicators across Afghanistan's agricultural zones — linking SoilSense data to land degradation neutrality targets and practical management recommendations.</p>
+        <span style="font-size:.78rem;color:var(--text-d)" data-i18n="pb.prep">In preparation</span>
       </div>
       <div class="pub-card" style="opacity:.58">
-        <div class="pub-type">📋 Policy Brief No. 03 · Coming August 2026</div>
-        <h3>Afghanistan Economic Diversification: From Aid Dependency to Productive Economy</h3>
-        <div class="pub-meta">Afghanistan Development Initiative · In preparation</div>
-        <p>GDP analysis, export potential, trade corridor opportunities and policy pathways toward reduced aid dependency and increased domestic production.</p>
-        <span style="font-size:.78rem;color:var(--text-d)">In preparation</span>
+        <div class="pub-type" data-i18n="pb3.type">📋 Policy Brief No. 03 · Coming August 2026</div>
+        <h3 data-i18n="pb3.title">Afghanistan Economic Diversification: From Aid Dependency to Productive Economy</h3>
+        <div class="pub-meta" data-i18n="pb.prep.meta">Afghanistan Development Initiative · In preparation</div>
+        <p data-i18n="pb3.desc">GDP analysis, export potential, trade corridor opportunities and policy pathways toward reduced aid dependency and increased domestic production.</p>
+        <span style="font-size:.78rem;color:var(--text-d)" data-i18n="pb.prep">In preparation</span>
       </div>
     </div>
   </div>
@@ -307,18 +343,18 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- DATA SOURCES -->
 <section id="data-sources" class="sources-sec">
   <div class="container">
-    <div class="s-label">Data Sources</div>
-    <h2 class="s-title">Where our data comes from</h2>
-    <p class="s-sub">All ADI tools and publications use open, verified data sources. Full methodology documented in each tool's GitHub repository.</p>
+    <div class="s-label" data-i18n="src.label">Data Sources</div>
+    <h2 class="s-title" data-i18n="src.title">Where our data comes from</h2>
+    <p class="s-sub" data-i18n="src.sub">All ADI tools and publications use open, verified data sources. Full methodology documented in each tool's GitHub repository.</p>
     <div class="sources-grid">
-      <div class="src-card"><div class="src-org">World Bank</div><h4>World Development Indicators</h4><p>Water access, GDP, poverty, trade and economic indicators for 200+ countries. Updated annually.</p><a href="https://data.worldbank.org" target="_blank" class="src-link">data.worldbank.org →</a></div>
-      <div class="src-card"><div class="src-org">FAO</div><h4>AQUASTAT Database</h4><p>Water resources, irrigation, and water security data. Afghanistan country profiles and global comparisons.</p><a href="https://www.fao.org/aquastat" target="_blank" class="src-link">fao.org/aquastat →</a></div>
-      <div class="src-card"><div class="src-org">ISRIC</div><h4>SoilGrids 2.0</h4><p>Global soil property maps at 250m resolution — organic carbon, pH, nitrogen, texture and bulk density.</p><a href="https://soilgrids.org" target="_blank" class="src-link">soilgrids.org →</a></div>
-      <div class="src-card"><div class="src-org">NASA / JPL</div><h4>GRACE-FO Satellite</h4><p>Terrestrial water storage anomalies — groundwater depletion monitoring from satellite gravity measurements.</p><a href="https://grace.jpl.nasa.gov" target="_blank" class="src-link">grace.jpl.nasa.gov →</a></div>
-      <div class="src-card"><div class="src-org">UCSB / CHG</div><h4>CHIRPS Rainfall Data</h4><p>35+ years of rainfall and precipitation data for drought and climate monitoring across Afghanistan.</p><a href="https://www.chc.ucsb.edu/data/chirps" target="_blank" class="src-link">chc.ucsb.edu →</a></div>
-      <div class="src-card"><div class="src-org">ESA / Copernicus</div><h4>Sentinel Satellite Data</h4><p>Multispectral satellite imagery for NDVI, vegetation monitoring, and land cover mapping.</p><a href="https://scihub.copernicus.eu" target="_blank" class="src-link">copernicus.eu →</a></div>
-      <div class="src-card"><div class="src-org">WHO / UNICEF</div><h4>JMP Water & Sanitation</h4><p>Joint Monitoring Programme data on drinking water and sanitation access globally and for Afghanistan.</p><a href="https://washdata.org" target="_blank" class="src-link">washdata.org →</a></div>
-      <div class="src-card"><div class="src-org">Google</div><h4>Google Earth Engine</h4><p>Cloud-based geospatial analysis platform for vegetation monitoring and environmental indicators.</p><a href="https://earthengine.google.com" target="_blank" class="src-link">earthengine.google.com →</a></div>
+      <div class="src-card"><div class="src-org">World Bank</div><h4>World Development Indicators</h4><p data-i18n="src1.desc">Water access, GDP, poverty, trade and economic indicators for 200+ countries. Updated annually.</p><a href="https://data.worldbank.org" target="_blank" class="src-link">data.worldbank.org →</a></div>
+      <div class="src-card"><div class="src-org">FAO</div><h4>AQUASTAT Database</h4><p data-i18n="src2.desc">Water resources, irrigation, and water security data. Afghanistan country profiles and global comparisons.</p><a href="https://www.fao.org/aquastat" target="_blank" class="src-link">fao.org/aquastat →</a></div>
+      <div class="src-card"><div class="src-org">ISRIC</div><h4>SoilGrids 2.0</h4><p data-i18n="src3.desc">Global soil property maps at 250m resolution — organic carbon, pH, nitrogen, texture and bulk density.</p><a href="https://soilgrids.org" target="_blank" class="src-link">soilgrids.org →</a></div>
+      <div class="src-card"><div class="src-org">NASA / JPL</div><h4>GRACE-FO Satellite</h4><p data-i18n="src4.desc">Terrestrial water storage anomalies — groundwater depletion monitoring from satellite gravity measurements.</p><a href="https://grace.jpl.nasa.gov" target="_blank" class="src-link">grace.jpl.nasa.gov →</a></div>
+      <div class="src-card"><div class="src-org">UCSB / CHG</div><h4>CHIRPS Rainfall Data</h4><p data-i18n="src5.desc">35+ years of rainfall and precipitation data for drought and climate monitoring across Afghanistan.</p><a href="https://www.chc.ucsb.edu/data/chirps" target="_blank" class="src-link">chc.ucsb.edu →</a></div>
+      <div class="src-card"><div class="src-org">ESA / Copernicus</div><h4>Sentinel Satellite Data</h4><p data-i18n="src6.desc">Multispectral satellite imagery for NDVI, vegetation monitoring, and land cover mapping.</p><a href="https://scihub.copernicus.eu" target="_blank" class="src-link">copernicus.eu →</a></div>
+      <div class="src-card"><div class="src-org">WHO / UNICEF</div><h4>JMP Water & Sanitation</h4><p data-i18n="src7.desc">Joint Monitoring Programme data on drinking water and sanitation access globally and for Afghanistan.</p><a href="https://washdata.org" target="_blank" class="src-link">washdata.org →</a></div>
+      <div class="src-card"><div class="src-org">Google</div><h4>Google Earth Engine</h4><p data-i18n="src8.desc">Cloud-based geospatial analysis platform for vegetation monitoring and environmental indicators.</p><a href="https://earthengine.google.com" target="_blank" class="src-link">earthengine.google.com →</a></div>
     </div>
   </div>
 </section>
@@ -326,39 +362,39 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- CONTRIBUTE -->
 <section id="contribute" class="contrib-sec">
   <div class="container">
-    <div class="s-label">Open Platform</div>
-    <h2 class="s-title">Contribute to ADI</h2>
-    <p class="s-sub">ADI grows through collaboration. Researchers, practitioners, and field workers worldwide are welcome to contribute data, tools, policy briefs, and research.</p>
+    <div class="s-label" data-i18n="contrib.label">Open Platform</div>
+    <h2 class="s-title" data-i18n="contrib.title">Contribute to ADI</h2>
+    <p class="s-sub" data-i18n="contrib.sub">ADI grows through collaboration. Researchers, practitioners, and field workers worldwide are welcome to contribute data, tools, policy briefs, and research.</p>
     <div class="ctypes">
-      <div class="ctype"><div class="ctype-icon">📊</div><h4>Datasets</h4><p>Open datasets on any ADI pillar — CSV, Excel, GeoJSON with clear methodology and sources.</p></div>
-      <div class="ctype"><div class="ctype-icon">📋</div><h4>Policy Briefs</h4><p>Evidence-based policy analysis with cited sources covering Afghanistan development challenges.</p></div>
-      <div class="ctype"><div class="ctype-icon">🛠️</div><h4>Tools & Code</h4><p>Open-source tools, dashboards, or scripts that help practitioners working on Afghanistan.</p></div>
-      <div class="ctype"><div class="ctype-icon">🔬</div><h4>Research Notes</h4><p>Field observations, technical notes, methodology documentation, or working papers.</p></div>
+      <div class="ctype"><div class="ctype-icon">📊</div><h4 data-i18n="ct1.title">Datasets</h4><p data-i18n="ct1.desc">Open datasets on any ADI pillar — CSV, Excel, GeoJSON with clear methodology and sources.</p></div>
+      <div class="ctype"><div class="ctype-icon">📋</div><h4 data-i18n="ct2.title">Policy Briefs</h4><p data-i18n="ct2.desc">Evidence-based policy analysis with cited sources covering Afghanistan development challenges.</p></div>
+      <div class="ctype"><div class="ctype-icon">🛠️</div><h4 data-i18n="ct3.title">Tools & Code</h4><p data-i18n="ct3.desc">Open-source tools, dashboards, or scripts that help practitioners working on Afghanistan.</p></div>
+      <div class="ctype"><div class="ctype-icon">🔬</div><h4 data-i18n="ct4.title">Research Notes</h4><p data-i18n="ct4.desc">Field observations, technical notes, methodology documentation, or working papers.</p></div>
     </div>
     <div class="guidelines">
-      <div class="guideline"><h4 style="color:var(--green-l)">✅ We accept</h4><ul><li>• Original research and field data</li><li>• Open-source tools and code</li><li>• Evidence-based policy analysis</li><li>• Datasets with clear methodology</li><li>• Contributions in any language</li><li>• Work from any institution</li></ul></div>
-      <div class="guideline"><h4 style="color:#e06b6b">❌ We do not accept</h4><ul><li>• Political or partisan content</li><li>• Unverified or uncited claims</li><li>• Proprietary or copyrighted data</li><li>• Content unrelated to Afghanistan</li><li>• Commercial or promotional material</li></ul></div>
+      <div class="guideline"><h4 style="color:var(--green-l)" data-i18n="guide.accept.title">✅ We accept</h4><ul data-i18n="guide.accept.list"><li>• Original research and field data</li><li>• Open-source tools and code</li><li>• Evidence-based policy analysis</li><li>• Datasets with clear methodology</li><li>• Contributions in any language</li><li>• Work from any institution</li></ul></div>
+      <div class="guideline"><h4 style="color:#e06b6b" data-i18n="guide.reject.title">❌ We do not accept</h4><ul data-i18n="guide.reject.list"><li>• Political or partisan content</li><li>• Unverified or uncited claims</li><li>• Proprietary or copyrighted data</li><li>• Content unrelated to Afghanistan</li><li>• Commercial or promotional material</li></ul></div>
     </div>
     <div class="contrib-form-wrap">
-      <h3 style="font-family:'Cormorant Garamond',serif;color:var(--white);font-size:1.4rem;margin-bottom:1.5rem">Submit a contribution</h3>
+      <h3 style="font-family:'Cormorant Garamond',serif;color:var(--white);font-size:1.4rem;margin-bottom:1.5rem" data-i18n="form.title">Submit a contribution</h3>
       <form id="contribForm" onsubmit="submitForm(event)">
         <div class="form-grid">
-          <div class="form-group"><label>Your full name *</label><input type="text" placeholder="e.g. Ahmad Kaihan" required></div>
-          <div class="form-group"><label>Organisation</label><input type="text" placeholder="e.g. Wageningen University"></div>
-          <div class="form-group"><label>Email address *</label><input type="email" placeholder="your@email.com" required></div>
-          <div class="form-group"><label>Type of contribution *</label><select required><option value="">Select type...</option><option>Dataset</option><option>Policy Brief</option><option>Tool or Code</option><option>Research Note</option><option>Other</option></select></div>
-          <div class="form-group form-full"><label>Title of your contribution *</label><input type="text" placeholder="e.g. Afghanistan Groundwater Level Dataset 2020-2024" required></div>
-          <div class="form-group form-full"><label>Which ADI pillar?</label><select><option value="">Select pillar...</option><option>Agriculture & Food Security</option><option>Water & Environment</option><option>Energy</option><option>Economy & Trade</option><option>Governance & Policy</option><option>Education & Society</option><option>Multiple pillars</option></select></div>
-          <div class="form-group form-full"><label>Description *</label><textarea placeholder="Describe your contribution — what it covers, data sources used, methodology, and how it helps practitioners or researchers..." required></textarea></div>
-          <div class="form-group form-full"><label>Link to file or GitHub repository</label><input type="url" placeholder="https://github.com/... or Google Drive link"></div>
+          <div class="form-group"><label data-i18n="form.name">Your full name *</label><input type="text" placeholder="e.g. Ahmad Kaihan" required></div>
+          <div class="form-group"><label data-i18n="form.org">Organisation</label><input type="text" placeholder="e.g. Wageningen University"></div>
+          <div class="form-group"><label data-i18n="form.email">Email address *</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label data-i18n="form.type">Type of contribution *</label><select required><option value="" data-i18n="form.select">Select type...</option><option>Dataset</option><option>Policy Brief</option><option>Tool or Code</option><option>Research Note</option><option>Other</option></select></div>
+          <div class="form-group form-full"><label data-i18n="form.contribtitle">Title of your contribution *</label><input type="text" placeholder="e.g. Afghanistan Groundwater Level Dataset 2020-2024" required></div>
+          <div class="form-group form-full"><label data-i18n="form.pillar">Which ADI pillar?</label><select><option value="">Select pillar...</option><option>Agriculture & Food Security</option><option>Water & Environment</option><option>Energy</option><option>Economy & Trade</option><option>Governance & Policy</option><option>Education & Society</option><option>Multiple pillars</option></select></div>
+          <div class="form-group form-full"><label data-i18n="form.desc">Description *</label><textarea placeholder="Describe your contribution — what it covers, data sources used, methodology, and how it helps practitioners or researchers..." required></textarea></div>
+          <div class="form-group form-full"><label data-i18n="form.link">Link to file or GitHub repository</label><input type="url" placeholder="https://github.com/... or Google Drive link"></div>
         </div>
-        <button type="submit" class="submit-btn">Submit Contribution →</button>
-        <p style="font-size:.73rem;color:var(--text-d);margin-top:.7rem">All contributions reviewed within 7 days. Published with full author credit under CC BY 4.0 licence.</p>
+        <button type="submit" class="submit-btn" data-i18n="form.submit">Submit Contribution →</button>
+        <p style="font-size:.73rem;color:var(--text-d);margin-top:.7rem" data-i18n="form.note">All contributions reviewed within 7 days. Published with full author credit under CC BY 4.0 licence.</p>
       </form>
       <div class="form-success" id="formSuccess">
         <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
-        <h3 style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:.5rem">Thank you!</h3>
-        <p style="color:var(--text-m)">We will review your submission and get back to you within 7 days.</p>
+        <h3 style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:.5rem" data-i18n="form.thanks">Thank you!</h3>
+        <p style="color:var(--text-m)" data-i18n="form.review">We will review your submission and get back to you within 7 days.</p>
       </div>
     </div>
   </div>
@@ -367,14 +403,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="s-label">About ADI</div>
-    <h2 class="s-title">Who is behind this</h2>
+    <div class="s-label" data-i18n="about.label">About ADI</div>
+    <h2 class="s-title" data-i18n="about.title">Who is behind this</h2>
     <div class="about-grid">
       <div>
         <div class="founder-card">
           <div class="founder-name">Maiwand Jan Alamzoi</div>
-          <div class="founder-role">Founder · Environmental & Sustainability Data Scientist</div>
-          <div class="founder-bio">Afghan data scientist based in the Netherlands, with over 7 years of experience across international development, EU-funded innovation projects, and applied research in precision agriculture and sustainability.</div>
+          <div class="founder-role" data-i18n="about.role">Founder · Environmental & Sustainability Data Scientist</div>
+          <div class="founder-bio" data-i18n="about.bio">Afghan data scientist based in the Netherlands, with over 7 years of experience across international development, EU-funded innovation projects, and applied research in precision agriculture and sustainability.</div>
           <div class="creds">
             <div class="cred">FAO UN Roster — Soil Management Specialist (2026–2029)</div>
             <div class="cred">Data Scientist — Agrisim & Rapagra, Wageningen</div>
@@ -386,13 +422,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
         </div>
       </div>
       <div class="about-text">
-        <p>ADI was built from a simple observation — there is no open, reliable, data-driven platform covering Afghanistan's development challenges across all sectors. Everything is scattered, outdated, or behind paywalls.</p>
-        <p>Practitioners, researchers, and policymakers make critical decisions without the data they need. ADI is the attempt to change that — one tool, one dataset, one policy brief at a time.</p>
-        <p>This platform is built on field experience from FAO consultancy work in Afghanistan, combined with data science expertise developed across EU-funded projects and applied research in the Netherlands. The analysis draws on direct observation — not just remote data.</p>
-        <p>ADI is independent, non-political, and committed to open access. It welcomes collaboration from anyone who believes Afghanistan deserves better data.</p>
+        <p data-i18n="about.p1">ADI was built from a simple observation — there is no open, reliable, data-driven platform covering Afghanistan's development challenges across all sectors. Everything is scattered, outdated, or behind paywalls.</p>
+        <p data-i18n="about.p2">Practitioners, researchers, and policymakers make critical decisions without the data they need. ADI is the attempt to change that — one tool, one dataset, one policy brief at a time.</p>
+        <p data-i18n="about.p3">This platform is built on field experience from FAO consultancy work in Afghanistan, combined with data science expertise developed across EU-funded projects and applied research in the Netherlands.</p>
+        <p data-i18n="about.p4">ADI is independent, non-political, and committed to open access. It welcomes collaboration from anyone who believes Afghanistan deserves better data.</p>
         <div class="about-btns">
-          <a href="https://github.com/afghanistan-development-initiative" target="_blank" class="btn btn-p">GitHub Organisation</a>
-          <a href="https://www.linkedin.com/company/afghanistan-development-initiative" target="_blank" class="btn btn-o">LinkedIn Page</a>
+          <a href="https://github.com/afghanistan-development-initiative" target="_blank" class="btn btn-p" data-i18n="about.github">GitHub Organisation</a>
+          <a href="https://www.linkedin.com/company/afghanistan-development-initiative" target="_blank" class="btn btn-o" data-i18n="about.linkedin">LinkedIn Page</a>
         </div>
       </div>
     </div>
@@ -432,6 +468,226 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 </footer>
 
 <script>
+// ── TRANSLATIONS ──
+const LANGS = {
+  en: {
+    "announce":"🆕 Policy Brief No. 01 now available — <a href='#publications'>Afghanistan Water Security: Crisis, Data and the Path Forward</a>",
+    "nav.pillars":"Pillars","nav.tools":"Tools","nav.publications":"Publications",
+    "nav.data":"Data","nav.contribute":"Contribute","nav.about":"About","nav.collaborate":"Collaborate",
+    "hero.badge":"Open Knowledge · Open Data · Open Tools",
+    "hero.title":"Building the knowledge infrastructure<br>for <em>Afghanistan</em>",
+    "hero.sub":"ADI is an independent research and data platform — free, open access, and built across six development pillars for practitioners, researchers, and policymakers worldwide.",
+    "hero.btn1":"Explore the Tools","hero.btn2":"Read Policy Briefs",
+    "stat.pillars":"Pillars","stat.tools":"Live tools","stat.pubs":"Policy briefs","stat.free":"Always open",
+    "pillars.label":"Six Pillars","pillars.title":"Every dimension of development",
+    "pillars.sub":"ADI covers Afghanistan's development challenges comprehensively — from soil health to governance, from energy to education.",
+    "p1.title":"Agriculture & Food Security","p1.desc":"Crop suitability mapping, food security indicators, Khosh Tepa canal data, precision agriculture tools, and rural livelihood analysis.","p1.t1":"Soil health","p1.t2":"Crop mapping","p1.t3":"Food systems",
+    "p2.title":"Water & Environment","p2.desc":"Kabul groundwater crisis, river basin management, land degradation monitoring, climate adaptation analysis, and disaster risk mapping.","p2.t1":"Groundwater","p2.t2":"Climate",
+    "p3.title":"Energy","p3.desc":"Solar and hydro potential mapping, rural electrification data, energy access gap analysis, renewable policy briefs, and infrastructure overlays.","p3.t1":"Solar mapping","p3.t2":"Hydro","p3.t3":"Rural access","p3.t4":"Renewables",
+    "p4.title":"Economy & Trade","p4.desc":"GDP and sector analysis, export diversification, trade corridor data, mining resource maps, FDI environment briefs, and value chain analysis.","p4.t1":"Trade","p4.t2":"Mining",
+    "p5.title":"Governance & Policy","p5.desc":"Policy brief series, SDG progress tracking, aid effectiveness data, institutional analysis, rule of law indicators, and development finance.","p5.t1":"Policy briefs","p5.t2":"Aid data","p5.t3":"Governance",
+    "p6.title":"Education & Society","p6.desc":"Literacy and enrolment data, women's rights indicators, youth employment, brain drain analysis, diaspora engagement, and digital access gaps.","p6.t1":"Education","p6.t2":"Women's rights","p6.t3":"Youth","p6.t4":"Diaspora",
+    "tools.label":"Open Source Tools","tools.title":"Built for real decisions","tools.sub":"Interactive dashboards — free to use, open source, built for field workers, researchers, and programme managers.",
+    "status.live":"Live","status.soon":"Coming soon","status.dev":"In development",
+    "t1.desc":"Full screening-level soil assessment for any location across 124 countries — soil health score, erosion risk, degradation probability, and FAO-grounded recommendations in under a minute.","t1.link":"Launch SoilSense →",
+    "t2.desc":"Afghanistan water security deep dive and global dashboard — Kabul groundwater crisis, river basin data, and live World Bank water indicators for 80+ countries.","t2.link":"Launch WaterSense →",
+    "t3.desc":"Afghanistan economic dashboard — GDP trends, trade and exports, poverty indicators, and economic development data. Live from World Bank API with global country comparisons.","t3.link":"Launch EconomySense →",
+    "t4.desc":"Geospatial crop suitability and irrigation potential mapping for Afghanistan — supporting Khosh Tepa canal zone planning and agricultural development decisions.",
+    "t5.desc":"Solar and hydro potential mapping for Afghanistan — rural electrification gaps, renewable energy potential, and infrastructure overlay analysis.",
+    "t6.desc":"Ask questions about Afghanistan development in natural language — get data-driven answers instantly from live APIs for field officers and researchers.",
+    "pub.label":"Research & Publications","pub.title":"Policy briefs & research notes","pub.sub":"Evidence-based analysis and policy recommendations — freely available to practitioners, researchers and policymakers.",
+    "pb1.type":"📋 Policy Brief No. 01 · May 2026","pb1.title":"Afghanistan Water Security: Crisis, Data and the Path Forward","pb1.desc":"Kabul groundwater depletes at 3m/year. Only 36% of Afghans have safe water access. 13 policy recommendations across three timeframes with practical data tools for implementation support.","pb1.dl":"📥 Download PDF",
+    "pb2.type":"📋 Policy Brief No. 02 · Coming July 2026","pb2.title":"Afghanistan Soil Degradation: Assessment and Recovery Pathways","pb2.desc":"Soil health indicators across Afghanistan's agricultural zones — linking SoilSense data to land degradation neutrality targets and practical management recommendations.",
+    "pb3.type":"📋 Policy Brief No. 03 · Coming August 2026","pb3.title":"Afghanistan Economic Diversification: From Aid Dependency to Productive Economy","pb3.desc":"GDP analysis, export potential, trade corridor opportunities and policy pathways toward reduced aid dependency and increased domestic production.",
+    "pb.prep":"In preparation","pb.prep.meta":"Afghanistan Development Initiative · In preparation",
+    "src.label":"Data Sources","src.title":"Where our data comes from","src.sub":"All ADI tools and publications use open, verified data sources. Full methodology documented in each tool's GitHub repository.",
+    "src1.desc":"Water access, GDP, poverty, trade and economic indicators for 200+ countries. Updated annually.",
+    "src2.desc":"Water resources, irrigation, and water security data. Afghanistan country profiles and global comparisons.",
+    "src3.desc":"Global soil property maps at 250m resolution — organic carbon, pH, nitrogen, texture and bulk density.",
+    "src4.desc":"Terrestrial water storage anomalies — groundwater depletion monitoring from satellite gravity measurements.",
+    "src5.desc":"35+ years of rainfall and precipitation data for drought and climate monitoring across Afghanistan.",
+    "src6.desc":"Multispectral satellite imagery for NDVI, vegetation monitoring, and land cover mapping.",
+    "src7.desc":"Joint Monitoring Programme data on drinking water and sanitation access globally and for Afghanistan.",
+    "src8.desc":"Cloud-based geospatial analysis platform for vegetation monitoring and environmental indicators.",
+    "contrib.label":"Open Platform","contrib.title":"Contribute to ADI","contrib.sub":"ADI grows through collaboration. Researchers, practitioners, and field workers worldwide are welcome to contribute data, tools, policy briefs, and research.",
+    "ct1.title":"Datasets","ct1.desc":"Open datasets on any ADI pillar — CSV, Excel, GeoJSON with clear methodology and sources.",
+    "ct2.title":"Policy Briefs","ct2.desc":"Evidence-based policy analysis with cited sources covering Afghanistan development challenges.",
+    "ct3.title":"Tools & Code","ct3.desc":"Open-source tools, dashboards, or scripts that help practitioners working on Afghanistan.",
+    "ct4.title":"Research Notes","ct4.desc":"Field observations, technical notes, methodology documentation, or working papers.",
+    "guide.accept.title":"✅ We accept","guide.accept.list":"<li>• Original research and field data</li><li>• Open-source tools and code</li><li>• Evidence-based policy analysis</li><li>• Datasets with clear methodology</li><li>• Contributions in any language</li><li>• Work from any institution</li>",
+    "guide.reject.title":"❌ We do not accept","guide.reject.list":"<li>• Political or partisan content</li><li>• Unverified or uncited claims</li><li>• Proprietary or copyrighted data</li><li>• Content unrelated to Afghanistan</li><li>• Commercial or promotional material</li>",
+    "form.title":"Submit a contribution","form.name":"Your full name *","form.org":"Organisation","form.email":"Email address *","form.type":"Type of contribution *","form.select":"Select type...","form.contribtitle":"Title of your contribution *","form.pillar":"Which ADI pillar?","form.desc":"Description *","form.link":"Link to file or GitHub repository","form.submit":"Submit Contribution →","form.note":"All contributions reviewed within 7 days. Published with full author credit under CC BY 4.0 licence.","form.thanks":"Thank you!","form.review":"We will review your submission and get back to you within 7 days.",
+    "about.label":"About ADI","about.title":"Who is behind this","about.role":"Founder · Environmental & Sustainability Data Scientist","about.bio":"Afghan data scientist based in the Netherlands, with over 7 years of experience across international development, EU-funded innovation projects, and applied research in precision agriculture and sustainability.",
+    "about.p1":"ADI was built from a simple observation — there is no open, reliable, data-driven platform covering Afghanistan's development challenges across all sectors. Everything is scattered, outdated, or behind paywalls.",
+    "about.p2":"Practitioners, researchers, and policymakers make critical decisions without the data they need. ADI is the attempt to change that — one tool, one dataset, one policy brief at a time.",
+    "about.p3":"This platform is built on field experience from FAO consultancy work in Afghanistan, combined with data science expertise developed across EU-funded projects and applied research in the Netherlands.",
+    "about.p4":"ADI is independent, non-political, and committed to open access. It welcomes collaboration from anyone who believes Afghanistan deserves better data.",
+    "about.github":"GitHub Organisation","about.linkedin":"LinkedIn Page",
+    "contact.label":"Get Involved","contact.title":"Collaborate with ADI","contact.desc":"We welcome researchers, practitioners, domain experts, and organisations who want to contribute data, tools, policy briefs, or expertise. ADI is built to grow through collaboration.",
+    "contact.email":"Send an Email","contact.li":"Connect on LinkedIn","contact.gh":"Contribute on GitHub",
+    "footer.note":"Open access · Open source · Built for Afghanistan · All tools and publications free to use",
+  },
+  nl: {
+    "announce":"🆕 Beleidsoverzicht Nr. 01 nu beschikbaar — <a href='#publications'>Afghanistan Waterzekerheid: Crisis, Data en de Weg Vooruit</a>",
+    "nav.pillars":"Pijlers","nav.tools":"Tools","nav.publications":"Publicaties",
+    "nav.data":"Data","nav.contribute":"Bijdragen","nav.about":"Over ons","nav.collaborate":"Samenwerken",
+    "hero.badge":"Open Kennis · Open Data · Open Tools",
+    "hero.title":"De kennisinfrastructuur bouwen<br>voor <em>Afghanistan</em>",
+    "hero.sub":"ADI is een onafhankelijk onderzoeks- en dataplatform — gratis, open toegang, en gebouwd over zes ontwikkelingspijlers voor beoefenaars, onderzoekers en beleidsmakers wereldwijd.",
+    "hero.btn1":"Verken de Tools","hero.btn2":"Lees Beleidsoverzichten",
+    "stat.pillars":"Pijlers","stat.tools":"Live tools","stat.pubs":"Beleidsoverzichten","stat.free":"Altijd gratis",
+    "pillars.label":"Zes Pijlers","pillars.title":"Elke dimensie van ontwikkeling",
+    "pillars.sub":"ADI behandelt de ontwikkelingsuitdagingen van Afghanistan uitgebreid — van bodemgezondheid tot bestuur, van energie tot onderwijs.",
+    "p1.title":"Landbouw & Voedselzekerheid","p1.desc":"Gewasgeschiktheidskaarten, voedselzekerheidsindicatoren, Khosh Tepa kanaaldata, precisie-landbouwtools en analyse van plattelandsmiddelen van bestaan.","p1.t1":"Bodemgezondheid","p1.t2":"Gewaskartering","p1.t3":"Voedselsystemen",
+    "p2.title":"Water & Milieu","p2.desc":"Kabul grondwatercrisis, stroomgebiedbeheer, monitoring van landdegradatie, klimaatadaptatie-analyse en risicokartering bij rampen.","p2.t1":"Grondwater","p2.t2":"Klimaat",
+    "p3.title":"Energie","p3.desc":"Zon- en waterkrachtpotentiaalkaarten, elektriciteitsdata voor platteland, analyse van energietekorten, beleidsoverzichten voor hernieuwbare energie.","p3.t1":"Zonnekaarten","p3.t2":"Waterkracht","p3.t3":"Plattelandstoegang","p3.t4":"Hernieuwbaar",
+    "p4.title":"Economie & Handel","p4.desc":"BBP- en sectoranalyse, exportdiversificatie, handelsroute-data, mijnbouwkaartenresource, FDI-overzichten en waardeketananalyse.","p4.t1":"Handel","p4.t2":"Mijnbouw",
+    "p5.title":"Bestuur & Beleid","p5.desc":"Beleidsoverzichtenreeks, SDG-voortgangsmonitoring, hulpeffectiviteitsdata, institutionele analyse en indicatoren voor de rechtsstaat.","p5.t1":"Beleidsoverzichten","p5.t2":"Hulpdata","p5.t3":"Bestuur",
+    "p6.title":"Onderwijs & Samenleving","p6.desc":"Geletterdheids- en inschrijvingsdata, indicatoren voor vrouwenrechten, jongerenwerkgelegenheid, braindrain-analyse en diaspora-betrokkenheid.","p6.t1":"Onderwijs","p6.t2":"Vrouwenrechten","p6.t3":"Jongeren","p6.t4":"Diaspora",
+    "tools.label":"Open Source Tools","tools.title":"Gebouwd voor echte beslissingen","tools.sub":"Interactieve dashboards — gratis te gebruiken, open source, gebouwd voor veldwerkers, onderzoekers en programmabeheerders.",
+    "status.live":"Live","status.soon":"Binnenkort","status.dev":"In ontwikkeling",
+    "t1.desc":"Volledige bodemgezondheidsscreening voor elke locatie in 124 landen — bodemgezondheidsscore, erosierisico, degradatiekans en FAO-aanbevelingen in minder dan een minuut.","t1.link":"Start SoilSense →",
+    "t2.desc":"Afghanistan waterzekerheid diepgaand en globaal dashboard — Kabul grondwatercrisis, stroomgebieddata en live Wereldbank-indicatoren voor 80+ landen.","t2.link":"Start WaterSense →",
+    "t3.desc":"Afghanistan economisch dashboard — BBP-trends, handel en export, armoedindicatoren en economische ontwikkelingsdata. Live van Wereldbank API met wereldwijde landenvergelijkingen.","t3.link":"Start EconomySense →",
+    "t4.desc":"Geospatiale gewasgeschiktheid en irrigatiepotentiaalkaarten voor Afghanistan — ondersteuning van Khosh Tepa kanaalzoneplanning en landbouwbeslissingen.",
+    "t5.desc":"Zon- en waterkrachtpotentiaalkaarten voor Afghanistan — elektriciteittekorten op het platteland, hernieuwbare energiepotentieel en infrastructuuranalyse.",
+    "t6.desc":"Stel vragen over de ontwikkeling van Afghanistan in gewone taal — krijg direct data-gedreven antwoorden van live API's voor veldmedewerkers en onderzoekers.",
+    "pub.label":"Onderzoek & Publicaties","pub.title":"Beleidsoverzichten & onderzoeksnotities","pub.sub":"Evidentiegerichte analyse en beleidsaanbevelingen — vrij beschikbaar voor beoefenaars, onderzoekers en beleidsmakers.",
+    "pb1.type":"📋 Beleidsoverzicht Nr. 01 · Mei 2026","pb1.title":"Afghanistan Waterzekerheid: Crisis, Data en de Weg Vooruit","pb1.desc":"Kabul grondwater daalt met 3m/jaar. Slechts 36% van de Afghanen heeft veilig water. 13 beleidsaanbevelingen over drie tijdframes met praktische data-tools voor implementatieondersteuning.","pb1.dl":"📥 PDF Downloaden",
+    "pb2.type":"📋 Beleidsoverzicht Nr. 02 · Juli 2026","pb2.title":"Afghanistan Bodemverdroging: Beoordeling en Herstelpaden","pb2.desc":"Bodemgezondheidsintensiteiten over Afghaanse landbouwzones — SoilSense-data koppelen aan neutraliteitsdoelen voor landdegradatie.",
+    "pb3.type":"📋 Beleidsoverzicht Nr. 03 · Augustus 2026","pb3.title":"Afghanistan Economische Diversificatie: Van Hulpafhankelijkheid naar Productieve Economie","pb3.desc":"BBP-analyse, exportpotentieel, kansen voor handelsroutes en beleidspaden naar minder hulpafhankelijkheid.",
+    "pb.prep":"In voorbereiding","pb.prep.meta":"Afghanistan Development Initiative · In voorbereiding",
+    "src.label":"Gegevensbronnen","src.title":"Waar onze data vandaan komt","src.sub":"Alle ADI-tools en publicaties gebruiken open, geverifieerde gegevensbronnen. Volledige methodologie gedocumenteerd in elke tool's GitHub-repository.",
+    "src1.desc":"Waterlasttoegang, BBP, armoede, handel en economische indicatoren voor 200+ landen. Jaarlijks bijgewerkt.",
+    "src2.desc":"Watervoorraden, irrigatie en waterzekerheidsdimensies. Afghanistan-landprofielen en wereldwijde vergelijkingen.",
+    "src3.desc":"Globale bodem-eigenschapskaarten op 250m resolutie — organisch koolstof, pH, stikstof, textuur en bulkdichtheid.",
+    "src4.desc":"Anomalieën in terrestrische wateropslag — grondwateruitputting monitoren via satellietzwaartekrachtmetingen.",
+    "src5.desc":"35+ jaar neerslag- en precipitatiedata voor droogte- en klimaatmonitoring in Afghanistan.",
+    "src6.desc":"Multispectrale satellietbeelden voor NDVI, vegetatiemonitoring en landbedekkingskartering.",
+    "src7.desc":"Gezamenlijk monitoringprogrammadata over drinkwater- en sanitatietoegang wereldwijd en voor Afghanistan.",
+    "src8.desc":"Cloudgebaseerd geospatiaal analyseplatform voor vegetatiemonitoring en milieu-indicatoren.",
+    "contrib.label":"Open Platform","contrib.title":"Bijdragen aan ADI","contrib.sub":"ADI groeit door samenwerking. Onderzoekers, beoefenaars en veldwerkers wereldwijd zijn welkom om data, tools, beleidsoverzichten en onderzoek bij te dragen.",
+    "ct1.title":"Datasets","ct1.desc":"Open datasets over elk ADI-pijler — CSV, Excel, GeoJSON met duidelijke methodologie en bronnen.",
+    "ct2.title":"Beleidsoverzichten","ct2.desc":"Evidentiegerichte beleidsanalyse met geciteerde bronnen over Afghaanse ontwikkelingsuitdagingen.",
+    "ct3.title":"Tools & Code","ct3.desc":"Open-source tools, dashboards of scripts die beoefenaars helpen die aan Afghanistan werken.",
+    "ct4.title":"Onderzoeksnotities","ct4.desc":"Veldwaarnemingen, technische notities, methodologiedocumentatie of werkpapers.",
+    "guide.accept.title":"✅ Wij accepteren","guide.accept.list":"<li>• Origineel onderzoek en velddata</li><li>• Open-source tools en code</li><li>• Evidentiegerichte beleidsanalyse</li><li>• Datasets met duidelijke methodologie</li><li>• Bijdragen in elke taal</li><li>• Werk van elke instelling</li>",
+    "guide.reject.title":"❌ Wij accepteren niet","guide.reject.list":"<li>• Politieke of partijdige inhoud</li><li>• Niet-geverifieerde of niet-geciteerde beweringen</li><li>• Eigendomsrechtelijke of auteursrechtelijk beschermde data</li><li>• Inhoud die niet gerelateerd is aan Afghanistan</li><li>• Commercieel of promotioneel materiaal</li>",
+    "form.title":"Een bijdrage indienen","form.name":"Uw volledige naam *","form.org":"Organisatie","form.email":"E-mailadres *","form.type":"Type bijdrage *","form.select":"Selecteer type...","form.contribtitle":"Titel van uw bijdrage *","form.pillar":"Welke ADI-pijler?","form.desc":"Beschrijving *","form.link":"Link naar bestand of GitHub-repository","form.submit":"Bijdrage Indienen →","form.note":"Alle bijdragen worden binnen 7 dagen beoordeeld. Gepubliceerd met volledige auteurscredits onder CC BY 4.0-licentie.","form.thanks":"Dank u!","form.review":"Wij beoordelen uw inzending en nemen binnen 7 dagen contact met u op.",
+    "about.label":"Over ADI","about.title":"Wie zit hier achter","about.role":"Oprichter · Milieu- & Duurzaamheidsdata-wetenschapper","about.bio":"Afghaanse data-wetenschapper gevestigd in Nederland, met meer dan 7 jaar ervaring in internationale ontwikkeling, EU-gefinancierde innovatieprojecten en toegepast onderzoek in precisielandbouw en duurzaamheid.",
+    "about.p1":"ADI is gebouwd vanuit een eenvoudige observatie — er is geen open, betrouwbaar, data-gedreven platform dat Afghaanse ontwikkelingsuitdagingen in alle sectoren dekt. Alles is verspreid, verouderd of achter betalingsmuren.",
+    "about.p2":"Beoefenaars, onderzoekers en beleidsmakers nemen kritieke beslissingen zonder de benodigde data. ADI is de poging dat te veranderen — één tool, één dataset, één beleidsoverzicht tegelijk.",
+    "about.p3":"Dit platform is gebouwd op veldervaring van FAO-advieswerk in Afghanistan, gecombineerd met data-wetenschapsexpertise ontwikkeld via EU-projecten en toegepast onderzoek in Nederland.",
+    "about.p4":"ADI is onafhankelijk, niet-politiek en toegewijd aan open toegang. Het verwelkomt samenwerking van iedereen die gelooft dat Afghanistan betere data verdient.",
+    "about.github":"GitHub Organisatie","about.linkedin":"LinkedIn Pagina",
+    "contact.label":"Betrokken raken","contact.title":"Samenwerken met ADI","contact.desc":"Wij verwelkomen onderzoekers, beoefenaars, domeinexperts en organisaties die data, tools, beleidsoverzichten of expertise willen bijdragen.",
+    "contact.email":"E-mail Sturen","contact.li":"Verbinden op LinkedIn","contact.gh":"Bijdragen op GitHub",
+    "footer.note":"Open toegang · Open source · Gebouwd voor Afghanistan · Alle tools en publicaties gratis te gebruiken",
+  },
+  dr: {
+    "announce":"🆕 خلاصه سیاسی شماره ۰۱ حالا در دسترس است — <a href='#publications'>امنیت آب افغانستان: بحران، داده‌ها و راه پیش رو</a>",
+    "nav.pillars":"ستون‌ها","nav.tools":"ابزارها","nav.publications":"نشریات",
+    "nav.data":"معلومات","nav.contribute":"همکاری","nav.about":"دربارۀ ما","nav.collaborate":"همکاری کنید",
+    "hero.badge":"دانش باز · معلومات باز · ابزار باز",
+    "hero.title":"ایجاد زیربنای دانش<br>برای <em>افغانستان</em>",
+    "hero.sub":"ADI یک پلتفرم مستقل تحقیقاتی و معلوماتی است — رایگان، با دسترسی آزاد، برای متخصصان، محققان و سیاست‌گذاران در سراسر جهان.",
+    "hero.btn1":"کاوش در ابزارها","hero.btn2":"خواندن خلاصه‌های سیاسی",
+    "stat.pillars":"ستون‌ها","stat.tools":"ابزارهای زنده","stat.pubs":"خلاصه سیاسی","stat.free":"همیشه رایگان",
+    "pillars.label":"شش ستون","pillars.title":"هر بُعد از پیشرفت",
+    "pillars.sub":"ADI چالش‌های رشد و توسعه افغانستان را به‌طور جامع پوشش می‌دهد — از صحت خاک تا حکومتداری، از انرژی تا آموزش.",
+    "p1.title":"زراعت و امنیت غذایی","p1.desc":"نقشه‌برداری مناسبت زراعی، شاخص‌های امنیت غذایی، داده‌های کانال خوش‌تیپه، ابزارهای زراعت دقیق و تحلیل معیشت روستایی.","p1.t1":"صحت خاک","p1.t2":"نقشه‌برداری زراعی","p1.t3":"سیستم‌های غذایی",
+    "p2.title":"آب و محیط زیست","p2.desc":"بحران آب زیرزمینی کابل، مدیریت حوضه رودخانه، نظارت بر تخریب زمین، تحلیل سازگاری با آب‌وهوا و نقشه‌برداری خطر بلایا.","p2.t1":"آب زیرزمینی","p2.t2":"آب‌وهوا",
+    "p3.title":"انرژی","p3.desc":"نقشه‌برداری پتانسیل خورشیدی و آبی، داده‌های برق‌رسانی روستایی، تحلیل کمبود دسترسی به انرژی و گزارش‌های سیاست انرژی تجدیدپذیر.","p3.t1":"نقشه خورشیدی","p3.t2":"آبی","p3.t3":"دسترسی روستایی","p3.t4":"تجدیدپذیر",
+    "p4.title":"اقتصاد و تجارت","p4.desc":"تحلیل تولید ناخالص داخلی و بخش‌ها، تنوع صادرات، داده‌های مسیر تجاری، نقشه‌های منابع معدنی و تحلیل زنجیره ارزش.","p4.t1":"تجارت","p4.t2":"معادن",
+    "p5.title":"حکومتداری و سیاست","p5.desc":"سری خلاصه‌های سیاسی، پیگیری پیشرفت اهداف توسعه پایدار، داده‌های اثربخشی کمک‌ها، تحلیل نهادی و شاخص‌های حاکمیت قانون.","p5.t1":"خلاصه‌های سیاسی","p5.t2":"داده‌های کمک","p5.t3":"حکومتداری",
+    "p6.title":"آموزش و جامعه","p6.desc":"داده‌های سوادآموزی و ثبت‌نام، شاخص‌های حقوق زنان، اشتغال جوانان، تحلیل فرار مغزها و مشارکت دیاسپورا.","p6.t1":"آموزش","p6.t2":"حقوق زنان","p6.t3":"جوانان","p6.t4":"دیاسپورا",
+    "tools.label":"ابزارهای منبع باز","tools.title":"ساخته‌شده برای تصمیمات واقعی","tools.sub":"داشبوردهای تعاملی — رایگان، منبع باز، ساخته‌شده برای کارگران میدانی، محققان و مدیران برنامه.",
+    "status.live":"زنده","status.soon":"به‌زودی","status.dev":"در حال توسعه",
+    "t1.desc":"ارزیابی کامل صحت خاک برای هر مکان در ۱۲۴ کشور — نمره صحت خاک، خطر فرسایش، احتمال تخریب و توصیه‌های مبتنی بر FAO در کمتر از یک دقیقه.","t1.link":"باز کردن SoilSense →",
+    "t2.desc":"بررسی عمیق امنیت آب افغانستان و داشبورد جهانی — بحران آب زیرزمینی کابل، داده‌های حوضه رودخانه و شاخص‌های زنده بانک جهانی برای ۸۰+ کشور.","t2.link":"باز کردن WaterSense →",
+    "t3.desc":"داشبورد اقتصادی افغانستان — روند تولید ناخالص داخلی، تجارت و صادرات، شاخص‌های فقر و داده‌های توسعه اقتصادی. زنده از API بانک جهانی.","t3.link":"باز کردن EconomySense →",
+    "t4.desc":"نقشه‌برداری مناسبت زراعی و پتانسیل آبیاری برای افغانستان — حمایت از برنامه‌ریزی منطقه کانال خوش‌تیپه.",
+    "t5.desc":"نقشه‌برداری پتانسیل خورشیدی و آبی برای افغانستان — کمبودهای برق روستایی و پتانسیل انرژی تجدیدپذیر.",
+    "t6.desc":"سوالات خود درباره توسعه افغانستان را به زبان ساده بپرسید — پاسخ‌های مبتنی بر داده از API‌های زنده.",
+  },
+  ps: {
+    "announce":"🆕 د پالیسۍ لنډیز شمیره ۰۱ اوس شته دی — <a href='#publications'>د افغانستان د اوبو خوندیتوب: بحران، معلومات او د مخکې لار</a>",
+    "nav.pillars":"ستنونه","nav.tools":"وسیلې","nav.publications":"خپرونې",
+    "nav.data":"معلومات","nav.contribute":"ونډه","nav.about":"زموږ د اړه","nav.collaborate":"همکاري وکړئ",
+    "hero.badge":"خلاص پوهه · خلاص معلومات · خلاص وسیلې",
+    "hero.title":"د <em>افغانستان</em> لپاره<br>د پوهې زیربنا جوړول",
+    "hero.sub":"ADI یو خپلواک څیړنیز او معلوماتي پلیټفارم دی — وړیا، خلاص لاسرسي سره، د متخصصینو، څیړونکو او پالیسي جوړونکو لپاره.",
+    "hero.btn1":"وسیلې وګورئ","hero.btn2":"د پالیسۍ لنډیزونه ولولئ",
+    "stat.pillars":"ستنونه","stat.tools":"ژوندي وسیلې","stat.pubs":"پالیسي لنډیز","stat.free":"تل وړیا",
+    "pillars.label":"شپږ ستنونه","pillars.title":"د پراختیا هره اړخ",
+    "pillars.sub":"ADI د افغانستان د پراختیا ستونزې پراخه پوښي — د خاورې روغتیا نه تر حکومتوالۍ پورې، د انرژۍ نه تر زده کړو پورې.",
+    "p1.title":"کرنه او د خوراک خوندیتوب","p1.desc":"د کرنیزو شرایطو نقشه جوړول، د خوراک خوندیتوب ځانګړتیاوې، د خوش‌تیپه کانال معلومات، د دقیقې کرنې وسیلې او د کلیوالي ژوند تحلیل.","p1.t1":"د خاورې روغتیا","p1.t2":"د محصول نقشه","p1.t3":"د خوراک سیسټمونه",
+    "p2.title":"اوبه او چاپیریال","p2.desc":"د کابل د ځمکې لاندې اوبو بحران، د سیند حوزو مدیریت، د ځمکې ویجاړتیا نظارت، د آب‌وهوا سازګارۍ تحلیل او د پیښو د خطر نقشه.","p2.t1":"د ځمکې لاندې اوبه","p2.t2":"آب‌وهوا",
+    "p3.title":"انرژي","p3.desc":"د لمر او اوبو د ظرفیت نقشه جوړول، د کلیوالي برق معلومات، د انرژۍ لاسرسي تحلیل او د تجدیدیدونکي انرژۍ پالیسي لنډیزونه.","p3.t1":"د لمر نقشه","p3.t2":"اوبه","p3.t3":"کلیوال لاسرسی","p3.t4":"تجدیدیدونکي",
+    "p4.title":"اقتصاد او سوداګري","p4.desc":"د GDP او سکتور تحلیل، د صادراتو توپیر، د سوداګرۍ لارو معلومات، د کانونو سرچینو نقشې او د ارزښت زنځیر تحلیل.","p4.t1":"سوداګري","p4.t2":"کانونه",
+    "p5.title":"حکومتوالي او پالیسي","p5.desc":"د پالیسۍ لنډیزونو لړۍ، د SDG پرمختګ تعقیب، د مرستې اغیزمنتیا معلومات، د بنسټونو تحلیل او د قانون حاکمیت ځانګړتیاوې.","p5.t1":"پالیسي لنډیزونه","p5.t2":"د مرستې معلومات","p5.t3":"حکومتوالي",
+    "p6.title":"زده کړه او друштو","p6.desc":"د سوادپوهنې او ثبت‌نام معلومات، د ښځو حقونو ځانګړتیاوې، د ځوانانو دندیزتوب، د مغزو فرار تحلیل او د دیاسپورا ګډون.","p6.t1":"زده کړه","p6.t2":"د ښځو حقونه","p6.t3":"ځوانان","p6.t4":"دیاسپورا",
+    "tools.label":"خلاص سرچینه وسیلې","tools.title":"د ریښتیني پریکړو لپاره جوړ شوی","tools.sub":"تعاملي ډشبورډونه — وړیا، خلاص سرچینه، د ډګري کارکونکو، څیړونکو او د برنامو مدیرانو لپاره جوړ شوي.",
+    "status.live":"ژوندی","status.soon":"ډیر ژر","status.dev":"جوړیږي",
+    "t1.desc":"د ۱۲۴ هیوادونو لپاره د هر ځای د خاورې بشپړ ارزونه — د خاورې روغتیا نمره، د فرسایش خطر، د ویجاړتیا احتمال او د FAO لارښوونې یو دقیقه کې.","t1.link":"SoilSense خلاص کړئ →",
+    "t2.desc":"د افغانستان د اوبو خوندیتوب ژور کتنه او نړیوال ډشبورډ — د کابل د ځمکې لاندې اوبو بحران، د سیند حوزو معلومات او د ۸۰+ هیوادونو لاندې اوبه.","t2.link":"WaterSense خلاص کړئ →",
+    "t3.desc":"د افغانستان اقتصادي ډشبورډ — د GDP بهیر، سوداګري او صادرات، د فقر ځانګړتیاوې او اقتصادي پراختیا معلومات. د نړیوال بانک API نه ژوندي.","t3.link":"EconomySense خلاص کړئ →",
+    "t4.desc":"د افغانستان لپاره د کرنیزو شرایطو او جهاز ظرفیت نقشه جوړول — د خوش‌تیپه کانال سیمې پلان‌جوړونې ملاتړ.",
+    "t5.desc":"د افغانستان لپاره د لمر او اوبو ظرفیت نقشه جوړول — د کلیوالي برق کمښتونه او د تجدیدیدونکي انرژۍ ظرفیت.",
+    "t6.desc":"د افغانستان پراختیا پوښتنې د عادي ژبې پواسطه وپوښتئ — د ژوندیو APIونو نه سمدلاسه معلوماتي ځوابونه.",
+    "pub.label":"څیړنې او خپرونې","pub.title":"د پالیسۍ لنډیزونه او د څیړنې یادداشتونه","pub.sub":"د شواهدو پر بنسټ تحلیل او د پالیسۍ وړاندیزونه — د متخصصینو، څیړونکو او پالیسي جوړونکو لپاره وړیا.",
+    "pb1.type":"📋 د پالیسۍ لنډیز شمیره ۰۱ · د ۲۰۲۶ د مۍ میاشت","pb1.title":"د افغانستان د اوبو خوندیتوب: بحران، معلومات او د مخکې لار","pb1.desc":"د کابل د ځمکې لاندې اوبه هر کال ۳ متره کمیږي. یوازې ۳۶٪ افغانانو خوندي اوبو ته لاسرسی لري. ۱۳ د پالیسۍ وړاندیزونه د درو وختیزو چوکاټونو سره.","pb1.dl":"📥 PDF ډاونلوډ کړئ",
+    "pb2.type":"📋 د پالیسۍ لنډیز شمیره ۰۲ · د ۲۰۲۶ جولای","pb2.title":"د افغانستان د خاورې ویجاړتیا: ارزونه او د بیارغونې لارې","pb2.desc":"د افغانستان د کرنیزو سیمو د خاورې روغتیا ځانګړتیاوې — د SoilSense معلومات د ځمکې د ویجاړتیا اهدافو سره نښلول.",
+    "pb3.type":"📋 د پالیسۍ لنډیز شمیره ۰۳ · د ۲۰۲۶ اګست","pb3.title":"د افغانستان اقتصادي توپیر: د مرستې پورتنۍ تکیې نه تر ګټور اقتصاد پورې","pb3.desc":"د GDP تحلیل، د صادراتو ظرفیت، د سوداګرۍ لارو فرصتونه او د مرستې پورتنۍ تکیې کمولو لپاره د پالیسۍ لارې.",
+    "pb.prep":"جوړیږي","pb.prep.meta":"د افغانستان پراختیایي ابتکار · جوړیږي",
+    "src.label":"د معلوماتو سرچینې","src.title":"زموږ معلومات چیرې نه راځي","src.sub":"ټول ADI وسیلې او خپرونې خلاصې، تصدیق شوې د معلوماتو سرچینې کاروي.",
+    "src1.desc":"د اوبو لاسرسی، GDP، فقر، سوداګري او اقتصادي ځانګړتیاوې د ۲۰۰+ هیوادونو لپاره. هر کال تازه کیږي.",
+    "src2.desc":"د اوبو سرچینې، جهاز او د اوبو خوندیتوب معلومات. د افغانستان هیوادي پروفایلونه.",
+    "src3.desc":"د نړۍ د خاورې ځانګړتیاوو نقشې د ۲۵۰ متره ریزولوشن سره — آرګانیک کاربن، pH، نایتروجن.",
+    "src4.desc":"د ځمکې اوبو ذخیرې بدلونونه — د سیارک د ثقل اندازه‌ګیریو له لارې د ځمکې لاندې اوبو د کمیدو نظارت.",
+    "src5.desc":"د ۳۵+ کلونو د باران او ویاله معلومات د افغانستان کابو اندازه‌ګیري لپاره.",
+    "src6.desc":"د NDVI، د نباتاتو نظارت او د ځمکې پوښ نقشه‌جوړونې لپاره ډول‌ډول سیارکي انځورونه.",
+    "src7.desc":"د سترګو پر وړاندې د اوبو او صفايي لاسرسي معلومات نړیوال او د افغانستان لپاره.",
+    "src8.desc":"د وریځو پر بنسټ جیوسپیشل تحلیل پلیټفارم د نباتاتو نظارت لپاره.",
+    "contrib.label":"خلاص پلیټفارم","contrib.title":"ADI ته ونډه ورکړئ","contrib.sub":"ADI د همکارۍ له لارې وده کوي. د نړۍ له هر ځایه څیړونکي، متخصصین او د ډګر کارکونکي د معلوماتو، وسیلو، د پالیسۍ لنډیزونو او څیړنو ورکولو ته ښه راغلاست دي.",
+    "ct1.title":"ډیټاسیټونه","ct1.desc":"د ADI د هر ستن خلاص ډیټاسیټونه — CSV، Excel، GeoJSON د روښانه میتودولوژي سره.",
+    "ct2.title":"د پالیسۍ لنډیزونه","ct2.desc":"د شواهدو پر بنسټ د پالیسۍ تحلیل د سرچینو حوالاتو سره.",
+    "ct3.title":"وسیلې او کوډ","ct3.desc":"خلاص سرچینه وسیلې، ډشبورډونه، یا سکریپټونه چې د افغانستان متخصصینو سره مرسته کوي.",
+    "ct4.title":"د څیړنې یادداشتونه","ct4.desc":"د ډګر مشاهدات، تخنیکي یادداشتونه، د میتودولوژي اسناد، یا کاري پاڼه.",
+    "guide.accept.title":"✅ موږ منو","guide.accept.list":"<li>• اصلي څیړنه او د ډګر معلومات</li><li>• خلاص سرچینه وسیلې او کوډ</li><li>• د شواهدو پر بنسټ د پالیسۍ تحلیل</li><li>• د روښانه میتودولوژي سره ډیټاسیټونه</li><li>• د هر ژبې ونډې</li><li>• د هر بنسټ کار</li>",
+    "guide.reject.title":"❌ موږ نه منو","guide.reject.list":"<li>• سیاسي یا ګوندي مطالب</li><li>• غیر تصدیق شوي یا بې حوالاتو ادعاوې</li><li>• ملکیتي یا د کاپي رایټ معلومات</li><li>• د افغانستان سره غیر اړوند مطالب</li><li>• تجارتي یا تشویقي مواد</li>",
+    "form.title":"ونډه وړاندې کړئ","form.name":"ستاسو بشپړ نوم *","form.org":"سازمان","form.email":"د بریښنالیک پته *","form.type":"د ونډې ډول *","form.select":"ډول غوره کړئ...","form.contribtitle":"ستاسو ونډې سرلیک *","form.pillar":"کوم ADI ستن؟","form.desc":"توضیح *","form.link":"د فایل یا GitHub ریپوزیتوري لینک","form.submit":"ونډه وړاندې کړئ →","form.note":"ټولې ونډې د ۷ ورځو دننه بیاکتل کیږي. د CC BY 4.0 جواز لاندې د بشپړ لیکوال کریډیت سره خپریږي.","form.thanks":"مننه!","form.review":"موږ به ستاسو وړاندیز وڅیړو او د ۷ ورځو دننه به تاسو ته ځواب درکړو.",
+    "about.label":"د ADI دربارې","about.title":"دا چا جوړ کړی","about.role":"بنسټ‌ایښودونکی · د چاپیریال او دوامداریتوب ډیټا ساینسپوه","about.bio":"د نیدرلینډ کې اوسیدونکی افغان ډیټا ساینسپوه، د نړیوال پراختیا، د EU ملاتړ شوو نوښت پروژو او د دقیقې کرنې تحقیقاتو کې د ۷+ کلونو تجربه سره.",
+    "about.p1":"ADI د یوه ساده مشاهدې نه جوړ شو — د افغانستان د پراختیا ستونزو د ټولو سکتورونو لپاره هیڅ خلاص، باوري، معلوماتي پلیټفارم نشته. هر شی خپاره، زوړ، یا د تادیې د دیوال شاته دی.",
+    "about.p2":"متخصصین، څیړونکي او پالیسي جوړونکي د اړین معلوماتو پرته مهمې پریکړې کوي. ADI هغه بدلولو هڅه ده — یوه وسیله، یو ډیټاسیټ، یو د پالیسۍ لنډیز یو وخت.",
+    "about.p3":"دا پلیټفارم د افغانستان د FAO مشورتي کار نه د ډګر تجربې پر بنسټ جوړ شوی، د نیدرلینډ کې د EU پروژو او تحقیقاتو سره یوځای.",
+    "about.p4":"ADI خپلواک، غیر سیاسي او د خلاص لاسرسي ژمن دی. هغه چا نه ښه راغلاست کوي چې باور لري افغانستان غوره معلوماتو ته اړتیا لري.",
+    "about.github":"GitHub سازمان","about.linkedin":"LinkedIn پاڼه",
+    "contact.label":"ښامل شئ","contact.title":"د ADI سره همکاري","contact.desc":"موږ هغه څیړونکو، متخصصینو، د ډومین کارپوهانو او سازمانونو ته ښه راغلاست کوو چې معلومات، وسیلې، د پالیسۍ لنډیزونه یا تخصص ورکول غواړي.",
+    "contact.email":"بریښنالیک واستوئ","contact.li":"LinkedIn کې وصل شئ","contact.gh":"GitHub کې مرسته وکړئ",
+    "footer.note":"خلاص لاسرسی · خلاص سرچینه · د افغانستان لپاره جوړ شوی · ټولې وسیلې او خپرونې وړیا",
+  },
+};
+
+const RTL_LANGS = ['dr', 'ps'];
+
+function setLang(lang) {
+  const t = LANGS[lang];
+  if(RTL_LANGS.includes(lang)){
+    document.body.classList.add('rtl','dari-font');
+    document.documentElement.lang = lang==='dr' ? 'fa' : 'ps';
+  } else {
+    document.body.classList.remove('rtl','dari-font');
+    document.documentElement.lang = lang;
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k])el.innerHTML=t[k];});
+  const statLabels=document.querySelectorAll('.stat-lbl');
+  const statKeys=['stat.pillars','stat.tools','stat.pubs','stat.free'];
+  statLabels.forEach((el,i)=>{if(t[statKeys[i]])el.textContent=t[statKeys[i]];});
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
 // ── MOBILE MENU ──
 function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open')}
 document.addEventListener('click',function(e){const n=document.getElementById('mobileNav');if(!n.contains(e.target)&&!e.target.closest('.hamburger'))n.classList.remove('open')});
@@ -443,22 +699,13 @@ function submitForm(e){e.preventDefault();document.getElementById('contribForm')
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
 // ── AUTO COUNT STATS ──
-// Counts live tools automatically — add ts-live class to new tools and number updates itself
 function updateStats(){
-  // Count live tools (has ts-live class, not faded)
   const liveTools = document.querySelectorAll('.tool-card .ts-live').length;
   document.getElementById('count-tools').textContent = liveTools;
-
-  // Count published policy briefs (pub-cards that are NOT faded/opacity reduced)
   const allPubs = document.querySelectorAll('.pub-card');
   let livePubs = 0;
-  allPubs.forEach(p => {
-    const opacity = p.style.opacity;
-    if (!opacity || parseFloat(opacity) >= 1) livePubs++;
-  });
+  allPubs.forEach(p => { const opacity = p.style.opacity; if (!opacity || parseFloat(opacity) >= 1) livePubs++; });
   document.getElementById('count-pubs').textContent = livePubs;
-
-  // Pillars always 6
   document.getElementById('count-pillars').textContent = document.querySelectorAll('.pillar').length;
 }
 updateStats();
@@ -466,12 +713,8 @@ updateStats();
 // ── SCROLL ANIMATIONS ──
 const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.08});
 document.querySelectorAll('.pillar,.tool-card,.pub-card,.src-card,.ctype').forEach(el=>{
-  // Only animate cards that are not already faded (coming soon)
-  if(!el.style.opacity || parseFloat(el.style.opacity) === 1){
-    el.style.opacity='0';
-    el.style.transform='translateY(18px)';
-    el.style.transition='opacity .5s ease, transform .5s ease';
-    obs.observe(el);
+  if(!el.style.opacity||parseFloat(el.style.opacity)===1){
+    el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';obs.observe(el);
   }
 });
 </script>
