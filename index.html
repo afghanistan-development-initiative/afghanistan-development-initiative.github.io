@@ -229,10 +229,10 @@ body.rtl .contact-links{flex-direction:row-reverse}
   </ul>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('nl')">NL</button>
-      <button class="lang-btn rtl-btn" onclick="setLang('dr')">دری</button>
-      <button class="lang-btn rtl-btn" onclick="setLang('ps')">پښتو</button>
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="nl" onclick="setLang('nl')">NL</button>
+      <button class="lang-btn rtl-btn" data-lang="dr" onclick="setLang('dr')">دری</button>
+      <button class="lang-btn rtl-btn" data-lang="ps" onclick="setLang('ps')">پښتو</button>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -241,13 +241,13 @@ body.rtl .contact-links{flex-direction:row-reverse}
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="#pillars" onclick="toggleMenu()">Pillars</a>
-  <a href="#tools" onclick="toggleMenu()">Tools</a>
-  <a href="#publications" onclick="toggleMenu()">Publications</a>
-  <a href="#data-sources" onclick="toggleMenu()">Data Sources</a>
-  <a href="#contribute" onclick="toggleMenu()">Contribute</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#contact" onclick="toggleMenu()">Collaborate</a>
+  <a href="#pillars" onclick="toggleMenu()" data-i18n="nav.pillars">Pillars</a>
+  <a href="#tools" onclick="toggleMenu()" data-i18n="nav.tools">Tools</a>
+  <a href="#publications" onclick="toggleMenu()" data-i18n="nav.publications">Publications</a>
+  <a href="#data-sources" onclick="toggleMenu()" data-i18n="nav.data">Data Sources</a>
+  <a href="#contribute" onclick="toggleMenu()" data-i18n="nav.contribute">Contribute</a>
+  <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">About</a>
+  <a href="#contact" onclick="toggleMenu()" data-i18n="nav.collaborate">Collaborate</a>
 </div>
 
 <!-- HERO -->
@@ -609,6 +609,37 @@ const LANGS = {
     "t4.desc":"نقشه‌برداری مناسبت زراعی و پتانسیل آبیاری برای افغانستان — حمایت از برنامه‌ریزی منطقه کانال خوش‌تیپه.",
     "t5.desc":"نقشه‌برداری پتانسیل خورشیدی و آبی برای افغانستان — کمبودهای برق روستایی و پتانسیل انرژی تجدیدپذیر.",
     "t6.desc":"سوالات خود درباره توسعه افغانستان را به زبان ساده بپرسید — پاسخ‌های مبتنی بر داده از API‌های زنده.",
+    "pub.label":"تحقیق و نشریات","pub.title":"خلاصه‌های سیاسی و یادداشت‌های تحقیقاتی","pub.sub":"تحلیل مبتنی بر شواهد و توصیه‌های سیاسی — برای متخصصان، محققان و سیاست‌گذاران به‌طور رایگان در دسترس.",
+    "pb1.type":"📋 خلاصه سیاسی شماره ۰۱ · می ۲۰۲۶","pb1.title":"امنیت آب افغانستان: بحران، داده‌ها و راه پیش رو","pb1.desc":"آب زیرزمینی کابل سالانه ۳ متر کاهش می‌یابد. تنها ۳۶٪ افغان‌ها به آب سالم دسترسی دارند. ۱۳ توصیه سیاسی در سه بازه زمانی با ابزارهای داده عملی برای پشتیبانی از اجرا.","pb1.dl":"📥 دانلود PDF",
+    "pb2.type":"📋 خلاصه سیاسی شماره ۰۲ · جولای ۲۰۲۶","pb2.title":"تخریب خاک افغانستان: ارزیابی و مسیرهای بازیابی","pb2.desc":"شاخص‌های صحت خاک در مناطق زراعی افغانستان — پیوند دادن داده‌های SoilSense به اهداف خنثی‌سازی تخریب زمین و توصیه‌های مدیریتی عملی.",
+    "pb3.type":"📋 خلاصه سیاسی شماره ۰۳ · اگست ۲۰۲۶","pb3.title":"تنوع اقتصادی افغانستان: از وابستگی به کمک تا اقتصاد مولد","pb3.desc":"تحلیل تولید ناخالص داخلی، پتانسیل صادرات، فرصت‌های مسیر تجاری و مسیرهای سیاسی برای کاهش وابستگی به کمک.",
+    "pb.prep":"در دست تهیه","pb.prep.meta":"ابتکار توسعه افغانستان · در دست تهیه",
+    "src.label":"منابع داده","src.title":"داده‌های ما از کجا می‌آید","src.sub":"تمام ابزارها و نشریات ADI از منابع داده باز و تأییدشده استفاده می‌کنند. روش‌شناسی کامل در مخزن GitHub هر ابزار مستند شده است.",
+    "src1.desc":"دسترسی به آب، تولید ناخالص داخلی، فقر، تجارت و شاخص‌های اقتصادی برای ۲۰۰+ کشور. سالانه به‌روز می‌شود.",
+    "src2.desc":"منابع آب، آبیاری و داده‌های امنیت آب. پروفایل‌های کشوری افغانستان و مقایسه‌های جهانی.",
+    "src3.desc":"نقشه‌های جهانی ویژگی‌های خاک در وضوح ۲۵۰ متر — کربن آلی، pH، نیتروژن، بافت و چگالی فله.",
+    "src4.desc":"ناهنجاری‌های ذخیره آب زمینی — نظارت بر کاهش آب زیرزمینی از طریق اندازه‌گیری‌های گرانشی ماهواره‌ای.",
+    "src5.desc":"بیش از ۳۵ سال داده‌های باران و بارندگی برای نظارت بر خشکسالی و آب‌وهوا در افغانستان.",
+    "src6.desc":"تصاویر ماهواره‌ای چندطیفی برای NDVI، نظارت بر پوشش گیاهی و نقشه‌برداری پوشش زمین.",
+    "src7.desc":"داده‌های برنامه نظارت مشترک درباره دسترسی به آب آشامیدنی و بهداشت در سطح جهانی و برای افغانستان.",
+    "src8.desc":"پلتفرم تحلیل جغرافیایی مبتنی بر ابر برای نظارت بر پوشش گیاهی و شاخص‌های محیط زیستی.",
+    "contrib.label":"پلتفرم باز","contrib.title":"مشارکت در ADI","contrib.sub":"ADI از طریق همکاری رشد می‌کند. محققان، متخصصان و کارگران میدانی در سراسر جهان خوش آمدید که داده، ابزار، خلاصه‌های سیاسی و تحقیقات ارائه دهند.",
+    "ct1.title":"مجموعه داده‌ها","ct1.desc":"مجموعه داده‌های باز در هر ستون ADI — CSV، Excel، GeoJSON با روش‌شناسی و منابع روشن.",
+    "ct2.title":"خلاصه‌های سیاسی","ct2.desc":"تحلیل سیاسی مبتنی بر شواهد با منابع مستند که چالش‌های توسعه افغانستان را پوشش می‌دهد.",
+    "ct3.title":"ابزارها و کد","ct3.desc":"ابزارهای منبع باز، داشبوردها یا اسکریپت‌هایی که به متخصصان کار بر روی افغانستان کمک می‌کنند.",
+    "ct4.title":"یادداشت‌های تحقیقاتی","ct4.desc":"مشاهدات میدانی، یادداشت‌های فنی، اسناد روش‌شناسی یا مقالات کاری.",
+    "guide.accept.title":"✅ می‌پذیریم","guide.accept.list":"<li>• تحقیق اصلی و داده‌های میدانی</li><li>• ابزارها و کد منبع باز</li><li>• تحلیل سیاسی مبتنی بر شواهد</li><li>• مجموعه داده‌ها با روش‌شناسی روشن</li><li>• مشارکت‌ها به هر زبانی</li><li>• کار از هر نهادی</li>",
+    "guide.reject.title":"❌ نمی‌پذیریم","guide.reject.list":"<li>• محتوای سیاسی یا حزبی</li><li>• ادعاهای تأییدنشده یا بدون مستند</li><li>• داده‌های دارای حق مالکیت یا حق چاپ</li><li>• محتوای نامرتبط با افغانستان</li><li>• مواد تجاری یا تبلیغاتی</li>",
+    "form.title":"ارسال مشارکت","form.name":"نام کامل شما *","form.org":"سازمان","form.email":"آدرس ایمیل *","form.type":"نوع مشارکت *","form.select":"نوع را انتخاب کنید...","form.contribtitle":"عنوان مشارکت شما *","form.pillar":"کدام ستون ADI؟","form.desc":"توضیح *","form.link":"لینک به فایل یا مخزن GitHub","form.submit":"ارسال مشارکت →","form.note":"تمام مشارکت‌ها ظرف ۷ روز بررسی می‌شوند. با اعتبار کامل نویسنده تحت مجوز CC BY 4.0 منتشر می‌شود.","form.thanks":"متشکریم!","form.review":"ارسال شما را بررسی خواهیم کرد و ظرف ۷ روز با شما تماس خواهیم گرفت.",
+    "about.label":"دربارۀ ADI","about.title":"چه کسی پشت این پروژه است","about.role":"بنیان‌گذار · دانشمند داده محیط زیست و پایداری","about.bio":"دانشمند داده افغان مقیم هلند، با بیش از ۷ سال تجربه در توسعه بین‌الملل، پروژه‌های نوآوری تأمین‌شده توسط اتحادیه اروپا و تحقیقات کاربردی در کشاورزی دقیق و پایداری.",
+    "about.p1":"ADI از یک مشاهده ساده بنا شد — هیچ پلتفرم باز، قابل اعتماد و داده‌محوری وجود ندارد که چالش‌های توسعه افغانستان را در تمام بخش‌ها پوشش دهد. همه چیز پراکنده، قدیمی یا پشت دیوارهای پرداختی است.",
+    "about.p2":"متخصصان، محققان و سیاست‌گذاران بدون داده‌های مورد نیاز تصمیمات مهمی می‌گیرند. ADI تلاشی است برای تغییر این وضع — یک ابزار، یک مجموعه داده، یک خلاصه سیاسی در یک زمان.",
+    "about.p3":"این پلتفرم بر اساس تجربه میدانی از کار مشاوره FAO در افغانستان، همراه با تخصص علم داده توسعه‌یافته در پروژه‌های اتحادیه اروپا و تحقیقات کاربردی در هلند بنا شده است.",
+    "about.p4":"ADI مستقل، غیرسیاسی و متعهد به دسترسی آزاد است. از همه کسانی که معتقدند افغانستان داده‌های بهتری شایسته است، استقبال می‌کند.",
+    "about.github":"سازمان GitHub","about.linkedin":"صفحه LinkedIn",
+    "contact.label":"شرکت کنید","contact.title":"همکاری با ADI","contact.desc":"از محققان، متخصصان، کارشناسان حوزه و سازمان‌هایی که می‌خواهند داده، ابزار، خلاصه‌های سیاسی یا تخصص ارائه دهند، استقبال می‌کنیم. ADI برای رشد از طریق همکاری ساخته شده است.",
+    "contact.email":"ارسال ایمیل","contact.li":"اتصال در LinkedIn","contact.gh":"مشارکت در GitHub",
+    "footer.note":"دسترسی آزاد · منبع باز · ساخته‌شده برای افغانستان · همه ابزارها و نشریات رایگان برای استفاده",
   },
   ps: {
     "announce":"🆕 د پالیسۍ لنډیز شمیره ۰۱ اوس شته دی — <a href='#publications'>د افغانستان د اوبو خوندیتوب: بحران، معلومات او د مخکې لار</a>",
@@ -626,7 +657,7 @@ const LANGS = {
     "p3.title":"انرژي","p3.desc":"د لمر او اوبو د ظرفیت نقشه جوړول، د کلیوالي برق معلومات، د انرژۍ لاسرسي تحلیل او د تجدیدیدونکي انرژۍ پالیسي لنډیزونه.","p3.t1":"د لمر نقشه","p3.t2":"اوبه","p3.t3":"کلیوال لاسرسی","p3.t4":"تجدیدیدونکي",
     "p4.title":"اقتصاد او سوداګري","p4.desc":"د GDP او سکتور تحلیل، د صادراتو توپیر، د سوداګرۍ لارو معلومات، د کانونو سرچینو نقشې او د ارزښت زنځیر تحلیل.","p4.t1":"سوداګري","p4.t2":"کانونه",
     "p5.title":"حکومتوالي او پالیسي","p5.desc":"د پالیسۍ لنډیزونو لړۍ، د SDG پرمختګ تعقیب، د مرستې اغیزمنتیا معلومات، د بنسټونو تحلیل او د قانون حاکمیت ځانګړتیاوې.","p5.t1":"پالیسي لنډیزونه","p5.t2":"د مرستې معلومات","p5.t3":"حکومتوالي",
-    "p6.title":"زده کړه او друштو","p6.desc":"د سوادپوهنې او ثبت‌نام معلومات، د ښځو حقونو ځانګړتیاوې، د ځوانانو دندیزتوب، د مغزو فرار تحلیل او د دیاسپورا ګډون.","p6.t1":"زده کړه","p6.t2":"د ښځو حقونه","p6.t3":"ځوانان","p6.t4":"دیاسپورا",
+    "p6.title":"زده کړه او ټولنه","p6.desc":"د سوادپوهنې او ثبت‌نام معلومات، د ښځو حقونو ځانګړتیاوې، د ځوانانو دندیزتوب، د مغزو فرار تحلیل او د دیاسپورا ګډون.","p6.t1":"زده کړه","p6.t2":"د ښځو حقونه","p6.t3":"ځوانان","p6.t4":"دیاسپورا",
     "tools.label":"خلاص سرچینه وسیلې","tools.title":"د ریښتیني پریکړو لپاره جوړ شوی","tools.sub":"تعاملي ډشبورډونه — وړیا، خلاص سرچینه، د ډګري کارکونکو، څیړونکو او د برنامو مدیرانو لپاره جوړ شوي.",
     "status.live":"ژوندی","status.soon":"ډیر ژر","status.dev":"جوړیږي",
     "t1.desc":"د ۱۲۴ هیوادونو لپاره د هر ځای د خاورې بشپړ ارزونه — د خاورې روغتیا نمره، د فرسایش خطر، د ویجاړتیا احتمال او د FAO لارښوونې یو دقیقه کې.","t1.link":"SoilSense خلاص کړئ →",
@@ -673,6 +704,7 @@ const RTL_LANGS = ['dr', 'ps'];
 
 function setLang(lang) {
   const t = LANGS[lang];
+  if(!t) return;
   if(RTL_LANGS.includes(lang)){
     document.body.classList.add('rtl','dari-font');
     document.documentElement.lang = lang==='dr' ? 'fa' : 'ps';
@@ -684,8 +716,8 @@ function setLang(lang) {
   const statLabels=document.querySelectorAll('.stat-lbl');
   const statKeys=['stat.pillars','stat.tools','stat.pubs','stat.free'];
   statLabels.forEach((el,i)=>{if(t[statKeys[i]])el.textContent=t[statKeys[i]];});
-  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
-  event.target.classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
+  try{localStorage.setItem('adi-lang',lang);}catch(e){}
 }
 
 // ── MOBILE MENU ──
@@ -709,6 +741,7 @@ function updateStats(){
   document.getElementById('count-pillars').textContent = document.querySelectorAll('.pillar').length;
 }
 updateStats();
+(function(){try{const l=localStorage.getItem('adi-lang');if(l&&LANGS[l])setLang(l);}catch(e){}}());
 
 // ── SCROLL ANIMATIONS ──
 const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.08});
