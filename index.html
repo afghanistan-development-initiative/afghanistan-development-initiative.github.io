@@ -210,7 +210,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
 <body>
 
 <div class="announce" data-i18n="announce">
-  🆕 Policy Brief No. 01 now available — <a href="#publications">Afghanistan Water Security: Crisis, Data and the Path Forward</a>
+  🆕 New: NUE Research Note (IFA Hackathon 2026) + Policy Brief No. 01 — <a href="#publications">View all publications</a>
 </div>
 
 <nav>
@@ -322,19 +322,35 @@ body.rtl .contact-links{flex-direction:row-reverse}
           <a href="https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app" target="_blank" class="pb-s">💧 WaterSense</a>
         </div>
       </div>
-      <div class="pub-card" style="opacity:.58">
+      <div class="pub-card" style="border-top:3px solid var(--green-l)">
+        <div class="pub-type">📊 Research Note · June 2026</div>
+        <h3>Nitrogen Use Efficiency Across the Bread Supply Chain: A Global Audit</h3>
+        <div class="pub-meta">Maiwand Jan Alamzoi · WUR / ZaminAI · IFA Hackathon 2026</div>
+        <p>End-to-end NUE analysis for 1 kg of bread: only 32.9% of applied nitrogen reaches the consumer. 19 databases reviewed — none track N from farm to consumer in one methodology. Afghanistan NUE ≈ 12% vs Netherlands 33%.</p>
+        <div class="pub-links">
+          <a href="https://github.com/afghanistan-development-initiative/IFA_Hackathon_2026" target="_blank" class="pb-p">📊 View Dashboard</a>
+          <a href="https://share.streamlit.io" target="_blank" class="pb-s">🌾 NUE Tracker</a>
+        </div>
+      </div>
+      <div class="pub-card" style="opacity:.65;border-top:3px solid rgba(61,122,92,.3)">
         <div class="pub-type" data-i18n="pb2.type">📋 Policy Brief No. 02 · Coming July 2026</div>
         <h3 data-i18n="pb2.title">Afghanistan Soil Degradation: Assessment and Recovery Pathways</h3>
         <div class="pub-meta" data-i18n="pb.prep.meta">Afghanistan Development Initiative · In preparation</div>
         <p data-i18n="pb2.desc">Soil health indicators across Afghanistan's agricultural zones — linking SoilSense data to land degradation neutrality targets and practical management recommendations.</p>
-        <span style="font-size:.78rem;color:var(--text-d)" data-i18n="pb.prep">In preparation</span>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-l);display:inline-block"></span>
+          <span style="font-size:.76rem;color:var(--gold-l);font-weight:600" data-i18n="pb.prep">In preparation</span>
+        </div>
       </div>
-      <div class="pub-card" style="opacity:.58">
+      <div class="pub-card" style="opacity:.65;border-top:3px solid rgba(61,122,92,.3)">
         <div class="pub-type" data-i18n="pb3.type">📋 Policy Brief No. 03 · Coming August 2026</div>
         <h3 data-i18n="pb3.title">Afghanistan Economic Diversification: From Aid Dependency to Productive Economy</h3>
         <div class="pub-meta" data-i18n="pb.prep.meta">Afghanistan Development Initiative · In preparation</div>
         <p data-i18n="pb3.desc">GDP analysis, export potential, trade corridor opportunities and policy pathways toward reduced aid dependency and increased domestic production.</p>
-        <span style="font-size:.78rem;color:var(--text-d)" data-i18n="pb.prep">In preparation</span>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-l);display:inline-block"></span>
+          <span style="font-size:.76rem;color:var(--gold-l);font-weight:600" data-i18n="pb.prep">In preparation</span>
+        </div>
       </div>
     </div>
   </div>
@@ -471,7 +487,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
 // ── TRANSLATIONS ──
 const LANGS = {
   en: {
-    "announce":"🆕 Policy Brief No. 01 now available — <a href='#publications'>Afghanistan Water Security: Crisis, Data and the Path Forward</a>",
+    "announce":"🆕 New: NUE Research Note (IFA Hackathon 2026) + Policy Brief No. 01 — <a href='#publications'>View all publications</a>",
     "nav.pillars":"Pillars","nav.tools":"Tools","nav.publications":"Publications",
     "nav.data":"Data","nav.contribute":"Contribute","nav.about":"About","nav.collaborate":"Collaborate",
     "hero.badge":"Open Knowledge · Open Data · Open Tools",
@@ -585,7 +601,7 @@ const LANGS = {
     "footer.note":"Open toegang · Open source · Gebouwd voor Afghanistan · Alle tools en publicaties gratis te gebruiken",
   },
   dr: {
-    "announce":"🆕 خلاصه سیاسی شماره ۰۱ حالا در دسترس است — <a href='#publications'>امنیت آب افغانستان: بحران، داده‌ها و راه پیش رو</a>",
+    "announce":"🆕 جدید: یادداشت تحقیقاتی NUE + خلاصه سیاسی شماره ۰۱ — <a href='#publications'>تمام نشریات</a>",
     "nav.pillars":"ستون‌ها","nav.tools":"ابزارها","nav.publications":"نشریات",
     "nav.data":"معلومات","nav.contribute":"همکاری","nav.about":"دربارۀ ما","nav.collaborate":"همکاری کنید",
     "hero.badge":"دانش باز · معلومات باز · ابزار باز",
@@ -642,7 +658,7 @@ const LANGS = {
     "footer.note":"دسترسی آزاد · منبع باز · ساخته‌شده برای افغانستان · همه ابزارها و نشریات رایگان برای استفاده",
   },
   ps: {
-    "announce":"🆕 د پالیسۍ لنډیز شمیره ۰۱ اوس شته دی — <a href='#publications'>د افغانستان د اوبو خوندیتوب: بحران، معلومات او د مخکې لار</a>",
+    "announce":"🆕 نوی: NUE د څیړنې یادداشت + پالیسي لنډیز شمیره ۰۱ — <a href='#publications'>ټولې خپرونې</a>",
     "nav.pillars":"ستنونه","nav.tools":"وسیلې","nav.publications":"خپرونې",
     "nav.data":"معلومات","nav.contribute":"ونډه","nav.about":"زموږ د اړه","nav.collaborate":"همکاري وکړئ",
     "hero.badge":"خلاص پوهه · خلاص معلومات · خلاص وسیلې",
