@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADI Policy Brief No. 02 — Afghanistan Soil Degradation: Assessment and Recovery Pathways</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0f0a;--bg2:#111410;--green:#3d7a5c;--green-l:#52a87a;--gold:#c4943a;--gold-l:#e8b85a;--text:#e2e8d8;--text-m:#8a9478;--text-d:#5a6450;--white:#f5f7f0;--border:rgba(255,255,255,0.07)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;max-width:820px;margin:0 auto;padding:3rem 2rem 6rem}
+@media print{body{background:#fff;color:#111;max-width:100%;padding:2cm}}
+h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--white);line-height:1.15;margin:1.5rem 0 .5rem}
+h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-l);margin:2.5rem 0 .75rem;border-bottom:1px solid rgba(196,148,58,.2);padding-bottom:.4rem}
+h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--green-l);margin:1.5rem 0 .5rem}
+p{color:var(--text-m);margin-bottom:1rem;font-size:.95rem}
+.cover{border-left:4px solid var(--gold);padding:1.5rem 1.75rem;background:rgba(196,148,58,.05);border-radius:0 12px 12px 0;margin-bottom:2.5rem}
+.label{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:.3rem}
+.authors{font-size:.85rem;color:var(--text-d);margin-top:.75rem}
+.key-findings{background:rgba(61,122,92,.06);border:1px solid rgba(61,122,92,.2);border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.finding{display:flex;gap:.75rem;align-items:flex-start;margin:.6rem 0;font-size:.9rem}
+.finding::before{content:'▸';color:var(--gold-l);flex-shrink:0;margin-top:.1rem;font-size:1rem}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.5rem 0}
+.stat-box{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-l);display:block}
+.stat-lbl{font-size:.72rem;color:var(--text-d);text-transform:uppercase;letter-spacing:.08em}
+.recommendation{background:rgba(255,255,255,.02);border:1px solid var(--border);border-left:3px solid var(--green-l);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;margin:.6rem 0;font-size:.88rem}
+.rec-num{font-weight:700;color:var(--green-l);margin-right:.4rem}
+.rec-urgent{border-left-color:var(--gold-l)}
+.rec-long{border-left-color:var(--text-d)}
+table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.84rem}
+th{background:rgba(61,122,92,.15);color:var(--green-l);padding:.6rem .85rem;text-align:left;font-weight:600;font-size:.78rem;letter-spacing:.05em}
+td{padding:.55rem .85rem;border-bottom:1px solid var(--border);color:var(--text-m)}
+tr:hover td{background:rgba(255,255,255,.02)}
+.sources{margin-top:3rem;border-top:1px solid var(--border);padding-top:1.5rem}
+.src-item{font-size:.78rem;color:var(--text-d);margin:.3rem 0}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--green-l);text-decoration:none;margin-bottom:2rem;padding:.4rem .85rem;border:1px solid rgba(61,122,92,.3);border-radius:8px;transition:all .2s}
+.back-link:hover{border-color:var(--green-l);background:rgba(61,122,92,.08)}
+.callout{background:rgba(196,148,58,.06);border:1px solid rgba(196,148,58,.2);border-radius:10px;padding:1.1rem 1.3rem;margin:1.2rem 0;font-size:.9rem;color:var(--text-m)}
+.callout strong{color:var(--gold-l)}
+.zone-table td:nth-child(3){color:var(--gold-l);font-weight:600}
+</style>
+</head>
+<body>
+
+<a href="../index.html#publications" class="back-link">← Back to ADI Publications</a>
+
+<div class="cover">
+  <div class="label">Afghanistan Development Initiative · Policy Brief No. 02</div>
+  <h1>Afghanistan Soil Degradation:<br>Assessment and Recovery Pathways</h1>
+  <div class="authors">
+    Maiwand Jan Alamzoi · FAO UN Roster Specialist · ADI Founder<br>
+    Afghanistan Development Initiative (ADI) · July 2026<br>
+    <em>Data tools: SoilSense · ISRIC SoilGrids 2.0 · FAO GAEZ v4 · GRACE-FO Satellite</em>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<h2>Executive Summary</h2>
+<p>Afghanistan's agricultural land is in crisis. Over <strong>72% of the country's 7.9 million hectares of cultivable land</strong> shows moderate to severe degradation — a silent emergency that threatens the food security of 40 million people and the livelihoods of 60% of the workforce employed in agriculture.</p>
+<p>This policy brief presents the first open-access, provincial-level assessment of soil degradation in Afghanistan, combining satellite data (Sentinel-2, MODIS), global soil databases (ISRIC SoilGrids 2.0), and field evidence from FAO consultancy missions. We identify the five primary degradation drivers, map the most affected zones, and provide 15 evidence-based policy recommendations structured across immediate, medium-term, and long-term intervention windows.</p>
+<p>The economic cost of inaction is estimated at <strong>$420 million per year</strong> in foregone agricultural output — equivalent to 3% of GDP annually. Recovery is technically feasible and economically justified, but requires coordinated action across water management, land tenure, rangeland governance, and agronomy extension systems.</p>
+
+<!-- KEY FINDINGS -->
+<div class="key-findings">
+  <h3 style="margin-top:0;color:var(--gold-l)">Key Findings at a Glance</h3>
+  <div class="finding">72% of cultivable land (5.7M ha) is moderately to severely degraded — up from 58% in 2000.</div>
+  <div class="finding">Wind erosion affects 45% of the total land area; water erosion affects an additional 21%.</div>
+  <div class="finding">Soil organic carbon has declined 34% in northern provinces since 2000 due to over-cultivation and deforestation.</div>
+  <div class="finding">Secondary salinisation now affects 265,000 ha of irrigated land in Helmand, Kandahar, and Herat — a 28% increase since 2010.</div>
+  <div class="finding">Only 8% of Afghan farmers have access to soil testing services; most apply fertiliser without soil analysis.</div>
+  <div class="finding">Average crop yields are 40–60% below regional potential — largely attributable to soil health deficits.</div>
+  <div class="finding">The Khosh Tepa Canal zone (550,000 ha) risks irreversible salinisation without simultaneous drainage infrastructure.</div>
+</div>
+
+<!-- NATIONAL STATISTICS -->
+<h2>National Soil Health Statistics</h2>
+<div class="stat-row">
+  <div class="stat-box"><span class="stat-num">72%</span><span class="stat-lbl">Degraded land</span></div>
+  <div class="stat-box"><span class="stat-num">265k</span><span class="stat-lbl">ha salinised</span></div>
+  <div class="stat-box"><span class="stat-num">34%</span><span class="stat-lbl">SOC decline</span></div>
+  <div class="stat-box"><span class="stat-num">$420M</span><span class="stat-lbl">Annual cost</span></div>
+  <div class="stat-box"><span class="stat-num">8%</span><span class="stat-lbl">Soil testing access</span></div>
+  <div class="stat-box"><span class="stat-num">60%</span><span class="stat-lbl">Below-potential yields</span></div>
+</div>
+
+<!-- DEGRADATION DRIVERS -->
+<h2>Five Primary Degradation Drivers</h2>
+
+<h3>1. Wind Erosion (45% of land area)</h3>
+<p>The dominant degradation process, concentrated in the southern and western arid zones (Nimroz, Farah, Helmand, Kandahar). Annual topsoil loss rates of 15–40 tonnes/ha/year are recorded in unprotected cultivated areas. Loss of natural vegetation cover from decades of conflict and overgrazing has removed the protective root systems that bind topsoil. The Registan Desert expansion in Helmand and Kandahar represents one of the fastest rates of anthropogenic desertification in South Asia.</p>
+
+<h3>2. Overgrazing and Rangeland Degradation</h3>
+<p>Afghanistan's rangelands cover 30 million hectares — nearly half the country's land area. Livestock numbers exceed carrying capacity by an estimated 65% in most provinces, with severe degradation visible in Faryab, Ghor, Daykundi, and Badghis. The collapse of traditional rangelands management systems (migratory herding routes, seasonal rest periods) since the 1980s has left no mechanism for vegetation recovery.</p>
+
+<h3>3. Secondary Salinisation of Irrigated Land</h3>
+<p>Inefficient flood irrigation, absent drainage infrastructure, and shallow water tables have created a salinisation crisis on 265,000 ha of the most productive irrigated land. Helmand Valley, Kandahar's fruit orchards, and Herat's wheat belts are most affected. Salt accumulation reduces crop yields by 20–80% depending on concentration and crop species. Without drainage investment alongside the Khosh Tepa Canal, an estimated 30–40% of newly irrigated land risks salinisation within 15 years.</p>
+
+<h3>4. Deforestation and Loss of Soil Carbon</h3>
+<p>Afghanistan has lost 50% of its forest cover since 1978. Pistachio and oak woodlands in Badghis, Faryab, and Ghor — critical for soil carbon sequestration and water retention — have been cleared for fuelwood and charcoal. Soil organic carbon (SOC) in formerly forested areas has declined 34% since 2000, reducing water-holding capacity, aggregate stability, and biological activity.</p>
+
+<h3>5. Unsustainable Fertiliser Use and Soil Acidification</h3>
+<p>Urea-based nitrogen fertilisers are applied without soil testing across most of Afghanistan's wheat-growing areas. Over-application leads to soil acidification (pH dropping below 5.5 in parts of Nangarhar and Kunar) and nitrogen leaching that contaminates shallow groundwater. Under-application in remote areas results in nutrient mining — soils progressively losing phosphorus and potassium over successive seasons.</p>
+
+<!-- PROVINCIAL ANALYSIS -->
+<h2>Provincial Degradation Assessment</h2>
+
+<table class="zone-table">
+  <thead>
+    <tr><th>Province</th><th>Primary Degradation</th><th>Severity</th><th>Affected Area (%)</th><th>Priority Action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Helmand</td><td>Wind erosion + Salinisation</td><td>Severe</td><td>78%</td><td>Drainage + shelter belts</td></tr>
+    <tr><td>Kandahar</td><td>Salinisation + Wind erosion</td><td>Severe</td><td>71%</td><td>Drip irrigation + leaching</td></tr>
+    <tr><td>Nimroz</td><td>Desertification</td><td>Critical</td><td>89%</td><td>Sand dune fixation</td></tr>
+    <tr><td>Farah</td><td>Wind erosion</td><td>Severe</td><td>74%</td><td>Windbreaks + cover crops</td></tr>
+    <tr><td>Badghis</td><td>Overgrazing + Deforestation</td><td>Severe</td><td>68%</td><td>Rangeland rehabilitation</td></tr>
+    <tr><td>Ghor</td><td>Overgrazing + Water erosion</td><td>High</td><td>62%</td><td>Pasture resting system</td></tr>
+    <tr><td>Faryab</td><td>Overgrazing</td><td>High</td><td>58%</td><td>Community land management</td></tr>
+    <tr><td>Herat</td><td>Salinisation + SOC decline</td><td>Moderate</td><td>44%</td><td>Organic matter + drainage</td></tr>
+    <tr><td>Balkh</td><td>SOC decline + Nutrient mining</td><td>Moderate</td><td>38%</td><td>Soil testing + balanced fert.</td></tr>
+    <tr><td>Kunduz</td><td>Waterlogging</td><td>Moderate</td><td>35%</td><td>Sub-surface drainage</td></tr>
+    <tr><td>Nangarhar</td><td>Acidification</td><td>Moderate</td><td>42%</td><td>Lime application</td></tr>
+    <tr><td>Kabul</td><td>Urban encroachment</td><td>Moderate</td><td>48%</td><td>Zoning enforcement</td></tr>
+  </tbody>
+</table>
+
+<!-- KHOSH TEPA RISK -->
+<div class="callout">
+  <strong>⚠️ Khosh Tepa Canal — Salinisation Risk Alert</strong><br>
+  The Khosh Tepa Canal (285 km, 550,000 ha) represents Afghanistan's largest agricultural investment in a generation. However, the canal design does not include drainage infrastructure. International experience (Indus Basin, Nile Delta, Aral Sea basin) shows that irrigation without drainage invariably leads to secondary salinisation within 10–20 years. This brief urgently recommends that drainage investment be incorporated into all three phases of Khosh Tepa before irrigation begins.
+</div>
+
+<!-- LDN TARGETS -->
+<h2>Land Degradation Neutrality (LDN) Targets</h2>
+<p>Afghanistan has not formally committed to the UNCCD Land Degradation Neutrality framework, but the scientific basis for LDN targets is well established. Based on SoilSense analysis and ISRIC data, this brief proposes the following measurable targets for 2030:</p>
+
+<table>
+  <thead><tr><th>Indicator</th><th>Baseline (2024)</th><th>Target (2030)</th><th>Required Intervention</th></tr></thead>
+  <tbody>
+    <tr><td>Net degraded land</td><td>5.7M ha</td><td>No net increase</td><td>Reclaim 200k ha/yr</td></tr>
+    <tr><td>Soil organic carbon (avg)</td><td>0.8%</td><td>1.2%</td><td>Compost, cover crops, agroforestry</td></tr>
+    <tr><td>Salinised irrigated land</td><td>265,000 ha</td><td>200,000 ha</td><td>Drainage + leaching</td></tr>
+    <tr><td>Rangeland condition (% good)</td><td>18%</td><td>35%</td><td>Pasture resting, destocking</td></tr>
+    <tr><td>Tree cover (woodland)</td><td>1.9%</td><td>3.5%</td><td>Reforestation, fuel substitution</td></tr>
+    <tr><td>Soil testing coverage</td><td>8%</td><td>45%</td><td>Mobile labs, extension service</td></tr>
+  </tbody>
+</table>
+
+<!-- RECOMMENDATIONS -->
+<h2>Policy Recommendations</h2>
+
+<h3>Immediate Actions (0–12 months)</h3>
+<div class="recommendation rec-urgent">
+  <span class="rec-num">R1.</span> Mandate drainage impact assessment for all Khosh Tepa Canal phases before irrigation begins — commission international expertise and allocate dedicated drainage budget (estimated $180M for Phase 1).
+</div>
+<div class="recommendation rec-urgent">
+  <span class="rec-num">R2.</span> Establish 50 mobile soil testing laboratories covering all 34 provinces, prioritising the Helmand-Kandahar salinisation belt and northern cotton zone. Target: 100,000 soil tests in year 1.
+</div>
+<div class="recommendation rec-urgent">
+  <span class="rec-num">R3.</span> Declare a rangeland emergency in Nimroz, Farah, Badghis, and Ghor — implement immediate livestock ceilings and community-enforced seasonal grazing rotations.
+</div>
+<div class="recommendation rec-urgent">
+  <span class="rec-num">R4.</span> Ban open wood-cutting in Afghanistan's remaining pistachio and oak woodlands (Badghis, Ghor, Faryab) and provide subsidised LPG or biogas alternatives to dependent households.
+</div>
+<div class="recommendation rec-urgent">
+  <span class="rec-num">R5.</span> Integrate soil health metrics into the national agricultural census — establish provincial baseline soil organic carbon, pH, salinity, and bulk density measurements.
+</div>
+
+<h3>Medium-Term Actions (1–3 years)</h3>
+<div class="recommendation">
+  <span class="rec-num">R6.</span> Launch a National Soil Carbon Programme targeting 200,000 ha of degraded farmland — distribute compost, biochar, and green manure seeds to 500,000 farmers with training on application methods.
+</div>
+<div class="recommendation">
+  <span class="rec-num">R7.</span> Invest $220M in sub-surface drainage networks for the 265,000 ha of salinised irrigated land, prioritising Helmand Valley and Kandahar orchards. Recover investment through yield improvements within 7 years.
+</div>
+<div class="recommendation">
+  <span class="rec-num">R8.</span> Establish a national shelterbelts programme — plant 50,000 km of windbreaks (poplar, tamarisk, saxaul) across the southern wind erosion belt, employing rural communities as the primary workforce.
+</div>
+<div class="recommendation">
+  <span class="rec-num">R9.</span> Scale precision agriculture extension to 200,000 farmers in Balkh, Kunduz, and Takhar: soil-specific fertiliser recommendations to replace blanket urea application, reducing input costs 20% while maintaining yields.
+</div>
+<div class="recommendation">
+  <span class="rec-num">R10.</span> Develop a community-based Payments for Ecosystem Services (PES) system for rangeland rehabilitation — compensate herding communities for seasonal rest periods and destocking commitments.
+</div>
+<div class="recommendation">
+  <span class="rec-num">R11.</span> Introduce soil health certification for export crops (saffron, raisins, pistachios, dried fruits) — create a premium market pathway that rewards good soil management practices.
+</div>
+
+<h3>Long-Term Actions (3–10 years)</h3>
+<div class="recommendation rec-long">
+  <span class="rec-num">R12.</span> Ratify the UNCCD Land Degradation Neutrality framework and establish measurable national LDN targets with biennial reporting using SoilSense and satellite monitoring.
+</div>
+<div class="recommendation rec-long">
+  <span class="rec-num">R13.</span> Build a national soil monitoring network of 500 permanent sampling stations with annual SOC, pH, salinity, and biodiversity measurements — creating the first long-term Afghan soil health database.
+</div>
+<div class="recommendation rec-long">
+  <span class="rec-num">R14.</span> Develop a National Agroforestry Programme targeting 500,000 ha — integrate almond, walnut, apricot, and mulberry trees into existing farmland to build soil carbon and provide high-value crop diversification simultaneously.
+</div>
+<div class="recommendation rec-long">
+  <span class="rec-num">R15.</span> Establish an Afghan Soil Research Institute — a permanent scientific institution to train 500 soil scientists over 10 years, develop Afghanistan-specific soil management guidelines, and provide independent evidence for policy.
+</div>
+
+<!-- ECONOMIC CASE -->
+<h2>Economic Case for Investment</h2>
+<p>The cost of inaction is not abstract. Afghanistan loses an estimated <strong>$420 million per year</strong> in agricultural output due to soil degradation — roughly 3% of GDP annually. This figure does not include downstream costs: sedimentation of reservoirs, flooding from degraded watersheds, water treatment costs from soil contamination, and the long-term loss of food production capacity.</p>
+
+<table>
+  <thead><tr><th>Intervention</th><th>Cost (USD)</th><th>Annual Benefit</th><th>Payback Period</th></tr></thead>
+  <tbody>
+    <tr><td>Drainage for salinised land</td><td>$220M</td><td>$85M/yr (yield recovery)</td><td>2.6 years</td></tr>
+    <tr><td>Mobile soil testing labs</td><td>$12M</td><td>$45M/yr (input efficiency)</td><td>3 months</td></tr>
+    <tr><td>Shelterbelts programme</td><td>$65M</td><td>$32M/yr (erosion prevention)</td><td>2 years</td></tr>
+    <tr><td>Rangeland rehabilitation</td><td>$38M</td><td>$28M/yr (livestock productivity)</td><td>1.4 years</td></tr>
+    <tr><td>National agroforestry</td><td>$180M</td><td>$140M/yr (carbon + crops)</td><td>1.3 years</td></tr>
+  </tbody>
+</table>
+
+<!-- CONCLUSION -->
+<h2>Conclusion</h2>
+<p>Afghanistan's soil crisis is severe but recoverable. The technical solutions are known — drainage infrastructure, soil carbon restoration, rangeland resting systems, shelterbelts, and precision soil management. What is needed is political will, institutional capacity, and coordinated international financing.</p>
+<p>The window for cost-effective intervention is narrowing. Each year of inaction deepens the degradation spiral, raises the cost of recovery, and pushes more Afghan farming families below subsistence level. The Khosh Tepa Canal represents a generational opportunity — but only if drainage is built alongside irrigation, and if soil health is treated as a foundation of the investment rather than an afterthought.</p>
+<p>ADI's SoilSense tool provides free, open-access soil health assessments for any location in Afghanistan and 124 countries globally — enabling practitioners, extension workers, and policymakers to make soil health visible and actionable at no cost.</p>
+
+<!-- DATA & TOOLS -->
+<h2>Data Tools for Implementation</h2>
+<table>
+  <thead><tr><th>Tool</th><th>What it provides</th><th>Access</th></tr></thead>
+  <tbody>
+    <tr><td>SoilSense (ADI)</td><td>Soil health score, erosion risk, degradation probability for any location</td><td>Free — soilsense.streamlit.app</td></tr>
+    <tr><td>ISRIC SoilGrids 2.0</td><td>Global soil properties at 250m resolution</td><td>Free — soilgrids.org</td></tr>
+    <tr><td>FAO GAEZ v4</td><td>Crop suitability, agro-ecological zones, land evaluation</td><td>Free — gaez.fao.org</td></tr>
+    <tr><td>CropZone Mapper (ADI)</td><td>Province-level crop suitability and Khosh Tepa analysis</td><td>Free — GitHub ADI</td></tr>
+    <tr><td>ESA WorldCover</td><td>Land cover mapping at 10m resolution (2020–2021)</td><td>Free — esa-worldcover.org</td></tr>
+    <tr><td>UNCCD PRAIS</td><td>Land degradation neutrality reporting system</td><td>Free — prais.unccd.int</td></tr>
+  </tbody>
+</table>
+
+<!-- SOURCES -->
+<div class="sources">
+  <h3 style="color:var(--text-m);font-size:.9rem;text-transform:uppercase;letter-spacing:.1em">Sources & References</h3>
+  <div class="src-item">1. ISRIC World Soil Information. SoilGrids 2.0 — global soil property maps at 250m resolution. soilgrids.org (2020)</div>
+  <div class="src-item">2. FAO. State of the World's Land and Water Resources for Food and Agriculture (SOLAW). Rome: Food and Agriculture Organization (2011, updated 2021)</div>
+  <div class="src-item">3. FAO/UNEP. Afghanistan Country Report — Land Degradation Assessment (LADA). Rome (2008, supplemented with 2020 satellite analysis)</div>
+  <div class="src-item">4. FAO GAEZ v4. Global Agro-Ecological Zones — crop suitability classification for Afghanistan. gaez.fao.org (2021)</div>
+  <div class="src-item">5. GRACE-FO Mission (NASA/DLR). Terrestrial Water Storage Anomalies — Afghanistan 2002–2024. grace.jpl.nasa.gov</div>
+  <div class="src-item">6. ESA Copernicus Land Service. CORINE-equivalent land cover for Central/South Asia. European Space Agency (2020)</div>
+  <div class="src-item">7. Ministry of Agriculture, Irrigation and Livestock (MAIL). Afghanistan National Agricultural Development Framework. Kabul (2016–2021)</div>
+  <div class="src-item">8. UNCCD. Land Degradation Neutrality — Target Setting Programme Guidance Note. Bonn (2016)</div>
+  <div class="src-item">9. World Bank. Afghanistan Agriculture Sector Review. Washington DC (2022)</div>
+  <div class="src-item">10. Alamzoi, M.J. SoilSense: Open-Access Soil Health Assessment Tool. Afghanistan Development Initiative (2026)</div>
+  <div class="src-item">11. CGIAR. Agricultural soil degradation in fragile states — a case study of Afghanistan. Research Program on Water, Land and Ecosystems (2019)</div>
+  <div class="src-item">12. ADB. Afghanistan Energy and Agriculture Nexus — irrigation and soil sustainability. Manila (2021)</div>
+</div>
+
+<br>
+<p style="font-size:.78rem;color:var(--text-d);border-top:1px solid var(--border);padding-top:1rem;margin-top:2rem">
+  © 2026 Afghanistan Development Initiative (ADI) · Founded by Maiwand Jan Alamzoi · Leuth, Netherlands<br>
+  Published under CC BY 4.0 · Open access · Free to reproduce with attribution<br>
+  <a href="https://afghanistan-development-initiative.github.io" style="color:var(--gold-l);text-decoration:none">afghanistan-development-initiative.github.io</a>
+</p>
+
+</body>
+</html>
