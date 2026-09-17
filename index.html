@@ -73,6 +73,18 @@ section{padding:5rem 2rem}
 .ptags{display:flex;flex-wrap:wrap;gap:.3rem}
 .ptag{font-size:.67rem;padding:.18rem .52rem;border-radius:100px;background:rgba(255,255,255,.04);color:var(--text-d);border:1px solid var(--border)}
 
+/* TARGET GROUPS */
+.groups-sec{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.group-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.45rem;transition:all .25s}
+.group-card:hover{background:var(--card-h);border-color:var(--border2);transform:translateY(-2px)}
+.group-kicker{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.4rem}
+.group-card h3{font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:var(--white);margin-bottom:.45rem}
+.group-card p{font-size:.83rem;color:var(--text-m);line-height:1.58;margin-bottom:.85rem}
+.group-card ul{list-style:none;display:grid;gap:.32rem}
+.group-card li{font-size:.77rem;color:var(--text-m);line-height:1.45}
+.group-card li::before{content:'+';color:var(--green-l);font-weight:700;margin-right:.45rem}
+
 /* TOOLS */
 .tools-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
@@ -86,6 +98,34 @@ section{padding:5rem 2rem}
 .tool-card p{font-size:.84rem;color:var(--text-m);margin-bottom:1.25rem;line-height:1.6}
 .tool-link{font-size:.84rem;font-weight:600;color:var(--green-l);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
 .tool-link:hover{gap:.6rem}
+.tool-roadmap{margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.road-item{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem}
+.road-item h4{font-size:.88rem;color:var(--white);margin-bottom:.3rem}
+.road-item p{font-size:.78rem;color:var(--text-m);line-height:1.55}
+.road-label{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-l);margin-bottom:.35rem}
+
+/* NATIONAL MAP */
+.map-sec{background:var(--bg);border-bottom:1px solid var(--border)}
+.map-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:stretch}
+.country-map{min-height:440px;background:linear-gradient(135deg,rgba(82,168,122,.08),rgba(196,148,58,.06));border:1px solid var(--border2);border-radius:var(--r2);position:relative;overflow:hidden;padding:1.5rem}
+.country-map::before{content:'';position:absolute;inset:1.5rem;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:42px 42px;border-radius:18px;opacity:.45}
+.map-title{position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:.3rem}
+.map-note{position:relative;z-index:2;font-size:.78rem;color:var(--text-m);max-width:420px;line-height:1.55}
+.region-cloud{position:absolute;inset:5.5rem 2rem 2rem;z-index:2}
+.region{position:absolute;border:1px solid rgba(255,255,255,.18);background:rgba(12,15,10,.72);backdrop-filter:blur(8px);border-radius:14px;padding:.7rem .85rem;min-width:118px;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.region strong{display:block;color:var(--white);font-size:.82rem;margin-bottom:.15rem}
+.region span{display:block;color:var(--text-m);font-size:.68rem;line-height:1.3}
+.region.north{left:24%;top:5%;border-color:rgba(82,168,122,.45)}
+.region.northeast{right:5%;top:14%;border-color:rgba(79,195,247,.45)}
+.region.west{left:3%;top:38%;border-color:rgba(196,148,58,.45)}
+.region.central{left:36%;top:39%;border-color:rgba(255,255,255,.24)}
+.region.east{right:11%;top:50%;border-color:rgba(82,168,122,.45)}
+.region.south{left:33%;bottom:5%;border-color:rgba(230,57,70,.45)}
+.layer-stack{display:grid;gap:.75rem}
+.layer-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem}
+.layer-card h4{font-size:.88rem;color:var(--white);margin-bottom:.25rem}
+.layer-card p{font-size:.77rem;color:var(--text-m);line-height:1.5}
+.layer-pill{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.3rem}
 
 /* ADI ASSISTANT */
 .assistant-sec{background:linear-gradient(180deg,var(--bg2),var(--bg));border-bottom:1px solid var(--border)}
@@ -188,6 +228,9 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
   .form-grid{grid-template-columns:1fr}
   .guidelines{grid-template-columns:1fr}
   .assistant-panel{grid-template-columns:1fr}
+  .map-layout{grid-template-columns:1fr}
+  .country-map{min-height:520px}
+  .region-cloud{inset:5rem 1rem 1rem}
   .hero-stats{gap:1.5rem}
   nav{padding:0 1.25rem}
   section{padding:3.5rem 1.25rem}
@@ -235,7 +278,9 @@ body.rtl .contact-links{flex-direction:row-reverse}
   </a>
   <ul class="nav-links">
     <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+    <li><a href="#target-groups">Groups</a></li>
     <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
+    <li><a href="#national-map">Map</a></li>
     <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
     <li><a href="#data-sources" data-i18n="nav.data">Data</a></li>
     <li><a href="#contribute" data-i18n="nav.contribute">Contribute</a></li>
@@ -257,7 +302,9 @@ body.rtl .contact-links{flex-direction:row-reverse}
 
 <div class="mobile-nav" id="mobileNav">
   <a href="#pillars" onclick="toggleMenu()" data-i18n="nav.pillars">Pillars</a>
+  <a href="#target-groups" onclick="toggleMenu()">Target Groups</a>
   <a href="#tools" onclick="toggleMenu()" data-i18n="nav.tools">Tools</a>
+  <a href="#national-map" onclick="toggleMenu()">National Map</a>
   <a href="#publications" onclick="toggleMenu()" data-i18n="nav.publications">Publications</a>
   <a href="#data-sources" onclick="toggleMenu()" data-i18n="nav.data">Data Sources</a>
   <a href="#contribute" onclick="toggleMenu()" data-i18n="nav.contribute">Contribute</a>
@@ -303,6 +350,23 @@ body.rtl .contact-links{flex-direction:row-reverse}
   </div>
 </section>
 
+<!-- TARGET GROUPS -->
+<section id="target-groups" class="groups-sec">
+  <div class="container">
+    <div class="s-label">Target Groups</div>
+    <h2 class="s-title">Who ADI is built to support</h2>
+    <p class="s-sub">ADI should be useful for people who need evidence quickly, not only for technical specialists. Each audience gets a clear route into the tools, maps, briefs, and open datasets.</p>
+    <div class="groups-grid">
+      <div class="group-card"><div class="group-kicker">Farmers & field workers</div><h3>Practical land, soil, crop and water decisions</h3><p>Use ADI to understand local constraints, then connect detailed field recording and advisory workflows through ZaminAI where farmer-level data is needed.</p><ul><li>Soil risk and recovery options</li><li>Crop suitability and irrigation potential</li><li>Dari, Pashto and English access pathway</li></ul></div>
+      <div class="group-card"><div class="group-kicker">NGOs & implementers</div><h3>Programme targeting and monitoring</h3><p>Compare provinces, identify evidence gaps, and connect interventions to open sources before designing field activities or donor proposals.</p><ul><li>District and province prioritisation</li><li>Water, food security and livelihood evidence</li><li>Printable policy and method references</li></ul></div>
+      <div class="group-card"><div class="group-kicker">Government & municipalities</div><h3>Policy briefs and national planning evidence</h3><p>Use the platform as a neutral evidence base for agriculture, water, energy, economy, education and governance discussions.</p><ul><li>Open indicators and source links</li><li>Non-political policy summaries</li><li>National-to-local map layers</li></ul></div>
+      <div class="group-card"><div class="group-kicker">Researchers & students</div><h3>Reusable data, methods and research questions</h3><p>Find open datasets, documented methods, and research notes that can be extended, reviewed, corrected or translated.</p><ul><li>GitHub-first open source workflow</li><li>Methodology and source transparency</li><li>Contribution path for new studies</li></ul></div>
+      <div class="group-card"><div class="group-kicker">Funders & private sector</div><h3>Evidence before investment</h3><p>See where agriculture, energy, water and market opportunities are plausible, and where more ground validation is needed before committing resources.</p><ul><li>Risk screening by sector</li><li>Pipeline of beta tools and briefs</li><li>Clear separation of live and planned data</li></ul></div>
+      <div class="group-card"><div class="group-kicker">Diaspora & media</div><h3>Readable facts without paywalls</h3><p>Use ADI as an accessible explanation layer for Afghanistan development challenges, grounded in sources instead of rumours or fragmented reports.</p><ul><li>Plain-language summaries</li><li>Shareable public tools</li><li>Open collaboration route</li></ul></div>
+    </div>
+  </div>
+</section>
+
 <!-- TOOLS -->
 <section id="tools" class="tools-sec">
   <div class="container">
@@ -316,6 +380,44 @@ body.rtl .contact-links{flex-direction:row-reverse}
       <div class="tool-card"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.beta">Beta</span></div><h3>CropZone Mapper</h3><p data-i18n="t4.desc">Geospatial crop suitability, irrigation potential, and Khosh Tepa canal zone analysis for Afghanistan — province-level crop recommendations, saffron spotlight, and agricultural economics dashboard.</p><a href="https://github.com/afghanistan-development-initiative" target="_blank" class="tool-link" data-i18n="t4.link">View on GitHub →</a></div>
       <div class="tool-card"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.beta">Beta</span></div><h3>EnergySense</h3><p data-i18n="t5.desc">Solar irradiance, hydro potential, and rural electrification gap mapping for Afghanistan — 222 GW solar potential, 23,000 MW hydro, province-level access analysis and renewable investment dashboard.</p><a href="https://github.com/afghanistan-development-initiative" target="_blank" class="tool-link" data-i18n="t5.link">View on GitHub →</a></div>
       <div class="tool-card"><div class="ts-soon"><span class="dot-soon"></span> <span data-i18n="status.beta">Beta</span></div><h3>ADI AI Assistant</h3><p data-i18n="t6.desc">Ask questions about Afghanistan's agriculture, water, energy, and economy in English, Dari, or Pashto — get evidence-based answers powered by Claude AI and grounded in ADI open data.</p><a href="https://github.com/afghanistan-development-initiative" target="_blank" class="tool-link" data-i18n="t6.link">View on GitHub →</a></div>
+    </div>
+    <div class="tool-roadmap">
+      <div class="road-item"><div class="road-label">SoilSense</div><h4>Soil health and degradation screening</h4><p>Best for land restoration, crop planning, erosion risk, soil carbon, pH, nitrogen and first-pass recovery recommendations.</p></div>
+      <div class="road-item"><div class="road-label">WaterSense</div><h4>Water security and groundwater pressure</h4><p>Best for Kabul water stress, river basins, household access, irrigation pressure and climate-linked water risk.</p></div>
+      <div class="road-item"><div class="road-label">CropZone Mapper</div><h4>Country-wide crop and irrigation suitability</h4><p>Planned as the national map layer for crop zones, Khosh Tepa influence areas, saffron potential and province-level recommendations.</p></div>
+      <div class="road-item"><div class="road-label">EnergySense</div><h4>Renewable energy opportunity mapping</h4><p>Supports solar, hydro, rural electrification and infrastructure gap analysis for planners, investors and programme teams.</p></div>
+      <div class="road-item"><div class="road-label">EconomySense</div><h4>Economic diversification evidence</h4><p>Shows GDP, trade, export potential, poverty and sector indicators with live World Bank context and comparison.</p></div>
+      <div class="road-item"><div class="road-label">ADI AI Assistant</div><h4>Evidence routing and multilingual access</h4><p>Designed to direct users to the right dashboard, brief, dataset or methodology in English, Afghan Dari and Pashto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL MAP -->
+<section id="national-map" class="map-sec">
+  <div class="container">
+    <div class="s-label">National Evidence Map</div>
+    <h2 class="s-title">A country-wide view for better targeting</h2>
+    <p class="s-sub">The next ADI direction should connect the whole Afghanistan map with the same practical logic used in local remote-sensing pilots: layers, legends, evidence, source links and printable summaries.</p>
+    <div class="map-layout">
+      <div class="country-map">
+        <div class="map-title">Afghanistan development evidence map</div>
+        <div class="map-note">Prototype layout for national layers. The production version can connect province boundaries, district data, satellite indicators and tool outputs.</div>
+        <div class="region-cloud">
+          <div class="region north"><strong>North</strong><span>irrigation, wheat, Khosh Tepa zone</span></div>
+          <div class="region northeast"><strong>Northeast</strong><span>water towers, erosion, mountain livelihoods</span></div>
+          <div class="region west"><strong>West</strong><span>drought, rangelands, cross-border trade</span></div>
+          <div class="region central"><strong>Central</strong><span>Kabul water, urban demand, governance</span></div>
+          <div class="region east"><strong>East</strong><span>watersheds, horticulture, market corridors</span></div>
+          <div class="region south"><strong>South</strong><span>water stress, solar, agriculture recovery</span></div>
+        </div>
+      </div>
+      <div class="layer-stack">
+        <div class="layer-card"><span class="layer-pill">Layer 01</span><h4>Soil degradation and recovery</h4><p>SoilSense outputs, SoilGrids indicators, erosion risk and restoration recommendations.</p></div>
+        <div class="layer-card"><span class="layer-pill">Layer 02</span><h4>Water stress and access</h4><p>WaterSense indicators, river basins, groundwater pressure, rainfall and household water access.</p></div>
+        <div class="layer-card"><span class="layer-pill">Layer 03</span><h4>Crop suitability and food systems</h4><p>CropZone Mapper, irrigation potential, crop calendars, market access and field validation notes.</p></div>
+        <div class="layer-card"><span class="layer-pill">Layer 04</span><h4>Energy and infrastructure</h4><p>EnergySense solar and hydro potential, rural electrification gaps and investment screening.</p></div>
+        <div class="layer-card"><span class="layer-pill">Layer 05</span><h4>Economy and livelihoods</h4><p>EconomySense, trade, poverty, exports, mining, value chains and diversification evidence.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -512,7 +614,9 @@ body.rtl .contact-links{flex-direction:row-reverse}
 <footer>
   <div class="footer-links">
     <a href="#pillars" data-i18n="nav.pillars">Pillars</a>
+    <a href="#target-groups">Target Groups</a>
     <a href="#tools" data-i18n="nav.tools">Tools</a>
+    <a href="#national-map">National Map</a>
     <a href="#publications" data-i18n="nav.publications">Publications</a>
     <a href="#data-sources" data-i18n="nav.data">Data Sources</a>
     <a href="#contribute" data-i18n="nav.contribute">Contribute</a>
@@ -804,7 +908,7 @@ updateStats();
 
 // ── SCROLL ANIMATIONS ──
 const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.08});
-document.querySelectorAll('.pillar,.tool-card,.pub-card,.src-card,.ctype').forEach(el=>{
+document.querySelectorAll('.pillar,.group-card,.tool-card,.road-item,.region,.layer-card,.pub-card,.src-card,.ctype').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';obs.observe(el);
 });
 </script>
