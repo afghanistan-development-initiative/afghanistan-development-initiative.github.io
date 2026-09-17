@@ -73,6 +73,26 @@ section{padding:5rem 2rem}
 .ptags{display:flex;flex-wrap:wrap;gap:.3rem}
 .ptag{font-size:.67rem;padding:.18rem .52rem;border-radius:100px;background:rgba(255,255,255,.04);color:var(--text-d);border:1px solid var(--border)}
 
+/* PROJECT BLUEPRINT */
+.blueprint-sec{background:linear-gradient(180deg,var(--bg),var(--bg2));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.blueprint-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:stretch}
+.blueprint-main{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:2rem}
+.blueprint-main h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--white);margin-bottom:.7rem}
+.blueprint-main p{font-size:.9rem;color:var(--text-m);line-height:1.75;margin-bottom:1rem}
+.blueprint-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.2rem}
+.bp-mini{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r);padding:.9rem}
+.bp-mini strong{display:block;color:var(--white);font-size:.82rem;margin-bottom:.22rem}
+.bp-mini span{display:block;color:var(--text-m);font-size:.74rem;line-height:1.45}
+.blueprint-side{display:grid;gap:.75rem}
+.delivery-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem}
+.delivery-card h4{font-size:.9rem;color:var(--white);margin-bottom:.25rem}
+.delivery-card p{font-size:.78rem;color:var(--text-m);line-height:1.55}
+.delivery-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.25rem}
+.workflow-strip{margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.75rem}
+.flow-step{border:1px solid var(--border);border-radius:var(--r);padding:.9rem;background:rgba(255,255,255,.02)}
+.flow-step b{display:block;color:var(--green-l);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.flow-step span{display:block;color:var(--text-m);font-size:.76rem;line-height:1.45}
+
 /* TARGET GROUPS */
 .groups-sec{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
@@ -126,6 +146,38 @@ section{padding:5rem 2rem}
 .layer-card h4{font-size:.88rem;color:var(--white);margin-bottom:.25rem}
 .layer-card p{font-size:.77rem;color:var(--text-m);line-height:1.5}
 .layer-pill{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.3rem}
+
+/* DATA DASHBOARD */
+.data-sec{background:var(--bg2);border-bottom:1px solid var(--border)}
+.data-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:1.5rem;align-items:start}
+.data-panel,.province-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.5rem}
+.source-list{display:grid;gap:.75rem}
+.source-item{border:1px solid var(--border);border-radius:var(--r);padding:.9rem;background:rgba(255,255,255,.02)}
+.source-item strong{display:block;color:var(--white);font-size:.85rem;margin-bottom:.18rem}
+.source-item span{display:block;color:var(--text-m);font-size:.76rem;line-height:1.5}
+.source-badge{display:inline-block;margin-bottom:.35rem;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green-l)}
+.province-controls{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
+.province-controls select,.province-controls input{background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.84rem;padding:.62rem .75rem;outline:none}
+.province-controls select{min-width:180px}.province-controls input{flex:1;min-width:180px}
+.province-list{display:grid;gap:.55rem;max-height:360px;overflow:auto;padding-right:.25rem}
+.province-row{display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:center;border:1px solid var(--border);border-radius:var(--r);padding:.75rem;background:rgba(255,255,255,.018);cursor:pointer;transition:all .18s}
+.province-row:hover,.province-row.active{border-color:rgba(82,168,122,.45);background:rgba(82,168,122,.08)}
+.province-row strong{display:block;color:var(--white);font-size:.85rem}.province-row span{display:block;color:var(--text-d);font-size:.7rem}
+.score-dot{width:2.1rem;height:2.1rem;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(196,148,58,.12);color:var(--gold-l);font-size:.78rem;font-weight:800}
+.detail-card{margin-top:1rem;border:1px solid var(--border2);border-radius:var(--r2);padding:1.25rem;background:rgba(12,15,10,.42)}
+.detail-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+.detail-head h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--white)}
+.detail-head p{font-size:.78rem;color:var(--text-m)}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:1rem}
+.metric{border:1px solid var(--border);border-radius:var(--r);padding:.75rem;background:rgba(255,255,255,.02)}
+.metric b{display:block;color:var(--gold-l);font-size:1.1rem}.metric span{display:block;color:var(--text-d);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em}
+.tag-line{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0}
+.tag-chip{font-size:.68rem;color:var(--text-m);border:1px solid var(--border);border-radius:100px;padding:.18rem .48rem;background:rgba(255,255,255,.025)}
+.note-box{border-left:2px solid var(--green-l);padding-left:.85rem;color:var(--text-m);font-size:.8rem;line-height:1.55;margin-top:.85rem}
+.compare-bars{display:grid;gap:.55rem;margin-top:.75rem}
+.bar-row{display:grid;grid-template-columns:92px 1fr 34px;gap:.55rem;align-items:center;font-size:.72rem;color:var(--text-m)}
+.bar-track{height:7px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green-l),var(--gold-l))}
 
 /* ADI ASSISTANT */
 .assistant-sec{background:linear-gradient(180deg,var(--bg2),var(--bg));border-bottom:1px solid var(--border)}
@@ -227,8 +279,12 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .form-grid{grid-template-columns:1fr}
   .guidelines{grid-template-columns:1fr}
+  .blueprint-grid{grid-template-columns:1fr}
+  .blueprint-pillars{grid-template-columns:1fr}
   .assistant-panel{grid-template-columns:1fr}
   .map-layout{grid-template-columns:1fr}
+  .data-grid{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:1fr}
   .country-map{min-height:520px}
   .region-cloud{inset:5rem 1rem 1rem}
   .hero-stats{gap:1.5rem}
@@ -277,10 +333,12 @@ body.rtl .contact-links{flex-direction:row-reverse}
     <div><div class="logo-text">ADI</div><div class="logo-sub">Afghanistan Development Initiative</div></div>
   </a>
   <ul class="nav-links">
+    <li><a href="#project">Project</a></li>
     <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
     <li><a href="#target-groups">Groups</a></li>
     <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
     <li><a href="#national-map">Map</a></li>
+    <li><a href="#data-dashboard">Data</a></li>
     <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
     <li><a href="#data-sources" data-i18n="nav.data">Data</a></li>
     <li><a href="#contribute" data-i18n="nav.contribute">Contribute</a></li>
@@ -301,10 +359,12 @@ body.rtl .contact-links{flex-direction:row-reverse}
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
+  <a href="#project" onclick="toggleMenu()">Project</a>
   <a href="#pillars" onclick="toggleMenu()" data-i18n="nav.pillars">Pillars</a>
   <a href="#target-groups" onclick="toggleMenu()">Target Groups</a>
   <a href="#tools" onclick="toggleMenu()" data-i18n="nav.tools">Tools</a>
   <a href="#national-map" onclick="toggleMenu()">National Map</a>
+  <a href="#data-dashboard" onclick="toggleMenu()">Data Dashboard</a>
   <a href="#publications" onclick="toggleMenu()" data-i18n="nav.publications">Publications</a>
   <a href="#data-sources" onclick="toggleMenu()" data-i18n="nav.data">Data Sources</a>
   <a href="#contribute" onclick="toggleMenu()" data-i18n="nav.contribute">Contribute</a>
@@ -322,6 +382,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
     <p data-i18n="hero.sub">ADI is an independent research and data platform — free, open access, and built across six development pillars for practitioners, researchers, and policymakers worldwide.</p>
     <div class="hero-btns">
       <a href="#tools" class="btn btn-p" data-i18n="hero.btn1">Explore the Tools</a>
+      <a href="#project" class="btn btn-o">Understand the Project</a>
       <a href="#publications" class="btn btn-o" data-i18n="hero.btn2">Read Policy Briefs</a>
     </div>
     <div class="hero-stats">
@@ -346,6 +407,40 @@ body.rtl .contact-links{flex-direction:row-reverse}
       <div class="pillar" style="--accent:#e63946"><div class="pillar-icon">📈</div><h3 data-i18n="p4.title">Economy & Trade</h3><p data-i18n="p4.desc">GDP and sector analysis, export diversification, trade corridor data, mining resource maps, FDI environment briefs, and value chain analysis.</p><div class="ptags"><span class="ptag">GDP</span><span class="ptag" data-i18n="p4.t1">Trade</span><span class="ptag">EconomySense</span><span class="ptag" data-i18n="p4.t2">Mining</span></div></div>
       <div class="pillar" style="--accent:#7209b7"><div class="pillar-icon">🏛️</div><h3 data-i18n="p5.title">Governance & Policy</h3><p data-i18n="p5.desc">Policy brief series, SDG progress tracking, aid effectiveness data, institutional analysis, rule of law indicators, and development finance.</p><div class="ptags"><span class="ptag" data-i18n="p5.t1">Policy briefs</span><span class="ptag">SDGs</span><span class="ptag" data-i18n="p5.t2">Aid data</span><span class="ptag" data-i18n="p5.t3">Governance</span></div></div>
       <div class="pillar" style="--accent:#c4943a"><div class="pillar-icon">🎓</div><h3 data-i18n="p6.title">Education & Society</h3><p data-i18n="p6.desc">Literacy and enrolment data, women's rights indicators, youth employment, brain drain analysis, diaspora engagement, and digital access gaps.</p><div class="ptags"><span class="ptag" data-i18n="p6.t1">Education</span><span class="ptag" data-i18n="p6.t2">Women's rights</span><span class="ptag" data-i18n="p6.t3">Youth</span><span class="ptag" data-i18n="p6.t4">Diaspora</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT BLUEPRINT -->
+<section id="project" class="blueprint-sec">
+  <div class="container">
+    <div class="s-label">Project Blueprint</div>
+    <h2 class="s-title">What ADI can become</h2>
+    <p class="s-sub">ADI is a public knowledge infrastructure project for Afghanistan: a place where open data, maps, policy briefs, dashboards and AI-supported guidance are connected into one practical system.</p>
+    <div class="blueprint-grid">
+      <div class="blueprint-main">
+        <h3>From scattered reports to usable decisions</h3>
+        <p>Afghanistan development evidence is often split across PDFs, portals, donor reports, dashboards, and local knowledge. ADI brings those pieces together so a farmer, student, NGO, researcher, public institution, investor, or diaspora partner can start from one clear place.</p>
+        <p>The goal is not to replace field work. The goal is to help people know where to look first, what the evidence says, what is uncertain, and which tool or partner pathway should come next.</p>
+        <div class="blueprint-pillars">
+          <div class="bp-mini"><strong>Dashboards</strong><span>SoilSense, WaterSense, EconomySense, CropZone Mapper and EnergySense.</span></div>
+          <div class="bp-mini"><strong>Policy briefs</strong><span>Short, source-linked evidence summaries for decision makers and programme teams.</span></div>
+          <div class="bp-mini"><strong>National map</strong><span>Layered country view for soil, water, crops, energy, economy and infrastructure.</span></div>
+          <div class="bp-mini"><strong>AI assistant</strong><span>Multilingual routing to the right tool, dataset, brief, map layer or methodology.</span></div>
+        </div>
+      </div>
+      <div class="blueprint-side">
+        <div class="delivery-card"><div class="delivery-label">Output 01</div><h4>Public evidence hub</h4><p>A free website where people can understand Afghanistan development challenges through verified sources and readable summaries.</p></div>
+        <div class="delivery-card"><div class="delivery-label">Output 02</div><h4>Decision tools</h4><p>Focused dashboards that turn large datasets into soil, water, crop, energy and economic insights.</p></div>
+        <div class="delivery-card"><div class="delivery-label">Output 03</div><h4>Implementation targeting</h4><p>Map layers and indicators that help organisations select areas, compare risks and explain why a place needs attention.</p></div>
+        <div class="delivery-card"><div class="delivery-label">Output 04</div><h4>Collaboration pipeline</h4><p>A contribution model where researchers, field workers and organisations can add data, methods, tools and briefs.</p></div>
+      </div>
+    </div>
+    <div class="workflow-strip">
+      <div class="flow-step"><b>1. Ask</b><span>Start with a province, sector, problem or target group.</span></div>
+      <div class="flow-step"><b>2. Explore</b><span>Open the map, dashboard, brief or data source connected to that question.</span></div>
+      <div class="flow-step"><b>3. Compare</b><span>Check risks, opportunities, gaps and source quality across places.</span></div>
+      <div class="flow-step"><b>4. Act</b><span>Use the evidence for proposals, planning, field validation or collaboration.</span></div>
     </div>
   </div>
 </section>
@@ -417,6 +512,42 @@ body.rtl .contact-links{flex-direction:row-reverse}
         <div class="layer-card"><span class="layer-pill">Layer 03</span><h4>Crop suitability and food systems</h4><p>CropZone Mapper, irrigation potential, crop calendars, market access and field validation notes.</p></div>
         <div class="layer-card"><span class="layer-pill">Layer 04</span><h4>Energy and infrastructure</h4><p>EnergySense solar and hydro potential, rural electrification gaps and investment screening.</p></div>
         <div class="layer-card"><span class="layer-pill">Layer 05</span><h4>Economy and livelihoods</h4><p>EconomySense, trade, poverty, exports, mining, value chains and diversification evidence.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA DASHBOARD -->
+<section id="data-dashboard" class="data-sec">
+  <div class="container">
+    <div class="s-label">Official Data Dashboard</div>
+    <h2 class="s-title">Province evidence, gaps and solution pathways</h2>
+    <p class="s-sub">This embedded dashboard starts with authoritative public sources and transparent scoring. It shows what is known, where the data is weak, and what actions could improve planning.</p>
+    <div class="data-grid">
+      <div class="data-panel">
+        <div class="source-list">
+          <div class="source-item"><span class="source-badge">Boundary source</span><strong>OCHA/HDX COD-AB, sourced from AGCHO</strong><span>Official common operational administrative boundaries: 34 provinces and 401 districts, reviewed in 2024 and metadata updated in 2025.</span></div>
+          <div class="source-item"><span class="source-badge">Population source</span><strong>COD-PS / HDX HAPI, NSIA / UNFPA / OCHA pathway</strong><span>Population tables should be treated as projections and compared carefully with NSIA yearbooks, WorldPop, FAO population grids and field updates.</span></div>
+          <div class="source-item"><span class="source-badge">Agriculture source</span><strong>FAO GIEWS and national statistical yearbooks</strong><span>Use for wheat conditions, food security signals, planted area, production and price context. Province-level values need versioned source notes.</span></div>
+          <div class="source-item"><span class="source-badge">Geospatial source</span><strong>ISRIC, CHIRPS, NASA, ESA, World Bank / Global Solar Atlas</strong><span>Useful for soil, rainfall, water storage, vegetation, land cover and renewable energy layers. Local validation remains essential.</span></div>
+        </div>
+        <div class="note-box">Method note: scores below are prototype prioritisation indices from embedded open-source evidence categories, not official rankings. They are designed to show how ADI can calculate and explain differences between provinces.</div>
+      </div>
+      <div class="province-panel">
+        <div class="province-controls">
+          <select id="provinceFilter" aria-label="Filter provinces by region">
+            <option value="all">All regions</option>
+            <option value="Central">Central</option>
+            <option value="North">North</option>
+            <option value="Northeast">Northeast</option>
+            <option value="East">East</option>
+            <option value="South">South</option>
+            <option value="West">West</option>
+          </select>
+          <input id="provinceSearch" type="search" placeholder="Search province, potential, gap or problem">
+        </div>
+        <div class="province-list" id="provinceList"></div>
+        <div class="detail-card" id="provinceDetail"></div>
       </div>
     </div>
   </div>
@@ -613,10 +744,12 @@ body.rtl .contact-links{flex-direction:row-reverse}
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
+    <a href="#project">Project</a>
     <a href="#pillars" data-i18n="nav.pillars">Pillars</a>
     <a href="#target-groups">Target Groups</a>
     <a href="#tools" data-i18n="nav.tools">Tools</a>
     <a href="#national-map">National Map</a>
+    <a href="#data-dashboard">Data Dashboard</a>
     <a href="#publications" data-i18n="nav.publications">Publications</a>
     <a href="#data-sources" data-i18n="nav.data">Data Sources</a>
     <a href="#contribute" data-i18n="nav.contribute">Contribute</a>
@@ -906,9 +1039,53 @@ function updateStats(){
 updateStats();
 (function(){try{const l=localStorage.getItem('adi-lang');if(l&&LANGS[l])setLang(l);}catch(e){}}());
 
+const PROVINCES = [
+  ['Badakhshan','Northeast',1130535,44836,'mountain water, hydro, horticulture','food insecurity, erosion, remote access','watershed monitoring, road access, district population','watershed restoration; slope-risk mapping; market access',58,82,66,38,78],
+  ['Badghis','West',575212,20794,'rainfed wheat, rangelands, solar/wind','drought, soil degradation, isolation','rainfed yield, rangeland condition','drought early warning; rangeland recovery; water harvesting',50,34,62,32,82],
+  ['Baghlan','North',1093013,18255,'irrigated agriculture, wheat, industry','flood risk, canal stress, infrastructure damage','canal condition, crop loss records','canal mapping; floodplain zoning; wheat value-chain support',74,65,54,58,62],
+  ['Balkh','North',1560365,16186,'trade, irrigated agriculture, industry','urban pressure, water demand, price volatility','groundwater abstraction, land conversion','water accounting; logistics data; agro-processing screening',72,56,64,82,48],
+  ['Bamyan','Central',531344,18029,'potato, tourism, solar, rangelands','winter isolation, erosion, limited markets','tourism data, soil carbon baselines','climate-smart storage; slope restoration; solar mini-grid screening',55,58,70,42,68],
+  ['Daykundi','Central',553372,17501,'almonds, upland farming, solar','road access, water scarcity, erosion','orchard productivity, spring inventory','orchard water efficiency; road evidence mapping; terrace rehabilitation',60,38,72,36,76],
+  ['Farah','West',604420,49339,'solar, trade corridor, irrigated agriculture','aridity, water scarcity, border volatility','groundwater trend, irrigation abstraction','solar-water planning; groundwater monitoring; drought crop zoning',48,28,88,52,74],
+  ['Faryab','North',1192381,20798,'wheat, livestock, rangelands','food insecurity, drought, erosion','rainfed stress, feed balance','wheat monitoring; rangeland restoration; fodder reserve planning',70,42,60,46,78],
+  ['Ghazni','Central',1461703,22461,'wheat, livestock, solar, trade route','water stress, market access, winter risk','snowpack, groundwater, market prices','snow-water tracking; solar cold storage; livestock service hubs',64,44,80,50,66],
+  ['Ghor','West',833304,36657,'rangelands, micro-hydro, livestock','poverty, erosion, isolation','rangeland biomass, road seasonality','pasture recovery; micro-hydro screening; mobile veterinary services',42,52,58,28,86],
+  ['Helmand','South',1552838,58305,'irrigation, solar, Helmand basin','water allocation, salinity, crop transition','canal accounting, salinity maps','basin water dashboard; salinity monitoring; legal crop pilots',76,40,90,56,72],
+  ['Herat','West',2332654,55869,'trade, saffron, solar/wind, industry','groundwater stress, urban demand, returnee pressure','aquifer monitoring, labour data','groundwater observatory; saffron export support; renewable zones',70,36,88,84,56],
+  ['Jowzjan','North',648804,11293,'energy, wheat, livestock','water scarcity, soil degradation, low diversification','energy infrastructure, soil condition','energy-agriculture planning; soil recovery pilots; feed mapping',54,38,74,50,70],
+  ['Kabul','Central',5966395,4524,'services, markets, governance, urban data','groundwater depletion, air pollution, urban poverty','well abstraction, settlement growth','urban water accounting; waste-to-energy feasibility; municipal indicators',22,24,62,92,58],
+  ['Kandahar','South',1532662,54845,'horticulture, trade, solar, irrigation','water scarcity, orchard vulnerability, market shocks','orchard water demand, groundwater decline','orchard irrigation efficiency; solar cold chain; market intelligence',78,34,92,70,66],
+  ['Kapisa','Central',523201,1908,'horticulture, Kabul markets, high-value crops','land pressure, flood risk, fragmented holdings','parcel crop data, flood exposure','orchard advisory; flood warning; market aggregation',68,60,50,56,52],
+  ['Khost','East',682333,4235,'horticulture, trade, saffron pockets','land scarcity, water stress, border volatility','saffron validation, smallholder water','crop trials; watershed protection; trade monitoring',62,46,56,64,62],
+  ['Kunar','East',535488,4926,'forestry, hydro, watersheds, horticulture','erosion, flood risk, access constraints','forest change, sediment data','forest monitoring; micro-hydro screening; flood-risk mapping',50,76,64,38,74],
+  ['Kunduz','North',1233223,8081,'irrigated wheat, rice, regional markets','flood risk, waterlogging, infrastructure disruption','irrigation condition, flood extent','rice/wheat zoning; floodplain management; canal targeting',82,62,48,62,58],
+  ['Laghman','East',528879,3978,'horticulture, river valleys, markets','flood risk, land pressure, water management','valley crop maps, flood exposure','valley planning; crop diversification; flood warning',66,68,52,54,56],
+  ['Logar','Central',465698,4568,'vegetables, Kabul link, mining corridor','water pressure, land conversion, infrastructure risk','groundwater, land-use change','peri-urban crop planning; water-saving irrigation; land-use monitoring',58,42,54,60,58],
+  ['Nangarhar','East',1840831,7727,'irrigated agriculture, horticulture, trade, hydro','water allocation, urban pressure, flood risk','river abstraction, crop substitution','irrigation scheduling; market corridor planning; flood dashboard',84,72,66,82,50],
+  ['Nimruz','South',197513,42410,'solar, border trade, desert logistics','aridity, water scarcity, low density','groundwater, service access','solar logistics hubs; water feasibility; trade indicators',26,18,94,46,78],
+  ['Nuristan','Northeast',175507,9267,'forestry, hydro, biodiversity','remoteness, landslide risk, low services','forest/slope monitoring, village access','watershed protection; micro-hydro feasibility; access mapping',34,80,62,24,88],
+  ['Paktia','East',830994,5583,'forestry, livestock, trade','erosion, water stress, market volatility','forest loss, livestock disease','forest restoration; veterinary coverage; market data collection',56,52,54,50,68],
+  ['Paktika','South',656430,19516,'livestock, solar, rangelands','drought, poor access, service gaps','rangeland biomass, pastoral mobility','rangeland warning; mobile services; solar water feasibility',44,30,86,32,84],
+  ['Panjshir','Central',182054,3772,'hydro, tourism, mountain agriculture','valley exposure, flood/landslide risk, limited land','hazard maps, tourism services','hazard zoning; micro-hydro screening; eco-tourism standards',36,74,58,40,64],
+  ['Parwan','Central',792273,5715,'horticulture, Kabul market, vegetables','land pressure, water competition, flood risk','orchard recovery, groundwater levels','orchard mapping; water efficiency; cold-chain planning',74,58,52,66,54],
+  ['Samangan','North',552763,13438,'rainfed wheat, rangelands, mining','drought, erosion, market access','rainfed yield, mine-environment data','drought wheat zoning; soil conservation; mining baselines',58,38,54,44,74],
+  ['Sar-e Pol','North',666737,16386,'rainfed wheat, livestock, energy resources','food insecurity, water scarcity, erosion','rangeland condition, rainfed production','fodder planning; crop monitoring; watershed restoration',56,34,62,38,82],
+  ['Takhar','Northeast',1175306,12459,'wheat, rice, watersheds, horticulture','flood risk, erosion, food-security exposure','flood extents, irrigation infrastructure','flood warning; irrigation targeting; watershed restoration',80,70,54,54,62],
+  ['Uruzgan','South',467659,11474,'orchards, livestock, solar','water stress, access constraints, market isolation','orchard productivity, water source inventory','efficient orchards; solar cold rooms; road prioritisation',52,32,86,34,80],
+  ['Wardak','Central',707486,10348,'potatoes, apples, Kabul market link','water stress, road access, storage gaps','cold storage, irrigation water use','potato storage hubs; orchard advisory; Kabul supply planning',76,44,64,60,60],
+  ['Zabul','South',412150,17472,'solar, livestock, rangelands','severe water scarcity, low market access, drought','water source data, rangeland condition','solar water feasibility; rangeland recovery; drought planning',36,22,90,30,86]
+].map(d=>({name:d[0],region:d[1],pop:d[2],area:d[3],potential:d[4],problems:d[5],gaps:d[6],solutions:d[7],scores:{agri:d[8],water:d[9],energy:d[10],economy:d[11],gap:d[12]}}));
+function priorityScore(p){const s=p.scores;return Math.round(((s.agri+s.water+s.energy+s.economy)/4)*0.55+s.gap*0.45)}
+function renderBars(p){return Object.entries({Agri:p.scores.agri,Water:p.scores.water,Energy:p.scores.energy,Economy:p.scores.economy,Gap:p.scores.gap}).map(([k,v])=>`<div class="bar-row"><span>${k}</span><div class="bar-track"><div class="bar-fill" style="width:${v}%"></div></div><b>${v}</b></div>`).join('')}
+function renderProvinceDetail(p){const el=document.getElementById('provinceDetail');if(!el||!p)return;el.innerHTML=`<div class="detail-head"><div><h3>${p.name}</h3><p>${p.region} region · ${p.area.toLocaleString('en-US')} km² · population ${p.pop.toLocaleString('en-US')}</p></div><div class="score-dot">${priorityScore(p)}</div></div><div class="metric-grid"><div class="metric"><b>${p.scores.agri}</b><span>Agriculture</span></div><div class="metric"><b>${p.scores.water}</b><span>Water</span></div><div class="metric"><b>${p.scores.gap}</b><span>Data gap</span></div></div><div class="tag-line">${p.potential.split(', ').map(x=>`<span class="tag-chip">${x}</span>`).join('')}</div><div class="compare-bars">${renderBars(p)}</div><div class="note-box"><b>Problems:</b> ${p.problems}.<br><b>Official-data gaps:</b> ${p.gaps}.<br><b>How to solve:</b> ${p.solutions}.</div>`}
+function renderProvinceList(){const list=document.getElementById('provinceList'),filter=document.getElementById('provinceFilter'),search=document.getElementById('provinceSearch');if(!list||!filter||!search)return;const q=search.value.toLowerCase(),r=filter.value;const rows=PROVINCES.filter(p=>(r==='all'||p.region===r)&&Object.values(p).join(' ').toLowerCase().includes(q)).sort((a,b)=>priorityScore(b)-priorityScore(a));list.innerHTML=rows.map((p,i)=>`<div class="province-row ${i===0?'active':''}" data-province="${p.name}"><div><strong>${p.name}</strong><span>${p.region} · ${p.potential}</span></div><div class="score-dot">${priorityScore(p)}</div></div>`).join('');list.querySelectorAll('.province-row').forEach(row=>row.addEventListener('click',()=>{list.querySelectorAll('.province-row').forEach(r=>r.classList.remove('active'));row.classList.add('active');renderProvinceDetail(PROVINCES.find(p=>p.name===row.dataset.province))}));renderProvinceDetail(rows[0]||PROVINCES[0])}
+document.getElementById('provinceFilter')?.addEventListener('change',renderProvinceList);
+document.getElementById('provinceSearch')?.addEventListener('input',renderProvinceList);
+renderProvinceList();
+
 // ── SCROLL ANIMATIONS ──
 const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.08});
-document.querySelectorAll('.pillar,.group-card,.tool-card,.road-item,.region,.layer-card,.pub-card,.src-card,.ctype').forEach(el=>{
+document.querySelectorAll('.pillar,.blueprint-main,.delivery-card,.flow-step,.bp-mini,.group-card,.tool-card,.road-item,.region,.layer-card,.data-panel,.province-panel,.pub-card,.src-card,.ctype').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';obs.observe(el);
 });
 </script>
