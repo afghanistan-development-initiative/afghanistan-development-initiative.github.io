@@ -87,6 +87,20 @@ section{padding:5rem 2rem}
 .tool-link{font-size:.84rem;font-weight:600;color:var(--green-l);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
 .tool-link:hover{gap:.6rem}
 
+/* ADI ASSISTANT */
+.assistant-sec{background:linear-gradient(180deg,var(--bg2),var(--bg));border-bottom:1px solid var(--border)}
+.assistant-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:stretch}
+.assistant-lead{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:2rem}
+.assistant-lead h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--white);margin-bottom:.65rem;line-height:1.25}
+.assistant-lead p{font-size:.9rem;color:var(--text-m);line-height:1.7;margin-bottom:1.2rem}
+.agent-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.4rem}
+.agent-tag{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-l);background:rgba(196,148,58,.08);border:1px solid rgba(196,148,58,.22);border-radius:100px;padding:.28rem .62rem}
+.assistant-steps{display:grid;gap:.75rem}
+.assistant-step{display:grid;grid-template-columns:2rem 1fr;gap:.75rem;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r);padding:1rem}
+.step-num{width:2rem;height:2rem;border-radius:8px;background:rgba(82,168,122,.14);color:var(--green-l);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.assistant-step h4{font-size:.9rem;color:var(--white);margin-bottom:.15rem}
+.assistant-step p{font-size:.8rem;color:var(--text-m);line-height:1.55}
+
 /* PUBLICATIONS */
 .pub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
 .pub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.75rem;transition:all .3s}
@@ -173,6 +187,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .form-grid{grid-template-columns:1fr}
   .guidelines{grid-template-columns:1fr}
+  .assistant-panel{grid-template-columns:1fr}
   .hero-stats{gap:1.5rem}
   nav{padding:0 1.25rem}
   section{padding:3.5rem 1.25rem}
@@ -264,8 +279,8 @@ body.rtl .contact-links{flex-direction:row-reverse}
     </div>
     <div class="hero-stats">
       <div class="stat"><span class="stat-num" id="count-pillars">6</span><span class="stat-lbl">Pillars</span></div>
-      <div class="stat"><span class="stat-num" id="count-tools">0</span><span class="stat-lbl">Live tools</span></div>
-      <div class="stat"><span class="stat-num" id="count-pubs">0</span><span class="stat-lbl">Policy briefs</span></div>
+      <div class="stat"><span class="stat-num" id="count-tools">6</span><span class="stat-lbl">Tools</span></div>
+      <div class="stat"><span class="stat-num" id="count-pubs">3</span><span class="stat-lbl">Policy briefs</span></div>
       <div class="stat"><span class="stat-num">Free</span><span class="stat-lbl">Always open</span></div>
     </div>
   </div>
@@ -305,6 +320,32 @@ body.rtl .contact-links{flex-direction:row-reverse}
   </div>
 </section>
 
+<!-- ADI ASSISTANT -->
+<section id="assistant" class="assistant-sec">
+  <div class="container">
+    <div class="s-label">ADI AI Assistant</div>
+    <h2 class="s-title">A simple research helper for Afghanistan development work</h2>
+    <p class="s-sub">The assistant is being shaped to help farmers, researchers, NGOs, students, public institutions, and partners find the right ADI tool, brief, dataset, or evidence pathway without guessing.</p>
+    <div class="assistant-panel">
+      <div class="assistant-lead">
+        <div class="agent-tags">
+          <span class="agent-tag">Open data</span>
+          <span class="agent-tag">Dari / Pashto / English</span>
+          <span class="agent-tag">Proposal-safe</span>
+        </div>
+        <h3>What this agent should do</h3>
+        <p>It connects the ADI pillars with the wider work around ZaminAI and Alamzoi Consultancy: open Afghanistan evidence through ADI, field-level farmer tools through ZaminAI, and professional delivery through Alamzoi Consultancy.</p>
+        <a href="https://github.com/afghanistan-development-initiative" target="_blank" class="btn btn-p">Follow the ADI builds</a>
+      </div>
+      <div class="assistant-steps">
+        <div class="assistant-step"><div class="step-num">1</div><div><h4>Ask by topic</h4><p>Water security, soil degradation, crop suitability, energy access, economic diversification, governance, or education.</p></div></div>
+        <div class="assistant-step"><div class="step-num">2</div><div><h4>Get routed to evidence</h4><p>The assistant should point to the right ADI dashboard, policy brief, open source repository, or data source.</p></div></div>
+        <div class="assistant-step"><div class="step-num">3</div><div><h4>Separate live from beta</h4><p>It should clearly say what is live, what is beta, and where more field data or partner validation is still needed.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="container">
@@ -312,7 +353,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
     <h2 class="s-title" data-i18n="pub.title">Policy briefs & research notes</h2>
     <p class="s-sub" data-i18n="pub.sub">Evidence-based analysis and policy recommendations — freely available to practitioners, researchers and policymakers.</p>
     <div class="pub-grid">
-      <div class="pub-card" style="border-top:3px solid var(--gold-l)">
+      <div class="pub-card" data-pub-kind="policy" style="border-top:3px solid var(--gold-l)">
         <div class="pub-type" data-i18n="pb1.type">📋 Policy Brief No. 01 · May 2026</div>
         <h3 data-i18n="pb1.title">Afghanistan Water Security: Crisis, Data and the Path Forward</h3>
         <div class="pub-meta">Maiwand Jan Alamzoi · FAO UN Roster Specialist · ADI</div>
@@ -322,7 +363,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
           <a href="https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app" target="_blank" class="pb-s">💧 WaterSense</a>
         </div>
       </div>
-      <div class="pub-card" style="border-top:3px solid var(--green-l)">
+      <div class="pub-card" data-pub-kind="research" style="border-top:3px solid var(--green-l)">
         <div class="pub-type" data-i18n="nue.type">📊 Research Note · June 2026</div>
         <h3 data-i18n="nue.title">Nitrogen Use Efficiency Across the Bread Supply Chain: A Global Audit</h3>
         <div class="pub-meta">Maiwand Jan Alamzoi · WUR / ZaminAI · IFA Hackathon 2026</div>
@@ -332,7 +373,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
           <a href="https://github.com/afghanistan-development-initiative" target="_blank" class="pb-s" data-i18n="nue.gh">📊 GitHub</a>
         </div>
       </div>
-      <div class="pub-card" style="border-top:3px solid var(--green-l)">
+      <div class="pub-card" data-pub-kind="policy" style="border-top:3px solid var(--green-l)">
         <div class="pub-type" data-i18n="pb2.type">📋 Policy Brief No. 02 · July 2026</div>
         <h3 data-i18n="pb2.title">Afghanistan Soil Degradation: Assessment and Recovery Pathways</h3>
         <div class="pub-meta">Maiwand Jan Alamzoi · FAO UN Roster Specialist · ADI</div>
@@ -342,7 +383,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
           <a href="https://soilsense-npwqirrz7pqkrtq5eidw4v.streamlit.app" target="_blank" class="pb-s">🌱 SoilSense</a>
         </div>
       </div>
-      <div class="pub-card" style="border-top:3px solid var(--green-l)">
+      <div class="pub-card" data-pub-kind="policy" style="border-top:3px solid var(--green-l)">
         <div class="pub-type" data-i18n="pb3.type">📋 Policy Brief No. 03 · August 2026</div>
         <h3 data-i18n="pb3.title">Afghanistan Economic Diversification: From Aid Dependency to Productive Economy</h3>
         <div class="pub-meta">Maiwand Jan Alamzoi · FAO UN Roster Specialist · ADI</div>
@@ -494,7 +535,7 @@ const LANGS = {
     "hero.title":"Building the knowledge infrastructure<br>for <em>Afghanistan</em>",
     "hero.sub":"ADI is an independent research and data platform — free, open access, and built across six development pillars for practitioners, researchers, and policymakers worldwide.",
     "hero.btn1":"Explore the Tools","hero.btn2":"Read Policy Briefs",
-    "stat.pillars":"Pillars","stat.tools":"Live tools","stat.pubs":"Policy briefs","stat.free":"Always open",
+    "stat.pillars":"Pillars","stat.tools":"Tools","stat.pubs":"Policy briefs","stat.free":"Always open",
     "pillars.label":"Six Pillars","pillars.title":"Every dimension of development",
     "pillars.sub":"ADI covers Afghanistan's development challenges comprehensively — from soil health to governance, from energy to education.",
     "p1.title":"Agriculture & Food Security","p1.desc":"Crop suitability mapping, food security indicators, Khosh Tepa canal data, precision agriculture tools, and rural livelihood analysis.","p1.t1":"Soil health","p1.t2":"Crop mapping","p1.t3":"Food systems",
@@ -552,7 +593,7 @@ const LANGS = {
     "hero.title":"De kennisinfrastructuur bouwen<br>voor <em>Afghanistan</em>",
     "hero.sub":"ADI is een onafhankelijk onderzoeks- en dataplatform — gratis, open toegang, en gebouwd over zes ontwikkelingspijlers voor beoefenaars, onderzoekers en beleidsmakers wereldwijd.",
     "hero.btn1":"Verken de Tools","hero.btn2":"Lees Beleidsoverzichten",
-    "stat.pillars":"Pijlers","stat.tools":"Live tools","stat.pubs":"Beleidsoverzichten","stat.free":"Altijd gratis",
+    "stat.pillars":"Pijlers","stat.tools":"Tools","stat.pubs":"Beleidsoverzichten","stat.free":"Altijd gratis",
     "pillars.label":"Zes Pijlers","pillars.title":"Elke dimensie van ontwikkeling",
     "pillars.sub":"ADI behandelt de ontwikkelingsuitdagingen van Afghanistan uitgebreid — van bodemgezondheid tot bestuur, van energie tot onderwijs.",
     "p1.title":"Landbouw & Voedselzekerheid","p1.desc":"Gewasgeschiktheidskaarten, voedselzekerheidsindicatoren, Khosh Tepa kanaaldata, precisie-landbouwtools en analyse van plattelandsmiddelen van bestaan.","p1.t1":"Bodemgezondheid","p1.t2":"Gewaskartering","p1.t3":"Voedselsystemen",
@@ -752,11 +793,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
 // ── AUTO COUNT STATS ──
 function updateStats(){
-  const liveTools = document.querySelectorAll('.tool-card .ts-live').length +
-                    document.querySelectorAll('.tool-card .ts-soon').length;
-  document.getElementById('count-tools').textContent = liveTools;
-  const livePubs = document.querySelectorAll('.pub-card .pub-links').length;
-  document.getElementById('count-pubs').textContent = livePubs;
+  const tools = document.querySelectorAll('.tool-card').length;
+  document.getElementById('count-tools').textContent = tools;
+  const policyBriefs = document.querySelectorAll('.pub-card[data-pub-kind="policy"]').length;
+  document.getElementById('count-pubs').textContent = policyBriefs;
   document.getElementById('count-pillars').textContent = document.querySelectorAll('.pillar').length;
 }
 updateStats();
