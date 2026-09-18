@@ -1,0 +1,102 @@
+{
+  "version": "2026-09-18",
+  "strategy": {
+    "hub_repo": "afghanistan-development-initiative.github.io",
+    "rule": "Keep public pages, shared schemas, source registry, and lightweight prototypes in this hub. Give each serious dashboard or application its own repository when it has separate code, data processing, deployment, or maintenance needs.",
+    "shared_data_path": "data/",
+    "shared_docs_path": "docs/"
+  },
+  "modules": [
+    {
+      "id": "soilsense",
+      "name": "SoilSense",
+      "pillar": "Agriculture & Food Security",
+      "status": "live",
+      "repo_strategy": "separate_repo",
+      "repo": "https://github.com/afghanistan-development-initiative/soilsense",
+      "app_url": "https://soilsense-npwqirrz7pqkrtq5eidw4v.streamlit.app",
+      "maps": ["soil health", "erosion risk", "degradation probability", "soil organic carbon", "pH", "nitrogen"],
+      "data_sources": ["isric_soilgrids", "fao_land_resources"],
+      "outputs": ["soil score", "risk class", "recovery recommendation", "printable soil report"],
+      "next_build": ["province soil atlas", "district restoration priority", "salinity and drainage layer"]
+    },
+    {
+      "id": "watersense",
+      "name": "WaterSense",
+      "pillar": "Water & Environment",
+      "status": "live",
+      "repo_strategy": "separate_repo",
+      "repo": "https://github.com/afghanistan-development-initiative/watersense",
+      "app_url": "https://watersense-zgfumfyhmdeghxyww3hjyj.streamlit.app",
+      "maps": ["groundwater stress", "river basins", "rainfall", "drought", "household water access", "flood exposure"],
+      "data_sources": ["world_bank_wdi", "fao_aquastat", "chirps", "nasa_grace", "who_unicef_jmp"],
+      "outputs": ["water security profile", "basin priority", "groundwater warning", "policy brief evidence"],
+      "next_build": ["Kabul groundwater observatory", "basin dashboard", "water-point inventory connector"]
+    },
+    {
+      "id": "economysense",
+      "name": "EconomySense",
+      "pillar": "Economy, Trade & Livelihoods",
+      "status": "live",
+      "repo_strategy": "separate_repo",
+      "repo": "https://github.com/afghanistan-development-initiative/economysense",
+      "app_url": "https://economysense-qbgckhbvnoyqywuxbmi7hs.streamlit.app",
+      "maps": ["poverty exposure", "trade corridors", "market access", "export potential", "sector trends"],
+      "data_sources": ["world_bank_wdi", "world_bank_api", "un_comtrade_future"],
+      "outputs": ["economic profile", "sector comparison", "trade opportunity note", "investment screening"],
+      "next_build": ["province livelihood dashboard", "market-price connector", "export diversification atlas"]
+    },
+    {
+      "id": "cropzone_mapper",
+      "name": "CropZone Mapper",
+      "pillar": "Agriculture & Food Security",
+      "status": "beta",
+      "repo_strategy": "separate_repo_when_app_matures",
+      "repo": "https://github.com/afghanistan-development-initiative/cropzone-mapper",
+      "app_url": "",
+      "maps": ["crop suitability", "NDVI", "irrigation potential", "Khosh Tepa influence", "saffron suitability", "rangelands"],
+      "data_sources": ["esa_sentinel", "google_earth_engine", "chirps", "fao_giews", "ocha_hdx_boundaries"],
+      "outputs": ["crop zone class", "province crop profile", "irrigation opportunity", "food-security targeting note"],
+      "next_build": ["interactive Afghanistan crop map", "province selector", "crop-specific recommendations"]
+    },
+    {
+      "id": "energysense",
+      "name": "EnergySense",
+      "pillar": "Energy & Infrastructure",
+      "status": "beta",
+      "repo_strategy": "separate_repo_when_app_matures",
+      "repo": "https://github.com/afghanistan-development-initiative/energysense",
+      "app_url": "",
+      "maps": ["solar suitability", "hydro potential", "mini-grid opportunity", "rural electrification gap", "productive energy use"],
+      "data_sources": ["global_solar_atlas", "world_bank_energy", "ocha_hdx_boundaries", "openstreetmap_future"],
+      "outputs": ["energy opportunity score", "mini-grid screening", "productive-use package", "investment note"],
+      "next_build": ["facility energy access map", "solar cold-chain screening", "hydro micro-site shortlist"]
+    },
+    {
+      "id": "education_society_atlas",
+      "name": "Education & Society Atlas",
+      "pillar": "Education, Society & Human Capital",
+      "status": "planned",
+      "repo_strategy": "start_as_hub_file_then_separate_repo",
+      "repo": "",
+      "app_url": "",
+      "maps": ["school access", "literacy", "gender inclusion", "youth employment", "digital access", "returnee pressure"],
+      "data_sources": ["unesco_future", "world_bank_wdi", "ocha_hdx_population", "unhcr_iom_future"],
+      "outputs": ["human-capital gap profile", "school access priority", "skills programme targeting", "social pressure note"],
+      "next_build": ["school access layer", "district youth dashboard", "digital access map"]
+    },
+    {
+      "id": "adi_ai_assistant",
+      "name": "ADI AI Assistant",
+      "pillar": "Cross-cutting",
+      "status": "beta",
+      "repo_strategy": "separate_repo_when_backend_exists",
+      "repo": "https://github.com/afghanistan-development-initiative/adi-ai-assistant",
+      "app_url": "",
+      "maps": ["all ADI module routing"],
+      "data_sources": ["adi_module_registry", "adi_source_registry", "policy_briefs", "dashboard_outputs"],
+      "outputs": ["evidence routing", "source-aware answer", "province brief", "proposal-safe summary"],
+      "next_build": ["retrieval index", "Dari/Pashto response templates", "source citation checker"]
+    }
+  ]
+}

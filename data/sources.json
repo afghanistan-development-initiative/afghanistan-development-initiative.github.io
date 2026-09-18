@@ -1,0 +1,97 @@
+{
+  "version": "2026-09-18",
+  "principle": "Prefer official, UN, World Bank, FAO, OCHA/HDX, NASA/ESA/ISRIC or other authoritative open sources. Any locally estimated or prototype score must be labelled as non-official until validated.",
+  "sources": [
+    {
+      "id": "ocha_hdx_boundaries",
+      "name": "Afghanistan Common Operational Administrative Boundaries",
+      "publisher": "OCHA / HDX, sourced from AGCHO",
+      "type": "administrative boundaries",
+      "officiality": "authoritative humanitarian operational dataset",
+      "use_for": ["province boundaries", "district boundaries", "map joins", "province explorer"],
+      "url": "https://data.humdata.org/"
+    },
+    {
+      "id": "ocha_hdx_population",
+      "name": "Afghanistan population statistics / COD-PS pathway",
+      "publisher": "HDX HAPI / OCHA / UNFPA / NSIA pathway",
+      "type": "population",
+      "officiality": "authoritative but projection-sensitive",
+      "use_for": ["population denominators", "service coverage", "human-capital indicators"],
+      "warning": "Always record year, method and source. Compare with NSIA yearbooks and gridded population products before using in official analysis.",
+      "url": "https://data.humdata.org/"
+    },
+    {
+      "id": "world_bank_wdi",
+      "name": "World Development Indicators",
+      "publisher": "World Bank",
+      "type": "national indicators",
+      "officiality": "authoritative international source",
+      "use_for": ["GDP", "poverty", "water access", "energy access", "education indicators", "economic comparisons"],
+      "url": "https://data.worldbank.org/"
+    },
+    {
+      "id": "fao_aquastat",
+      "name": "AQUASTAT",
+      "publisher": "FAO",
+      "type": "water resources and irrigation",
+      "officiality": "authoritative UN source",
+      "use_for": ["water resources", "irrigation", "withdrawals", "water security context"],
+      "url": "https://www.fao.org/aquastat/"
+    },
+    {
+      "id": "fao_giews",
+      "name": "Global Information and Early Warning System",
+      "publisher": "FAO",
+      "type": "food security and agriculture monitoring",
+      "officiality": "authoritative UN source",
+      "use_for": ["food security", "crop outlook", "cereal production context", "agriculture warnings"],
+      "url": "https://www.fao.org/giews/"
+    },
+    {
+      "id": "isric_soilgrids",
+      "name": "SoilGrids",
+      "publisher": "ISRIC",
+      "type": "global soil property maps",
+      "officiality": "scientific open-data source",
+      "use_for": ["soil organic carbon", "pH", "nitrogen", "texture", "soil screening"],
+      "url": "https://soilgrids.org/"
+    },
+    {
+      "id": "chirps",
+      "name": "CHIRPS rainfall",
+      "publisher": "UCSB Climate Hazards Center",
+      "type": "rainfall time series",
+      "officiality": "scientific open-data source",
+      "use_for": ["rainfall", "drought", "seasonal anomaly", "crop stress"],
+      "url": "https://www.chc.ucsb.edu/data/chirps"
+    },
+    {
+      "id": "nasa_grace",
+      "name": "GRACE / GRACE-FO",
+      "publisher": "NASA / JPL",
+      "type": "terrestrial water storage",
+      "officiality": "scientific satellite source",
+      "use_for": ["groundwater trend context", "water storage anomaly", "basin stress"],
+      "url": "https://grace.jpl.nasa.gov/"
+    },
+    {
+      "id": "esa_sentinel",
+      "name": "Sentinel satellite data",
+      "publisher": "ESA / Copernicus",
+      "type": "earth observation",
+      "officiality": "official satellite programme",
+      "use_for": ["NDVI", "land cover", "vegetation monitoring", "flood/land observation"],
+      "url": "https://dataspace.copernicus.eu/"
+    },
+    {
+      "id": "global_solar_atlas",
+      "name": "Global Solar Atlas",
+      "publisher": "World Bank / ESMAP / Solargis",
+      "type": "solar resource",
+      "officiality": "authoritative open planning source",
+      "use_for": ["solar suitability", "PV potential", "energy opportunity screening"],
+      "url": "https://globalsolaratlas.info/"
+    }
+  ]
+}
