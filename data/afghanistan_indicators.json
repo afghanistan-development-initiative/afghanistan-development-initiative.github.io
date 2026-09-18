@@ -1,0 +1,130 @@
+{
+  "version": "2026-09-18",
+  "country": "Afghanistan",
+  "iso3": "AFG",
+  "source": "World Bank World Development Indicators API",
+  "source_url": "https://api.worldbank.org/v2/country/AFG?format=json",
+  "method": "Latest non-null Afghanistan values available from the World Bank API at static export time. Values are national indicators; province and district datasets must be labelled separately when added.",
+  "indicators": [
+    {
+      "id": "SP.POP.TOTL",
+      "name": "Population, total",
+      "latest_year": 2025,
+      "latest_value": 43844111,
+      "unit": "people",
+      "pillar": "Education, Society & Human Capital",
+      "tool_modules": ["education_society_atlas", "economysense"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/SP.POP.TOTL?format=json&per_page=70"
+    },
+    {
+      "id": "NY.GDP.MKTP.CD",
+      "name": "GDP (current US$)",
+      "latest_year": 2024,
+      "latest_value": 17778508875.7396,
+      "unit": "current US$",
+      "pillar": "Economy, Trade & Livelihoods",
+      "tool_modules": ["economysense"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/NY.GDP.MKTP.CD?format=json&per_page=70"
+    },
+    {
+      "id": "NY.GDP.PCAP.CD",
+      "name": "GDP per capita (current US$)",
+      "latest_year": 2024,
+      "latest_value": 416.871146273728,
+      "unit": "current US$ per person",
+      "pillar": "Economy, Trade & Livelihoods",
+      "tool_modules": ["economysense"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/NY.GDP.PCAP.CD?format=json&per_page=70"
+    },
+    {
+      "id": "EG.ELC.ACCS.ZS",
+      "name": "Access to electricity (% of population)",
+      "latest_year": 2024,
+      "latest_value": 87.8,
+      "unit": "percent of population",
+      "pillar": "Energy & Infrastructure",
+      "tool_modules": ["energysense", "education_society_atlas"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/EG.ELC.ACCS.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "EG.ELC.RNEW.ZS",
+      "name": "Renewable electricity output (% of total electricity output)",
+      "latest_year": 2021,
+      "latest_value": 78.2344746063241,
+      "unit": "percent of electricity output",
+      "pillar": "Energy & Infrastructure",
+      "tool_modules": ["energysense"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/EG.ELC.RNEW.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "AG.LND.AGRI.ZS",
+      "name": "Agricultural land (% of land area)",
+      "latest_year": 2023,
+      "latest_value": 58.4395075356853,
+      "unit": "percent of land area",
+      "pillar": "Agriculture & Food Security",
+      "tool_modules": ["soilsense", "cropzone_mapper"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/AG.LND.AGRI.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "AG.LND.ARBL.ZS",
+      "name": "Arable land (% of land area)",
+      "latest_year": 2023,
+      "latest_value": 12.0294987964368,
+      "unit": "percent of land area",
+      "pillar": "Agriculture & Food Security",
+      "tool_modules": ["soilsense", "cropzone_mapper"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/AG.LND.ARBL.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "AG.LND.FRST.ZS",
+      "name": "Forest area (% of land area)",
+      "latest_year": 2023,
+      "latest_value": 1.85278199408184,
+      "unit": "percent of land area",
+      "pillar": "Water & Environment",
+      "tool_modules": ["soilsense", "watersense"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/AG.LND.FRST.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "SH.H2O.BASW.ZS",
+      "name": "People using at least basic drinking water services (% of population)",
+      "latest_year": 2024,
+      "latest_value": 80.8324374493852,
+      "unit": "percent of population",
+      "pillar": "Water & Environment",
+      "tool_modules": ["watersense", "education_society_atlas"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/SH.H2O.BASW.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "SH.STA.BASS.ZS",
+      "name": "People using at least basic sanitation services (% of population)",
+      "latest_year": 2024,
+      "latest_value": 54.4957993646086,
+      "unit": "percent of population",
+      "pillar": "Water & Environment",
+      "tool_modules": ["watersense", "education_society_atlas"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/SH.STA.BASS.ZS?format=json&per_page=70"
+    },
+    {
+      "id": "SE.PRM.ENRR",
+      "name": "School enrollment, primary (% gross)",
+      "latest_year": 2023,
+      "latest_value": 112.230903625488,
+      "unit": "gross enrollment percent",
+      "pillar": "Education, Society & Human Capital",
+      "tool_modules": ["education_society_atlas"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/SE.PRM.ENRR?format=json&per_page=70"
+    },
+    {
+      "id": "SL.UEM.TOTL.ZS",
+      "name": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
+      "latest_year": 2025,
+      "latest_value": 13.351,
+      "unit": "percent of labor force",
+      "pillar": "Economy, Trade & Livelihoods",
+      "tool_modules": ["economysense", "education_society_atlas"],
+      "source_url": "https://api.worldbank.org/v2/country/AFG/indicator/SL.UEM.TOTL.ZS?format=json&per_page=70"
+    }
+  ]
+}

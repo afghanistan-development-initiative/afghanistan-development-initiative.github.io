@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADI Tool Hub | Afghanistan Development Initiative</title>
+  <meta name="description" content="Source-labelled ADI tools and starter datasets for Afghanistan development analysis.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#1d3d2c;--green-2:#2f6b4f;--gold:#b8842f;--ink:#18221d;--muted:#657269;--line:#dfe6df;--soft:#f6f8f5;--white:#fff;--shadow:0 18px 50px rgba(24,34,29,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',Arial,sans-serif;background:var(--soft);color:var(--ink);line-height:1.55}
+    a{color:inherit}
+    .top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;gap:1rem}
+    .brand{font-weight:800;color:var(--green);text-decoration:none;letter-spacing:.04em}
+    .navlinks{display:flex;gap:.55rem;flex-wrap:wrap}
+    .navlinks a{font-size:.86rem;text-decoration:none;color:var(--muted);padding:.35rem .55rem;border-radius:6px}
+    .navlinks a:hover{background:var(--soft);color:var(--green)}
+    .hero{background:linear-gradient(135deg,#f6f8f5 0%,#fff 56%,#eef4ee 100%);border-bottom:1px solid var(--line)}
+    .hero-in{max-width:1180px;margin:auto;padding:5rem 1.25rem 3.5rem;display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-weight:800;margin-bottom:.7rem}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--green);line-height:1.05}
+    h1{font-size:clamp(2.5rem,6vw,5rem);max-width:850px}
+    .lead{margin-top:1.1rem;color:var(--muted);font-size:1.06rem;max-width:760px}
+    .hero-panel{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:1.25rem}
+    .metric{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+    .metric:last-child{border-bottom:0}
+    .metric span{color:var(--muted);font-size:.88rem}
+    .metric strong{color:var(--green);font-size:1.05rem;text-align:right}
+    main{max-width:1180px;margin:auto;padding:2.5rem 1.25rem 4rem}
+    .section-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin:1rem 0 1.25rem}
+    h2{font-size:2.2rem}
+    .small{color:var(--muted);font-size:.92rem;max-width:680px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1.2rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
+    .card h3{font-size:1.45rem;margin:.45rem 0}
+    .card p{color:var(--muted);font-size:.92rem}
+    .status{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);background:#edf5ee;border:1px solid #d8e8da;border-radius:999px;padding:.28rem .55rem}
+    .status.beta{color:#755117;background:#fff6df;border-color:#ead7a8}
+    .status.planned{color:#5c6470;background:#f1f3f5;border-color:#dde2e7}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+    .chip{font-size:.76rem;color:var(--green);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.25rem .5rem}
+    .actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:7px;padding:.58rem .85rem;font-weight:800;font-size:.84rem;border:1px solid var(--green)}
+    .btn.primary{background:var(--green);color:var(--white)}
+    .btn.secondary{background:var(--white);color:var(--green)}
+    .data-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(24,34,29,.04)}
+    th,td{text-align:left;padding:.9rem;border-bottom:1px solid var(--line);vertical-align:top}
+    th{font-size:.76rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);background:#fbfcfa}
+    td{font-size:.9rem}
+    tr:last-child td{border-bottom:0}
+    .value{font-weight:800;color:var(--green);white-space:nowrap}
+    .module-list{color:var(--muted);font-size:.82rem}
+    .tool-calc{margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .calc-row{display:grid;grid-template-columns:1fr 1.2fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+    .calc-row:last-child{border-bottom:0}
+    .calc-row b{color:var(--green)}
+    .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
+    @media(max-width:900px){.hero-in,.grid,.tool-calc{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}}
+    @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="nav">
+      <a href="../" class="brand">ADI Tool Hub</a>
+      <div class="navlinks">
+        <a href="../">Main site</a>
+        <a href="#modules">Modules</a>
+        <a href="#data">Actual data</a>
+        <a href="#calculations">Calculations</a>
+        <a href="../data/sources.json">Source registry</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <div class="eyebrow">Afghanistan Development Initiative</div>
+        <h1>Tools, data, and calculations for Afghanistan development work.</h1>
+        <p class="lead">This hub connects ADI's live tools, planned dashboards, and source-labelled starter datasets. The first data layer uses official World Bank indicators and keeps modelled or prototype values clearly separate.</p>
+      </div>
+      <aside class="hero-panel" id="summaryPanel">
+        <div class="metric"><span>Modules</span><strong id="moduleCount">Loading</strong></div>
+        <div class="metric"><span>Live dashboards</span><strong id="liveCount">Loading</strong></div>
+        <div class="metric"><span>Official indicators</span><strong id="indicatorCount">Loading</strong></div>
+        <div class="metric"><span>Last export</span><strong>18 Sep 2026</strong></div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="modules">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Module registry</div>
+          <h2>Build each pillar as a real tool.</h2>
+        </div>
+        <p class="small">Separate repositories are best once a module has its own pipeline, backend, deployment, or maintenance cycle. The hub keeps shared schemas, public pages, and starter data together.</p>
+      </div>
+      <div class="grid" id="moduleGrid"></div>
+    </section>
+
+    <section id="data" style="margin-top:3rem">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Actual data layer</div>
+          <h2>Official Afghanistan indicators.</h2>
+        </div>
+        <p class="small">Latest non-null national values from the World Bank WDI API. These are suitable for proposal context, country profiles, and dashboard baselines; province layers require separate official or clearly modelled datasets.</p>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Indicator</th><th>Latest</th><th>Pillar</th><th>Used by</th><th>Source</th></tr>
+        </thead>
+        <tbody id="indicatorRows"></tbody>
+      </table>
+    </section>
+
+    <section id="calculations" class="tool-calc">
+      <div class="card">
+        <div class="eyebrow">What each tool should calculate</div>
+        <div class="calc-row"><b>SoilSense</b><span>Soil health score, erosion/degradation risk, organic carbon and pH flags, restoration recommendation.</span></div>
+        <div class="calc-row"><b>WaterSense</b><span>Water access gap, groundwater stress warning, basin priority, drought/flood exposure note.</span></div>
+        <div class="calc-row"><b>CropZone Mapper</b><span>Crop suitability class, irrigation opportunity, NDVI condition, Khosh Tepa influence zone.</span></div>
+        <div class="calc-row"><b>EnergySense</b><span>Solar suitability, mini-grid opportunity, electricity access gap, productive-use energy package.</span></div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Next data builds</div>
+        <div class="calc-row"><b>Province atlas</b><span>Move embedded province profiles into JSON and connect them to the national map.</span></div>
+        <div class="calc-row"><b>Boundary data</b><span>Add OCHA HDX province and district boundaries as map layers with licensing notes.</span></div>
+        <div class="calc-row"><b>Earth data</b><span>Add SoilGrids, CHIRPS, Sentinel/NDVI, Global Solar Atlas, and AQUASTAT connectors.</span></div>
+        <div class="calc-row"><b>AI assistant</b><span>Answer in Dari, Pashto, Dutch, and English using only ADI registries, source notes, and approved briefs.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Afghanistan Development Initiative (ADI) | Open data tools for practical development decisions.</footer>
+
+  <script>
+    const fmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
+    const money = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 });
+
+    function formatValue(indicator){
+      const v = indicator.latest_value;
+      if(indicator.unit === 'people') return fmt.format(v);
+      if(indicator.unit.includes('US$')) return '$' + money.format(v);
+      if(indicator.unit.includes('percent')) return fmt.format(v) + '%';
+      return fmt.format(v);
+    }
+
+    function statusClass(status){
+      if(status === 'live') return 'status';
+      if(status === 'beta') return 'status beta';
+      return 'status planned';
+    }
+
+    async function loadHub(){
+      const [modulesRes, indicatorsRes] = await Promise.all([
+        fetch('../data/modules.json'),
+        fetch('../data/afghanistan_indicators.json')
+      ]);
+      const moduleData = await modulesRes.json();
+      const indicatorData = await indicatorsRes.json();
+      const modules = moduleData.modules;
+      const indicators = indicatorData.indicators;
+
+      document.getElementById('moduleCount').textContent = modules.length;
+      document.getElementById('liveCount').textContent = modules.filter(m => m.status === 'live').length;
+      document.getElementById('indicatorCount').textContent = indicators.length;
+
+      document.getElementById('moduleGrid').innerHTML = modules.map(module => {
+        const action = module.app_url
+          ? `<a class="btn primary" href="${module.app_url}" target="_blank" rel="noopener">Launch app</a>`
+          : `<a class="btn primary" href="../data/modules.json">Open registry</a>`;
+        const repo = module.repo ? `<a class="btn secondary" href="${module.repo}" target="_blank" rel="noopener">Repository</a>` : '';
+        return `<article class="card">
+          <span class="${statusClass(module.status)}">${module.status}</span>
+          <h3>${module.name}</h3>
+          <p>${module.pillar}</p>
+          <div class="chips">${module.maps.slice(0,5).map(m => `<span class="chip">${m}</span>`).join('')}</div>
+          <div class="actions">${action}${repo}</div>
+        </article>`;
+      }).join('');
+
+      document.getElementById('indicatorRows').innerHTML = indicators.map(indicator => {
+        const modules = indicator.tool_modules.map(id => {
+          const match = moduleData.modules.find(module => module.id === id);
+          return match ? match.name : id;
+        }).join(', ');
+        return `<tr>
+          <td><strong>${indicator.name}</strong><div class="module-list">${indicator.id}</div></td>
+          <td class="value">${formatValue(indicator)}<div class="module-list">${indicator.latest_year}</div></td>
+          <td>${indicator.pillar}</td>
+          <td>${modules}</td>
+          <td><a href="${indicator.source_url}" target="_blank" rel="noopener">World Bank API</a></td>
+        </tr>`;
+      }).join('');
+    }
+
+    loadHub().catch(error => {
+      document.getElementById('moduleGrid').innerHTML = '<article class="card"><h3>Data could not load</h3><p>Open this page through GitHub Pages or a local server so JSON files can be fetched.</p></article>';
+      console.error(error);
+    });
+  </script>
+</body>
+</html>
