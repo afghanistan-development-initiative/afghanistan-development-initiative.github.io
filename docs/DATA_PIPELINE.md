@@ -15,6 +15,7 @@ This hub separates public strategy pages from working datasets and application p
 - `data/modules.json`: ADI module registry, live app links, planned repositories, maps and outputs.
 - `data/sources.json`: source registry and classification.
 - `data/afghanistan_indicators.json`: first official Afghanistan national indicator layer from the World Bank WDI API.
+- `data/afghanistan_province_priorities.json`: prototype province atlas layer for the public "what is where" map.
 
 ## Build order
 

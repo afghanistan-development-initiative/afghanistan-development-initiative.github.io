@@ -22,6 +22,7 @@ Serious dashboards and applications should live in separate repositories once th
 - `data/modules.json` - registry of ADI tools, modules and workstreams
 - `data/sources.json` - registry of official and authoritative data sources
 - `data/afghanistan_indicators.json` - first official Afghanistan indicator layer from the World Bank WDI API
+- `data/afghanistan_province_priorities.json` - prototype province atlas layer for map priorities, gaps and tool routing
 - `docs/ARCHITECTURE.md` - rules for when to use one file, one folder or a separate repository
 - `docs/DATA_PIPELINE.md` - data levels, build order and near-term pipeline plan
 - `publications/` - policy briefs and research notes

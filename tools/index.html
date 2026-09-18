@@ -52,12 +52,38 @@
     tr:last-child td{border-bottom:0}
     .value{font-weight:800;color:var(--green);white-space:nowrap}
     .module-list{color:var(--muted);font-size:.82rem}
+    .map-shell{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:stretch}
+    .afg-map{min-height:560px;background:linear-gradient(135deg,#fff,#eef5ef);border:1px solid var(--line);border-radius:8px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .afg-shape{position:absolute;inset:8% 5%;clip-path:polygon(7% 43%,16% 26%,31% 17%,45% 11%,60% 16%,72% 10%,87% 24%,82% 38%,94% 50%,79% 60%,72% 76%,57% 72%,47% 87%,32% 80%,22% 67%,9% 61%);background:linear-gradient(135deg,#e1efe5,#f8fbf7);border:1px solid rgba(29,61,44,.12)}
+    .map-region{position:absolute;border:1px solid rgba(29,61,44,.16);background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-radius:8px;padding:.55rem .65rem;color:var(--green);font-weight:800;font-size:.75rem;box-shadow:0 8px 22px rgba(24,34,29,.06)}
+    .map-region span{display:block;color:var(--muted);font-weight:600;font-size:.67rem}
+    .map-region.north{left:28%;top:15%}.map-region.northeast{right:9%;top:18%}.map-region.west{left:10%;top:42%}.map-region.central{left:48%;top:43%}.map-region.east{right:13%;top:51%}.map-region.south{left:42%;bottom:13%}
+    .province-dot{position:absolute;width:1.2rem;height:1.2rem;border-radius:50%;border:2px solid #fff;background:var(--gold);box-shadow:0 5px 16px rgba(24,34,29,.22);transform:translate(-50%,-50%);cursor:pointer;transition:transform .18s,background .18s}
+    .province-dot:hover,.province-dot.active{transform:translate(-50%,-50%) scale(1.35);background:var(--green-2);z-index:3}
+    .province-dot::after{content:attr(data-score);position:absolute;left:50%;top:-1.65rem;transform:translateX(-50%);background:var(--green);color:#fff;border-radius:999px;font-size:.63rem;font-weight:800;padding:.12rem .35rem;opacity:0;pointer-events:none}
+    .province-dot:hover::after,.province-dot.active::after{opacity:1}
+    .map-legend{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;gap:.45rem;flex-wrap:wrap}
+    .legend-pill{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:.3rem .55rem;font-size:.72rem;color:var(--muted)}
+    .map-panel{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
+    .map-controls{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:.85rem}
+    .map-controls select,.map-controls input{border:1px solid var(--line);border-radius:7px;padding:.62rem .72rem;font-family:inherit;font-size:.85rem;background:#fbfcfa;color:var(--ink)}
+    .map-controls input{flex:1;min-width:180px}
+    .province-list{display:grid;gap:.45rem;max-height:260px;overflow:auto;padding-right:.15rem}
+    .province-row{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:7px;padding:.65rem;background:#fbfcfa;cursor:pointer}
+    .province-row:hover,.province-row.active{border-color:#a9cdb8;background:#eff7f0}
+    .province-row strong{display:block;font-size:.86rem;color:var(--green)}.province-row span{display:block;font-size:.72rem;color:var(--muted)}
+    .score-badge{width:2rem;height:2rem;border-radius:7px;background:#f4ead7;color:#8a5d19;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:800}
+    .detail{margin-top:1rem;border-top:1px solid var(--line);padding-top:1rem}
+    .detail h3{font-size:1.55rem;margin-bottom:.25rem}.detail p{color:var(--muted);font-size:.88rem}
+    .bars{display:grid;gap:.45rem;margin:1rem 0}.bar{display:grid;grid-template-columns:4.6rem 1fr 2rem;gap:.5rem;align-items:center;font-size:.72rem;color:var(--muted)}
+    .track{height:.45rem;border-radius:999px;background:#edf1ed;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--green-2),var(--gold))}
+    .note{background:#fbfcfa;border:1px solid var(--line);border-radius:7px;padding:.8rem;font-size:.82rem;color:var(--muted)}
     .tool-calc{margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
     .calc-row{display:grid;grid-template-columns:1fr 1.2fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
     .calc-row:last-child{border-bottom:0}
     .calc-row b{color:var(--green)}
     .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
-    @media(max-width:900px){.hero-in,.grid,.tool-calc{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}}
+    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}}
     @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
   </style>
 </head>
@@ -68,6 +94,7 @@
       <div class="navlinks">
         <a href="../">Main site</a>
         <a href="#modules">Modules</a>
+        <a href="#map">Map</a>
         <a href="#data">Actual data</a>
         <a href="#calculations">Calculations</a>
         <a href="../data/sources.json">Source registry</a>
@@ -101,6 +128,48 @@
         <p class="small">Separate repositories are best once a module has its own pipeline, backend, deployment, or maintenance cycle. The hub keeps shared schemas, public pages, and starter data together.</p>
       </div>
       <div class="grid" id="moduleGrid"></div>
+    </section>
+
+    <section id="map" style="margin-top:3rem">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Afghanistan map</div>
+          <h2>What is where?</h2>
+        </div>
+        <p class="small">A first ADI province atlas: click a province point to see potential, problems, missing data and the tool pathway. This is a planning map, not an official boundary file.</p>
+      </div>
+      <div class="map-shell">
+        <div class="afg-map" id="provinceMap" aria-label="Afghanistan province priority map">
+          <div class="afg-shape"></div>
+          <div class="map-region north">North<span>wheat, irrigation, trade</span></div>
+          <div class="map-region northeast">Northeast<span>watersheds, hydro, forests</span></div>
+          <div class="map-region west">West<span>drought, saffron, corridors</span></div>
+          <div class="map-region central">Central<span>urban pressure, orchards</span></div>
+          <div class="map-region east">East<span>river valleys, horticulture</span></div>
+          <div class="map-region south">South<span>solar, rangelands, basins</span></div>
+          <div class="map-legend">
+            <span class="legend-pill">Dots = provinces</span>
+            <span class="legend-pill">Badge = priority score</span>
+            <span class="legend-pill">Scores are prototype planning indices</span>
+          </div>
+        </div>
+        <aside class="map-panel">
+          <div class="map-controls">
+            <select id="mapRegionFilter" aria-label="Filter provinces by region">
+              <option value="all">All regions</option>
+              <option value="Central">Central</option>
+              <option value="East">East</option>
+              <option value="North">North</option>
+              <option value="Northeast">Northeast</option>
+              <option value="South">South</option>
+              <option value="West">West</option>
+            </select>
+            <input id="mapSearch" type="search" placeholder="Search province, gap, problem or potential">
+          </div>
+          <div class="province-list" id="mapProvinceList"></div>
+          <div class="detail" id="mapProvinceDetail"></div>
+        </aside>
+      </div>
     </section>
 
     <section id="data" style="margin-top:3rem">
@@ -157,19 +226,138 @@
       return 'status planned';
     }
 
+    function provinceFromRow(row){
+      return {
+        name: row[0],
+        region: row[1],
+        pop: row[2],
+        area: row[3],
+        x: row[4],
+        y: row[5],
+        potential: row[6],
+        problems: row[7],
+        gaps: row[8],
+        solutions: row[9],
+        scores: { agri: row[10], water: row[11], energy: row[12], economy: row[13], gap: row[14] }
+      };
+    }
+
+    function priorityScore(province){
+      const s = province.scores;
+      return Math.round(((s.agri + s.water + s.energy + s.economy) / 4) * 0.55 + s.gap * 0.45);
+    }
+
+    function bestTools(province){
+      const s = province.scores;
+      const ranked = [
+        ['SoilSense', s.agri],
+        ['WaterSense', s.water],
+        ['EnergySense', s.energy],
+        ['EconomySense', s.economy],
+        ['ADI AI Assistant', s.gap]
+      ].sort((a,b) => b[1] - a[1]);
+      return ranked.slice(0,3).map(item => item[0]).join(', ');
+    }
+
+    function renderBars(province){
+      const labels = { agri: 'Agri', water: 'Water', energy: 'Energy', economy: 'Economy', gap: 'Data gap' };
+      return Object.entries(province.scores).map(([key, value]) => `
+        <div class="bar">
+          <span>${labels[key]}</span>
+          <div class="track"><div class="fill" style="width:${value}%"></div></div>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+    }
+
+    function renderProvinceDetail(province){
+      const detail = document.getElementById('mapProvinceDetail');
+      if(!detail || !province) return;
+      detail.innerHTML = `
+        <h3>${province.name}</h3>
+        <p>${province.region} region | ${fmt.format(province.area)} km2 | population ${fmt.format(province.pop)}</p>
+        <div class="chips">${province.potential.split(', ').map(item => `<span class="chip">${item}</span>`).join('')}</div>
+        <div class="bars">${renderBars(province)}</div>
+        <div class="note">
+          <strong>What is here:</strong> ${province.potential}.<br>
+          <strong>Main problems:</strong> ${province.problems}.<br>
+          <strong>Missing data:</strong> ${province.gaps}.<br>
+          <strong>How ADI can help:</strong> ${province.solutions}.<br>
+          <strong>Use these tools:</strong> ${bestTools(province)}.
+        </div>
+      `;
+    }
+
+    function renderProvinceMap(provinces){
+      const map = document.getElementById('provinceMap');
+      const list = document.getElementById('mapProvinceList');
+      const regionFilter = document.getElementById('mapRegionFilter');
+      const search = document.getElementById('mapSearch');
+      if(!map || !list || !regionFilter || !search) return;
+
+      const selectProvince = (province) => {
+        document.querySelectorAll('.province-dot,.province-row').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll(`[data-province="${province.name}"]`).forEach(el => el.classList.add('active'));
+        renderProvinceDetail(province);
+      };
+
+      const render = () => {
+        const q = search.value.toLowerCase();
+        const region = regionFilter.value;
+        const filtered = provinces
+          .filter(p => (region === 'all' || p.region === region) && Object.values(p).join(' ').toLowerCase().includes(q))
+          .sort((a,b) => priorityScore(b) - priorityScore(a));
+
+        map.querySelectorAll('.province-dot').forEach(dot => dot.remove());
+        filtered.forEach(province => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'province-dot';
+          dot.dataset.province = province.name;
+          dot.dataset.score = priorityScore(province);
+          dot.style.left = province.x + '%';
+          dot.style.top = province.y + '%';
+          dot.title = `${province.name}: ${province.potential}`;
+          dot.addEventListener('click', () => selectProvince(province));
+          map.appendChild(dot);
+        });
+
+        list.innerHTML = filtered.map((province, index) => `
+          <div class="province-row ${index === 0 ? 'active' : ''}" data-province="${province.name}">
+            <div><strong>${province.name}</strong><span>${province.region} | ${province.potential}</span></div>
+            <div class="score-badge">${priorityScore(province)}</div>
+          </div>
+        `).join('');
+
+        list.querySelectorAll('.province-row').forEach(row => {
+          row.addEventListener('click', () => selectProvince(provinces.find(p => p.name === row.dataset.province)));
+        });
+        renderProvinceDetail(filtered[0] || provinces[0]);
+        if(filtered[0]) document.querySelectorAll(`[data-province="${filtered[0].name}"]`).forEach(el => el.classList.add('active'));
+      };
+
+      regionFilter.addEventListener('change', render);
+      search.addEventListener('input', render);
+      render();
+    }
+
     async function loadHub(){
-      const [modulesRes, indicatorsRes] = await Promise.all([
+      const [modulesRes, indicatorsRes, provincesRes] = await Promise.all([
         fetch('../data/modules.json'),
-        fetch('../data/afghanistan_indicators.json')
+        fetch('../data/afghanistan_indicators.json'),
+        fetch('../data/afghanistan_province_priorities.json')
       ]);
       const moduleData = await modulesRes.json();
       const indicatorData = await indicatorsRes.json();
+      const provinceData = await provincesRes.json();
       const modules = moduleData.modules;
       const indicators = indicatorData.indicators;
+      const provinces = provinceData.provinces.map(provinceFromRow);
 
       document.getElementById('moduleCount').textContent = modules.length;
       document.getElementById('liveCount').textContent = modules.filter(m => m.status === 'live').length;
       document.getElementById('indicatorCount').textContent = indicators.length;
+      renderProvinceMap(provinces);
 
       document.getElementById('moduleGrid').innerHTML = modules.map(module => {
         const action = module.app_url
