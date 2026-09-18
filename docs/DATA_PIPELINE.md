@@ -34,3 +34,7 @@ This hub separates public strategy pages from working datasets and application p
 - EnergySense: add Global Solar Atlas, electricity access, mini-grid and productive-use filters.
 - Education & Society Atlas: add school, youth, gender, displacement, population and digital access layers.
 - ADI AI Assistant: answer from approved ADI data files, policy briefs and tool outputs in Dari, Pashto, Dutch and English.
+
+## Language layer
+
+The public map interface should treat Afghanistan Dari as `prs-AF` and Pashto as `ps-AF`. Static instructions, layer names, legends and province-detail labels can be translated in the hub. Full translations of province-specific problem and solution text should be added as separate structured fields before using them in official public outreach.

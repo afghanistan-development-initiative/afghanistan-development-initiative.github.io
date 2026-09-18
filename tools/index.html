@@ -17,6 +17,12 @@
     .navlinks{display:flex;gap:.55rem;flex-wrap:wrap}
     .navlinks a{font-size:.86rem;text-decoration:none;color:var(--muted);padding:.35rem .55rem;border-radius:6px}
     .navlinks a:hover{background:var(--soft);color:var(--green)}
+    .lang-switch{display:flex;gap:.3rem;flex-wrap:wrap}
+    .lang-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.34rem .58rem;color:var(--muted);font-family:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
+    .lang-btn.active{background:var(--green);border-color:var(--green);color:#fff}
+    body.rtl{direction:rtl}
+    body.rtl .nav,body.rtl .hero-in,body.rtl .section-head,body.rtl .map-shell,body.rtl .tool-calc{direction:rtl}
+    body.rtl th,body.rtl td{text-align:right}
     .hero{background:linear-gradient(135deg,#f6f8f5 0%,#fff 56%,#eef4ee 100%);border-bottom:1px solid var(--line)}
     .hero-in{max-width:1180px;margin:auto;padding:5rem 1.25rem 3.5rem;display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end}
     .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-weight:800;margin-bottom:.7rem}
@@ -53,6 +59,9 @@
     .value{font-weight:800;color:var(--green);white-space:nowrap}
     .module-list{color:var(--muted);font-size:.82rem}
     .map-shell{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:stretch}
+    .map-guide{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1rem}
+    .guide-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.85rem;box-shadow:0 8px 20px rgba(24,34,29,.04)}
+    .guide-card b{display:block;color:var(--green);font-size:.88rem;margin-bottom:.2rem}.guide-card span{display:block;color:var(--muted);font-size:.78rem;line-height:1.38}
     .afg-map{min-height:560px;background:linear-gradient(135deg,#fff,#eef5ef);border:1px solid var(--line);border-radius:8px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
     .boundary-svg{position:absolute;inset:.75rem;width:calc(100% - 1.5rem);height:calc(100% - 1.5rem)}
     .province-shape{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:fill .18s,stroke .18s,filter .18s}
@@ -60,10 +69,17 @@
     .map-source{position:absolute;left:1rem;top:1rem;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:.32rem .58rem;font-size:.72rem;color:var(--green);font-weight:800}
     .map-legend{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;gap:.45rem;flex-wrap:wrap}
     .legend-pill{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:.3rem .55rem;font-size:.72rem;color:var(--muted)}
+    .scale{position:absolute;right:1rem;top:1rem;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:8px;padding:.55rem;min-width:170px}
+    .scale b{display:block;font-size:.72rem;color:var(--green);margin-bottom:.35rem}.scale-bar{height:.55rem;border-radius:999px;background:linear-gradient(90deg,#ead7a8,#d2b466,#9fba75,#5d946b,#2f6b4f)}.scale-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.65rem;margin-top:.22rem}
     .map-panel{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
     .map-controls{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:.85rem}
     .map-controls select,.map-controls input{border:1px solid var(--line);border-radius:7px;padding:.62rem .72rem;font-family:inherit;font-size:.85rem;background:#fbfcfa;color:var(--ink)}
     .map-controls input{flex:1;min-width:180px}
+    .map-mode{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-bottom:.85rem}
+    .mode-btn{border:1px solid var(--line);background:#fbfcfa;border-radius:7px;padding:.52rem .45rem;color:var(--muted);font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer}
+    .mode-btn.active{background:var(--green);border-color:var(--green);color:#fff}
+    .map-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-bottom:.85rem}
+    .summary-box{border:1px solid var(--line);border-radius:7px;background:#fbfcfa;padding:.55rem}.summary-box b{display:block;color:var(--green);font-size:1.05rem}.summary-box span{color:var(--muted);font-size:.68rem}
     .province-list{display:grid;gap:.45rem;max-height:260px;overflow:auto;padding-right:.15rem}
     .province-row{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:7px;padding:.65rem;background:#fbfcfa;cursor:pointer}
     .province-row:hover,.province-row.active{border-color:#a9cdb8;background:#eff7f0}
@@ -79,7 +95,7 @@
     .calc-row:last-child{border-bottom:0}
     .calc-row b{color:var(--green)}
     .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
-    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}}
+    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell,.map-guide{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
     @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
   </style>
 </head>
@@ -94,6 +110,11 @@
         <a href="#data">Actual data</a>
         <a href="#calculations">Calculations</a>
         <a href="../data/sources.json">Source registry</a>
+      </div>
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="prs">دری</button>
+        <button class="lang-btn" data-lang="ps">پښتو</button>
       </div>
     </div>
   </header>
@@ -129,21 +150,45 @@
     <section id="map" style="margin-top:3rem">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Afghanistan map</div>
-          <h2>What is where?</h2>
+          <div class="eyebrow" data-i18n="map.eyebrow">Afghanistan map</div>
+          <h2 data-i18n="map.title">What is where?</h2>
         </div>
-        <p class="small">A first ADI province atlas: click a province point to see potential, problems, missing data and the tool pathway. This is a planning map, not an official boundary file.</p>
+        <p class="small" data-i18n="map.sub">A first ADI province atlas: choose a layer, click a province, and see what exists there, what is difficult, what data is missing, and which ADI tool should be used next.</p>
+      </div>
+      <div class="map-guide">
+        <div class="guide-card"><b data-i18n="guide.1t">1. Choose a layer</b><span data-i18n="guide.1d">Switch between overall priority, agriculture, water, energy, economy or data gaps.</span></div>
+        <div class="guide-card"><b data-i18n="guide.2t">2. Read the color</b><span data-i18n="guide.2d">Darker provinces need more attention for the selected layer.</span></div>
+        <div class="guide-card"><b data-i18n="guide.3t">3. Click a province</b><span data-i18n="guide.3d">The side panel explains potential, problems, missing data and solutions.</span></div>
+        <div class="guide-card"><b data-i18n="guide.4t">4. Open the right tool</b><span data-i18n="guide.4d">Use SoilSense, WaterSense, EnergySense, EconomySense or ADI AI based on the province profile.</span></div>
       </div>
       <div class="map-shell">
         <div class="afg-map" id="provinceMap" aria-label="Afghanistan province priority map">
-          <div class="map-source">OCHA/HDX COD-AB ADM1 boundaries</div>
+          <div class="map-source" data-i18n="map.source">OCHA/HDX COD-AB ADM1 boundaries</div>
+          <div class="scale">
+            <b id="scaleTitle">Overall priority</b>
+            <div class="scale-bar"></div>
+            <div class="scale-labels"><span data-i18n="scale.low">Lower</span><span data-i18n="scale.high">Higher</span></div>
+          </div>
           <div class="map-legend">
-            <span class="legend-pill">Darker = higher ADI priority</span>
-            <span class="legend-pill">Click province shapes</span>
-            <span class="legend-pill">Scores are prototype planning indices</span>
+            <span class="legend-pill" id="legendMeaning">Darker = higher overall ADI priority</span>
+            <span class="legend-pill" data-i18n="legend.click">Click province shapes</span>
+            <span class="legend-pill" data-i18n="legend.prototype">Scores are prototype planning indices</span>
           </div>
         </div>
         <aside class="map-panel">
+          <div class="map-mode" id="mapMode">
+            <button class="mode-btn active" data-layer="priority" data-i18n="layer.priority">Priority</button>
+            <button class="mode-btn" data-layer="agri" data-i18n="layer.agri">Agriculture</button>
+            <button class="mode-btn" data-layer="water" data-i18n="layer.water">Water</button>
+            <button class="mode-btn" data-layer="energy" data-i18n="layer.energy">Energy</button>
+            <button class="mode-btn" data-layer="economy" data-i18n="layer.economy">Economy</button>
+            <button class="mode-btn" data-layer="gap" data-i18n="layer.gap">Data gaps</button>
+          </div>
+          <div class="map-summary">
+            <div class="summary-box"><b id="summaryCount">34</b><span data-i18n="summary.shown">provinces shown</span></div>
+            <div class="summary-box"><b id="summaryHigh">0</b><span data-i18n="summary.high">high attention</span></div>
+            <div class="summary-box"><b id="summaryTop">-</b><span data-i18n="summary.top">top province</span></div>
+          </div>
           <div class="map-controls">
             <select id="mapRegionFilter" aria-label="Filter provinces by region">
               <option value="all">All regions</option>
@@ -201,6 +246,131 @@
   <script>
     const fmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
     const money = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 });
+    let currentLang = 'en';
+    let activeLayer = 'priority';
+    let currentProvince = null;
+    let rerenderMap = null;
+
+    const TEXT = {
+      en: {
+        dir: 'ltr',
+        'map.eyebrow': 'Afghanistan map',
+        'map.title': 'What is where?',
+        'map.sub': 'A first ADI province atlas: choose a layer, click a province, and see what exists there, what is difficult, what data is missing, and which ADI tool should be used next.',
+        'map.source': 'OCHA/HDX COD-AB ADM1 boundaries',
+        'guide.1t': '1. Choose a layer',
+        'guide.1d': 'Switch between overall priority, agriculture, water, energy, economy or data gaps.',
+        'guide.2t': '2. Read the color',
+        'guide.2d': 'Darker provinces need more attention for the selected layer.',
+        'guide.3t': '3. Click a province',
+        'guide.3d': 'The side panel explains potential, problems, missing data and solutions.',
+        'guide.4t': '4. Open the right tool',
+        'guide.4d': 'Use SoilSense, WaterSense, EnergySense, EconomySense or ADI AI based on the province profile.',
+        'scale.low': 'Lower',
+        'scale.high': 'Higher',
+        'legend.click': 'Click province shapes',
+        'legend.prototype': 'Scores are prototype planning indices',
+        'summary.shown': 'provinces shown',
+        'summary.high': 'high attention',
+        'summary.top': 'top province',
+        'search.placeholder': 'Search province, gap, problem or potential',
+        'region.all': 'All regions',
+        'detail.region': 'region',
+        'detail.population': 'population',
+        'detail.what': 'What is here',
+        'detail.problems': 'Main problems',
+        'detail.gaps': 'Missing data',
+        'detail.solutions': 'How ADI can help',
+        'detail.tools': 'Use these tools',
+        'detail.layerScore': 'Selected layer score',
+        'legend.prefix': 'Darker = higher',
+        'legend.suffix': 'need'
+      },
+      prs: {
+        dir: 'rtl',
+        'map.eyebrow': 'نقشه افغانستان',
+        'map.title': 'در کجا چه چیز وجود دارد؟',
+        'map.sub': 'اطلس نخست ولایتی ADI: یک لایه را انتخاب کنید، روی ولایت کلیک کنید و ببینید چه ظرفیت، چه مشکل، چه کمبود معلومات و کدام ابزار ADI لازم است.',
+        'map.source': 'مرزهای ولایتی OCHA/HDX COD-AB',
+        'guide.1t': '۱. یک لایه انتخاب کنید',
+        'guide.1d': 'اولویت عمومی، زراعت، آب، انرژی، اقتصاد یا کمبود معلومات را ببینید.',
+        'guide.2t': '۲. رنگ را بخوانید',
+        'guide.2d': 'رنگ تیره‌تر یعنی ولایت در همان لایه توجه بیشتر می‌خواهد.',
+        'guide.3t': '۳. روی ولایت کلیک کنید',
+        'guide.3d': 'پنل کنار نقشه ظرفیت، مشکل، کمبود معلومات و راه حل را نشان می‌دهد.',
+        'guide.4t': '۴. ابزار درست را باز کنید',
+        'guide.4d': 'بر اساس وضعیت ولایت از SoilSense، WaterSense، EnergySense، EconomySense یا دستیار ADI استفاده کنید.',
+        'scale.low': 'کمتر',
+        'scale.high': 'بیشتر',
+        'legend.click': 'روی شکل ولایت کلیک کنید',
+        'legend.prototype': 'نمره‌ها شاخص‌های آزمایشی برنامه‌ریزی اند',
+        'summary.shown': 'ولایت نمایش داده شد',
+        'summary.high': 'نیازمند توجه زیاد',
+        'summary.top': 'ولایت اول',
+        'search.placeholder': 'جستجوی ولایت، کمبود، مشکل یا ظرفیت',
+        'region.all': 'همه حوزه‌ها',
+        'detail.region': 'حوزه',
+        'detail.population': 'نفوس',
+        'detail.what': 'در اینجا چیست',
+        'detail.problems': 'مشکلات اصلی',
+        'detail.gaps': 'کمبود معلومات',
+        'detail.solutions': 'ADI چگونه کمک می‌کند',
+        'detail.tools': 'این ابزارها را استفاده کنید',
+        'detail.layerScore': 'نمره لایه انتخاب‌شده',
+        'legend.prefix': 'رنگ تیره‌تر = نیاز بیشتر در',
+        'legend.suffix': ''
+      },
+      ps: {
+        dir: 'rtl',
+        'map.eyebrow': 'د افغانستان نقشه',
+        'map.title': 'په کوم ځای کې څه شته؟',
+        'map.sub': 'د ADI لومړنی ولایتي اطلس: یوه طبقه وټاکئ، په ولایت کلیک وکړئ او ظرفیت، ستونزې، د معلوماتو تشې او مناسب ADI ابزار وګورئ.',
+        'map.source': 'د OCHA/HDX COD-AB ولایتي سرحدونه',
+        'guide.1t': '۱. یوه طبقه وټاکئ',
+        'guide.1d': 'عمومي لومړیتوب، کرنه، اوبه، انرژي، اقتصاد یا د معلوماتو تشې وګورئ.',
+        'guide.2t': '۲. رنګ ولولئ',
+        'guide.2d': 'تور رنګ ښيي چې ولایت په ټاکلې طبقه کې زیاتې پاملرنې ته اړتیا لري.',
+        'guide.3t': '۳. په ولایت کلیک وکړئ',
+        'guide.3d': 'د نقشې اړخ پینل ظرفیت، ستونزې، د معلوماتو تشې او حل لارې ښيي.',
+        'guide.4t': '۴. سم ابزار پرانیزئ',
+        'guide.4d': 'د ولایت د حالت له مخې SoilSense، WaterSense، EnergySense، EconomySense یا ADI AI وکاروئ.',
+        'scale.low': 'کم',
+        'scale.high': 'زیات',
+        'legend.click': 'په ولایتي شکلونو کلیک وکړئ',
+        'legend.prototype': 'نمرې د پلان جوړونې آزمایښتي شاخصونه دي',
+        'summary.shown': 'ولایتونه ښکاره شوي',
+        'summary.high': 'زیاتې پاملرنې ته اړتیا',
+        'summary.top': 'لومړی ولایت',
+        'search.placeholder': 'ولایت، تشه، ستونزه یا ظرفیت ولټوئ',
+        'region.all': 'ټولې سیمې',
+        'detail.region': 'سیمه',
+        'detail.population': 'نفوس',
+        'detail.what': 'دلته څه شته',
+        'detail.problems': 'اصلي ستونزې',
+        'detail.gaps': 'د معلوماتو تشې',
+        'detail.solutions': 'ADI څنګه مرسته کوي',
+        'detail.tools': 'دا ابزارونه وکاروئ',
+        'detail.layerScore': 'د ټاکلې طبقې نمره',
+        'legend.prefix': 'تور رنګ = زیاته اړتیا په',
+        'legend.suffix': ''
+      }
+    };
+
+    const LAYER_LABELS = {
+      en: { priority: 'Overall priority', agri: 'Agriculture', water: 'Water', energy: 'Energy', economy: 'Economy', gap: 'Data gaps' },
+      prs: { priority: 'اولویت عمومی', agri: 'زراعت', water: 'آب', energy: 'انرژی', economy: 'اقتصاد', gap: 'کمبود معلومات' },
+      ps: { priority: 'عمومي لومړیتوب', agri: 'کرنه', water: 'اوبه', energy: 'انرژي', economy: 'اقتصاد', gap: 'د معلوماتو تشې' }
+    };
+
+    const REGION_LABELS = {
+      en: { Central: 'Central', East: 'East', North: 'North', Northeast: 'Northeast', South: 'South', West: 'West' },
+      prs: { Central: 'مرکزی', East: 'شرق', North: 'شمال', Northeast: 'شمال‌شرق', South: 'جنوب', West: 'غرب' },
+      ps: { Central: 'مرکزي', East: 'ختیځ', North: 'شمال', Northeast: 'شمال ختیځ', South: 'جنوب', West: 'لویدیځ' }
+    };
+
+    function t(key){
+      return (TEXT[currentLang] && TEXT[currentLang][key]) || TEXT.en[key] || key;
+    }
 
     function formatValue(indicator){
       const v = indicator.latest_value;
@@ -214,6 +384,26 @@
       if(status === 'live') return 'status';
       if(status === 'beta') return 'status beta';
       return 'status planned';
+    }
+
+    function applyLanguage(lang){
+      currentLang = TEXT[lang] ? lang : 'en';
+      document.documentElement.lang = currentLang === 'prs' ? 'prs-AF' : currentLang === 'ps' ? 'ps-AF' : 'en';
+      document.body.classList.toggle('rtl', TEXT[currentLang].dir === 'rtl');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.dataset.i18n);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === currentLang));
+      const search = document.getElementById('mapSearch');
+      if(search) search.placeholder = t('search.placeholder');
+      const allOption = document.querySelector('#mapRegionFilter option[value="all"]');
+      if(allOption) allOption.textContent = t('region.all');
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.textContent = LAYER_LABELS[currentLang][btn.dataset.layer];
+      });
+      updateLayerText();
+      if(rerenderMap) rerenderMap();
+      if(currentProvince) renderProvinceDetail(currentProvince);
     }
 
     function provinceFromRow(row){
@@ -235,6 +425,10 @@
     function priorityScore(province){
       const s = province.scores;
       return Math.round(((s.agri + s.water + s.energy + s.economy) / 4) * 0.55 + s.gap * 0.45);
+    }
+
+    function layerScore(province, layer = activeLayer){
+      return layer === 'priority' ? priorityScore(province) : province.scores[layer];
     }
 
     function bestTools(province){
@@ -269,7 +463,7 @@
     }
 
     function renderBars(province){
-      const labels = { agri: 'Agri', water: 'Water', energy: 'Energy', economy: 'Economy', gap: 'Data gap' };
+      const labels = LAYER_LABELS[currentLang];
       return Object.entries(province.scores).map(([key, value]) => `
         <div class="bar">
           <span>${labels[key]}</span>
@@ -282,17 +476,19 @@
     function renderProvinceDetail(province){
       const detail = document.getElementById('mapProvinceDetail');
       if(!detail || !province) return;
+      currentProvince = province;
       detail.innerHTML = `
         <h3>${province.name}</h3>
-        <p>${province.region} region | ${fmt.format(province.area)} km2 | population ${fmt.format(province.pop)}</p>
+        <p>${REGION_LABELS[currentLang][province.region] || province.region} ${t('detail.region')} | ${fmt.format(province.area)} km2 | ${t('detail.population')} ${fmt.format(province.pop)}</p>
         <div class="chips">${province.potential.split(', ').map(item => `<span class="chip">${item}</span>`).join('')}</div>
+        <div class="note"><strong>${t('detail.layerScore')}:</strong> ${LAYER_LABELS[currentLang][activeLayer]} = ${layerScore(province)}</div>
         <div class="bars">${renderBars(province)}</div>
         <div class="note">
-          <strong>What is here:</strong> ${province.potential}.<br>
-          <strong>Main problems:</strong> ${province.problems}.<br>
-          <strong>Missing data:</strong> ${province.gaps}.<br>
-          <strong>How ADI can help:</strong> ${province.solutions}.<br>
-          <strong>Use these tools:</strong> ${bestTools(province)}.
+          <strong>${t('detail.what')}:</strong> ${province.potential}.<br>
+          <strong>${t('detail.problems')}:</strong> ${province.problems}.<br>
+          <strong>${t('detail.gaps')}:</strong> ${province.gaps}.<br>
+          <strong>${t('detail.solutions')}:</strong> ${province.solutions}.<br>
+          <strong>${t('detail.tools')}:</strong> ${bestTools(province)}.
         </div>
       `;
     }
@@ -325,6 +521,14 @@
       return '#ead7a8';
     }
 
+    function updateLayerText(){
+      const label = LAYER_LABELS[currentLang][activeLayer];
+      const scaleTitle = document.getElementById('scaleTitle');
+      const legendMeaning = document.getElementById('legendMeaning');
+      if(scaleTitle) scaleTitle.textContent = label;
+      if(legendMeaning) legendMeaning.textContent = `${t('legend.prefix')} ${label} ${t('legend.suffix')}`.trim();
+    }
+
     function renderBoundaryMap(map, boundaries, provinces, selectProvince){
       const priorityByName = new Map(provinces.map(province => [provinceKey(province.name), province]));
       const points = boundaries.features.flatMap(feature => geometryPoints(feature.geometry));
@@ -354,12 +558,12 @@
         path.setAttribute('d', pathFromGeometry(feature.geometry, project));
         path.setAttribute('class', 'province-shape');
         path.dataset.province = province ? province.name : sourceName;
-        path.setAttribute('fill', province ? priorityColor(priorityScore(province)) : '#dde5dd');
+        path.setAttribute('fill', province ? priorityColor(layerScore(province)) : '#dde5dd');
         path.addEventListener('click', () => {
           if(province) selectProvince(province);
         });
         path.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'title')).textContent = province
-          ? `${province.name}: priority ${priorityScore(province)}`
+          ? `${province.name}: ${LAYER_LABELS[currentLang][activeLayer]} ${layerScore(province)}`
           : sourceName;
         svg.appendChild(path);
       });
@@ -375,6 +579,18 @@
       const search = document.getElementById('mapSearch');
       if(!map || !list || !regionFilter || !search) return;
 
+      const updateColors = () => {
+        document.querySelectorAll('.province-shape').forEach(shape => {
+          const province = provinces.find(p => p.name === shape.dataset.province);
+          if(province) {
+            shape.setAttribute('fill', priorityColor(layerScore(province)));
+            const title = shape.querySelector('title');
+            if(title) title.textContent = `${province.name}: ${LAYER_LABELS[currentLang][activeLayer]} ${layerScore(province)}`;
+          }
+        });
+        updateLayerText();
+      };
+
       const selectProvince = (province) => {
         document.querySelectorAll('.province-shape,.province-row').forEach(el => el.classList.remove('active'));
         document.querySelectorAll(`[data-province="${province.name}"]`).forEach(el => el.classList.add('active'));
@@ -388,17 +604,22 @@
         const region = regionFilter.value;
         const filtered = provinces
           .filter(p => (region === 'all' || p.region === region) && Object.values(p).join(' ').toLowerCase().includes(q))
-          .sort((a,b) => priorityScore(b) - priorityScore(a));
+          .sort((a,b) => layerScore(b) - layerScore(a));
 
         document.querySelectorAll('.province-shape').forEach(shape => {
           const visible = filtered.some(province => province.name === shape.dataset.province);
           shape.style.opacity = visible ? '1' : '.18';
         });
 
+        const high = filtered.filter(province => layerScore(province) >= 72).length;
+        document.getElementById('summaryCount').textContent = filtered.length;
+        document.getElementById('summaryHigh').textContent = high;
+        document.getElementById('summaryTop').textContent = filtered[0] ? filtered[0].name : '-';
+
         list.innerHTML = filtered.map((province, index) => `
           <div class="province-row ${index === 0 ? 'active' : ''}" data-province="${province.name}">
-            <div><strong>${province.name}</strong><span>${province.region} | ${province.potential}</span></div>
-            <div class="score-badge">${priorityScore(province)}</div>
+            <div><strong>${province.name}</strong><span>${REGION_LABELS[currentLang][province.region] || province.region} | ${province.potential}</span></div>
+            <div class="score-badge">${layerScore(province)}</div>
           </div>
         `).join('');
 
@@ -409,8 +630,18 @@
         if(filtered[0]) document.querySelectorAll(`[data-province="${filtered[0].name}"]`).forEach(el => el.classList.add('active'));
       };
 
+      rerenderMap = render;
       regionFilter.addEventListener('change', render);
       search.addEventListener('input', render);
+      document.querySelectorAll('.mode-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          activeLayer = button.dataset.layer;
+          document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.layer === activeLayer));
+          updateColors();
+          render();
+        });
+      });
+      updateColors();
       render();
     }
 
@@ -461,7 +692,13 @@
           <td><a href="${indicator.source_url}" target="_blank" rel="noopener">World Bank API</a></td>
         </tr>`;
       }).join('');
+      applyLanguage(currentLang);
     }
+
+    document.querySelectorAll('.lang-btn').forEach(button => {
+      button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    });
+    applyLanguage('en');
 
     loadHub().catch(error => {
       document.getElementById('moduleGrid').innerHTML = '<article class="card"><h3>Data could not load</h3><p>Open this page through GitHub Pages or a local server so JSON files can be fetched.</p></article>';
