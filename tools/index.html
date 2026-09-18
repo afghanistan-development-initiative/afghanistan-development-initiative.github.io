@@ -54,14 +54,10 @@
     .module-list{color:var(--muted);font-size:.82rem}
     .map-shell{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:stretch}
     .afg-map{min-height:560px;background:linear-gradient(135deg,#fff,#eef5ef);border:1px solid var(--line);border-radius:8px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-    .afg-shape{position:absolute;inset:8% 5%;clip-path:polygon(7% 43%,16% 26%,31% 17%,45% 11%,60% 16%,72% 10%,87% 24%,82% 38%,94% 50%,79% 60%,72% 76%,57% 72%,47% 87%,32% 80%,22% 67%,9% 61%);background:linear-gradient(135deg,#e1efe5,#f8fbf7);border:1px solid rgba(29,61,44,.12)}
-    .map-region{position:absolute;border:1px solid rgba(29,61,44,.16);background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-radius:8px;padding:.55rem .65rem;color:var(--green);font-weight:800;font-size:.75rem;box-shadow:0 8px 22px rgba(24,34,29,.06)}
-    .map-region span{display:block;color:var(--muted);font-weight:600;font-size:.67rem}
-    .map-region.north{left:28%;top:15%}.map-region.northeast{right:9%;top:18%}.map-region.west{left:10%;top:42%}.map-region.central{left:48%;top:43%}.map-region.east{right:13%;top:51%}.map-region.south{left:42%;bottom:13%}
-    .province-dot{position:absolute;width:1.2rem;height:1.2rem;border-radius:50%;border:2px solid #fff;background:var(--gold);box-shadow:0 5px 16px rgba(24,34,29,.22);transform:translate(-50%,-50%);cursor:pointer;transition:transform .18s,background .18s}
-    .province-dot:hover,.province-dot.active{transform:translate(-50%,-50%) scale(1.35);background:var(--green-2);z-index:3}
-    .province-dot::after{content:attr(data-score);position:absolute;left:50%;top:-1.65rem;transform:translateX(-50%);background:var(--green);color:#fff;border-radius:999px;font-size:.63rem;font-weight:800;padding:.12rem .35rem;opacity:0;pointer-events:none}
-    .province-dot:hover::after,.province-dot.active::after{opacity:1}
+    .boundary-svg{position:absolute;inset:.75rem;width:calc(100% - 1.5rem);height:calc(100% - 1.5rem)}
+    .province-shape{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:fill .18s,stroke .18s,filter .18s}
+    .province-shape:hover,.province-shape.active{stroke:var(--green);stroke-width:2;filter:drop-shadow(0 8px 12px rgba(24,34,29,.18))}
+    .map-source{position:absolute;left:1rem;top:1rem;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:.32rem .58rem;font-size:.72rem;color:var(--green);font-weight:800}
     .map-legend{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;gap:.45rem;flex-wrap:wrap}
     .legend-pill{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:.3rem .55rem;font-size:.72rem;color:var(--muted)}
     .map-panel{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
@@ -140,16 +136,10 @@
       </div>
       <div class="map-shell">
         <div class="afg-map" id="provinceMap" aria-label="Afghanistan province priority map">
-          <div class="afg-shape"></div>
-          <div class="map-region north">North<span>wheat, irrigation, trade</span></div>
-          <div class="map-region northeast">Northeast<span>watersheds, hydro, forests</span></div>
-          <div class="map-region west">West<span>drought, saffron, corridors</span></div>
-          <div class="map-region central">Central<span>urban pressure, orchards</span></div>
-          <div class="map-region east">East<span>river valleys, horticulture</span></div>
-          <div class="map-region south">South<span>solar, rangelands, basins</span></div>
+          <div class="map-source">OCHA/HDX COD-AB ADM1 boundaries</div>
           <div class="map-legend">
-            <span class="legend-pill">Dots = provinces</span>
-            <span class="legend-pill">Badge = priority score</span>
+            <span class="legend-pill">Darker = higher ADI priority</span>
+            <span class="legend-pill">Click province shapes</span>
             <span class="legend-pill">Scores are prototype planning indices</span>
           </div>
         </div>
@@ -259,6 +249,25 @@
       return ranked.slice(0,3).map(item => item[0]).join(', ');
     }
 
+    function normalizeName(name){
+      return String(name || '').toLowerCase().replace(/[^a-z]/g, '');
+    }
+
+    function provinceKey(name){
+      const aliases = {
+        hilmand: 'helmand',
+        hirat: 'herat',
+        jawzjan: 'jowzjan',
+        maidanwardak: 'wardak',
+        nimroz: 'nimruz',
+        paktya: 'paktia',
+        panjsher: 'panjshir',
+        sarepul: 'sarepol'
+      };
+      const key = normalizeName(name);
+      return aliases[key] || key;
+    }
+
     function renderBars(province){
       const labels = { agri: 'Agri', water: 'Water', energy: 'Energy', economy: 'Economy', gap: 'Data gap' };
       return Object.entries(province.scores).map(([key, value]) => `
@@ -288,7 +297,78 @@
       `;
     }
 
-    function renderProvinceMap(provinces){
+    function geometryPoints(geometry){
+      const points = [];
+      const walk = coords => {
+        if(typeof coords[0] === 'number') points.push(coords);
+        else coords.forEach(walk);
+      };
+      walk(geometry.coordinates);
+      return points;
+    }
+
+    function pathFromGeometry(geometry, project){
+      const polygonPaths = geometry.type === 'MultiPolygon'
+        ? geometry.coordinates.flatMap(poly => poly)
+        : geometry.coordinates;
+      return polygonPaths.map(ring => ring.map((point, index) => {
+        const [x, y] = project(point);
+        return `${index === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`;
+      }).join(' ') + ' Z').join(' ');
+    }
+
+    function priorityColor(score){
+      if(score >= 72) return '#2f6b4f';
+      if(score >= 66) return '#5d946b';
+      if(score >= 60) return '#9fba75';
+      if(score >= 54) return '#d2b466';
+      return '#ead7a8';
+    }
+
+    function renderBoundaryMap(map, boundaries, provinces, selectProvince){
+      const priorityByName = new Map(provinces.map(province => [provinceKey(province.name), province]));
+      const points = boundaries.features.flatMap(feature => geometryPoints(feature.geometry));
+      const xs = points.map(point => point[0]);
+      const ys = points.map(point => point[1]);
+      const minX = Math.min(...xs);
+      const maxX = Math.max(...xs);
+      const minY = Math.min(...ys);
+      const maxY = Math.max(...ys);
+      const width = 900;
+      const height = 590;
+      const pad = 28;
+      const scale = Math.min((width - pad * 2) / (maxX - minX), (height - pad * 2) / (maxY - minY));
+      const xOffset = (width - (maxX - minX) * scale) / 2;
+      const yOffset = (height - (maxY - minY) * scale) / 2;
+      const project = ([lon, lat]) => [xOffset + (lon - minX) * scale, yOffset + (maxY - lat) * scale];
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'boundary-svg');
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', 'Afghanistan provincial boundaries');
+
+      boundaries.features.forEach(feature => {
+        const sourceName = feature.properties.adm1_name || feature.properties.prov_name || feature.properties.name;
+        const province = priorityByName.get(provinceKey(sourceName));
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', pathFromGeometry(feature.geometry, project));
+        path.setAttribute('class', 'province-shape');
+        path.dataset.province = province ? province.name : sourceName;
+        path.setAttribute('fill', province ? priorityColor(priorityScore(province)) : '#dde5dd');
+        path.addEventListener('click', () => {
+          if(province) selectProvince(province);
+        });
+        path.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'title')).textContent = province
+          ? `${province.name}: priority ${priorityScore(province)}`
+          : sourceName;
+        svg.appendChild(path);
+      });
+
+      map.querySelectorAll('.boundary-svg').forEach(el => el.remove());
+      map.appendChild(svg);
+    }
+
+    function renderProvinceMap(provinces, boundaries){
       const map = document.getElementById('provinceMap');
       const list = document.getElementById('mapProvinceList');
       const regionFilter = document.getElementById('mapRegionFilter');
@@ -296,10 +376,12 @@
       if(!map || !list || !regionFilter || !search) return;
 
       const selectProvince = (province) => {
-        document.querySelectorAll('.province-dot,.province-row').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.province-shape,.province-row').forEach(el => el.classList.remove('active'));
         document.querySelectorAll(`[data-province="${province.name}"]`).forEach(el => el.classList.add('active'));
         renderProvinceDetail(province);
       };
+
+      renderBoundaryMap(map, boundaries, provinces, selectProvince);
 
       const render = () => {
         const q = search.value.toLowerCase();
@@ -308,18 +390,9 @@
           .filter(p => (region === 'all' || p.region === region) && Object.values(p).join(' ').toLowerCase().includes(q))
           .sort((a,b) => priorityScore(b) - priorityScore(a));
 
-        map.querySelectorAll('.province-dot').forEach(dot => dot.remove());
-        filtered.forEach(province => {
-          const dot = document.createElement('button');
-          dot.type = 'button';
-          dot.className = 'province-dot';
-          dot.dataset.province = province.name;
-          dot.dataset.score = priorityScore(province);
-          dot.style.left = province.x + '%';
-          dot.style.top = province.y + '%';
-          dot.title = `${province.name}: ${province.potential}`;
-          dot.addEventListener('click', () => selectProvince(province));
-          map.appendChild(dot);
+        document.querySelectorAll('.province-shape').forEach(shape => {
+          const visible = filtered.some(province => province.name === shape.dataset.province);
+          shape.style.opacity = visible ? '1' : '.18';
         });
 
         list.innerHTML = filtered.map((province, index) => `
@@ -342,14 +415,16 @@
     }
 
     async function loadHub(){
-      const [modulesRes, indicatorsRes, provincesRes] = await Promise.all([
+      const [modulesRes, indicatorsRes, provincesRes, boundariesRes] = await Promise.all([
         fetch('../data/modules.json'),
         fetch('../data/afghanistan_indicators.json'),
-        fetch('../data/afghanistan_province_priorities.json')
+        fetch('../data/afghanistan_province_priorities.json'),
+        fetch('../data/afghanistan_provinces.geojson')
       ]);
       const moduleData = await modulesRes.json();
       const indicatorData = await indicatorsRes.json();
       const provinceData = await provincesRes.json();
+      const boundaryData = await boundariesRes.json();
       const modules = moduleData.modules;
       const indicators = indicatorData.indicators;
       const provinces = provinceData.provinces.map(provinceFromRow);
@@ -357,7 +432,7 @@
       document.getElementById('moduleCount').textContent = modules.length;
       document.getElementById('liveCount').textContent = modules.filter(m => m.status === 'live').length;
       document.getElementById('indicatorCount').textContent = indicators.length;
-      renderProvinceMap(provinces);
+      renderProvinceMap(provinces, boundaryData);
 
       document.getElementById('moduleGrid').innerHTML = modules.map(module => {
         const action = module.app_url
