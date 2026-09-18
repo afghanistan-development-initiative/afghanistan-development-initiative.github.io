@@ -185,6 +185,20 @@ section{padding:4.5rem 2rem}
 .bar-track{height:7px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
 .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green-l),var(--gold-l))}
 
+/* NATIONAL BUILD AGENDA */
+.agenda-sec{background:var(--white);border-bottom:1px solid var(--border)}
+.agenda-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.agenda-card{background:#f8faf6;border:1px solid var(--border);border-radius:var(--r2);padding:1.15rem;box-shadow:0 10px 28px rgba(29,43,37,.04)}
+.agenda-card h3{font-family:'Cormorant Garamond',serif;font-size:1.14rem;color:var(--text);margin-bottom:.25rem}
+.agenda-card p{font-size:.78rem;color:var(--text-m);line-height:1.55;margin-bottom:.65rem}
+.agenda-meta{display:grid;gap:.35rem}
+.agenda-meta div{font-size:.72rem;color:var(--text-m);line-height:1.45;border-top:1px solid var(--border);padding-top:.42rem}
+.agenda-meta b{color:var(--green);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.status-pill{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:.18rem .48rem;margin-bottom:.55rem}
+.status-live{background:#dce9df;color:var(--green)}
+.status-next{background:#f0e6ce;color:var(--gold)}
+.status-validate{background:#eceff1;color:#52615a}
+
 /* ADI ASSISTANT */
 .assistant-sec{background:linear-gradient(180deg,var(--bg2),var(--bg));border-bottom:1px solid var(--border)}
 .assistant-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:stretch}
@@ -360,6 +374,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
     <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
     <li><a href="#national-map">Map</a></li>
     <li><a href="#data-dashboard">Dashboard</a></li>
+    <li><a href="#agenda">Agenda</a></li>
     <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
     <li><a href="#data-sources">Sources</a></li>
     <li><a href="#contribute" data-i18n="nav.contribute">Contribute</a></li>
@@ -386,6 +401,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
   <a href="#tools" onclick="toggleMenu()" data-i18n="nav.tools">Tools</a>
   <a href="#national-map" onclick="toggleMenu()">National Map</a>
   <a href="#data-dashboard" onclick="toggleMenu()">Data Dashboard</a>
+  <a href="#agenda" onclick="toggleMenu()">Build Agenda</a>
   <a href="#publications" onclick="toggleMenu()" data-i18n="nav.publications">Publications</a>
   <a href="#data-sources" onclick="toggleMenu()" data-i18n="nav.data">Data Sources</a>
   <a href="#contribute" onclick="toggleMenu()" data-i18n="nav.contribute">Contribute</a>
@@ -580,6 +596,29 @@ body.rtl .contact-links{flex-direction:row-reverse}
         <div class="province-list" id="provinceList"></div>
         <div class="detail-card" id="provinceDetail"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL BUILD AGENDA -->
+<section id="agenda" class="agenda-sec">
+  <div class="container">
+    <div class="s-label">Afghanistan Action Atlas</div>
+    <h2 class="s-title">What ADI can build for Afghanistan</h2>
+    <p class="s-sub">These are the practical national workstreams ADI can organise into maps, dashboards, policy briefs and field validation projects. Each item separates what can be shown now from what still needs official data or partner validation.</p>
+    <div class="agenda-grid">
+      <div class="agenda-card"><span class="status-pill status-live">Core</span><h3>Water security and groundwater</h3><p>Track groundwater pressure, river basins, drought, rainfall, household access and irrigation demand.</p><div class="agenda-meta"><div><b>Map</b> basins, drought, access, Kabul groundwater, water points</div><div><b>Solution</b> monitoring wells, water harvesting, basin planning, irrigation efficiency</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-live">Core</span><h3>Soil recovery and land degradation</h3><p>Combine SoilSense, SoilGrids, erosion, salinity, soil carbon and land degradation neutrality layers.</p><div class="agenda-meta"><div><b>Map</b> degradation risk, erosion, soil organic carbon, salinity, restoration zones</div><div><b>Solution</b> rangeland rehabilitation, drainage, soil carbon pilots, conservation agriculture</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-live">Core</span><h3>Crop zones and food security</h3><p>Build crop suitability maps for wheat, rice, saffron, orchards, vegetables, livestock and irrigation potential.</p><div class="agenda-meta"><div><b>Map</b> crop zones, NDVI, rainfall, Khosh Tepa influence, market access</div><div><b>Solution</b> seed targeting, extension planning, storage, cold chain, crop diversification</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Renewable energy and productive use</h3><p>Screen solar, hydro, mini-grid, cold storage, clinic/school electrification and irrigation energy opportunities.</p><div class="agenda-meta"><div><b>Map</b> solar atlas, hydro sites, settlements, roads, service facilities</div><div><b>Solution</b> mini-grids, solar cold rooms, health/school energy, solar irrigation safeguards</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Markets, trade and livelihoods</h3><p>Connect trade corridors, prices, exports, poverty exposure, processing zones and value-chain opportunities.</p><div class="agenda-meta"><div><b>Map</b> markets, border crossings, roads, crop clusters, export corridors</div><div><b>Solution</b> value-chain investment, market information, jobs, storage, aggregation hubs</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Education, skills and digital access</h3><p>Layer school access, literacy, gender inclusion, youth jobs, digital connectivity and skills needs.</p><div class="agenda-meta"><div><b>Map</b> schools, travel distance, internet access, youth population, gender gaps</div><div><b>Solution</b> skills centres, digital learning, school rehabilitation, targeted scholarships</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-validate">Validate</span><h3>Health, nutrition and service access</h3><p>Add health-facility access, nutrition stress, WASH, maternal health and climate-health exposure where official data allows.</p><div class="agenda-meta"><div><b>Map</b> clinics, WASH, malnutrition signals, travel time, vulnerable districts</div><div><b>Solution</b> mobile clinics, nutrition targeting, clean water links, health-energy packages</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-validate">Validate</span><h3>Displacement, returnees and social pressure</h3><p>Use verified humanitarian data to understand returnee pressure, host-community needs and service gaps.</p><div class="agenda-meta"><div><b>Map</b> returnee locations, services, livelihoods, housing pressure, hazard exposure</div><div><b>Solution</b> settlement planning, livelihood support, service expansion, risk-sensitive targeting</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Climate and disaster risk</h3><p>Combine drought, flood, heat, landslide, snowmelt, river exposure and settlement vulnerability.</p><div class="agenda-meta"><div><b>Map</b> hazard hotspots, exposed population, cropland, roads, schools and clinics</div><div><b>Solution</b> early warning, resilient infrastructure, watershed management, contingency planning</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Governance, aid and project coverage</h3><p>Show where policies, projects, aid investments and service gaps align or fail to align.</p><div class="agenda-meta"><div><b>Map</b> districts, projects, SDG indicators, services, funding gaps</div><div><b>Solution</b> evidence-based proposals, accountability dashboards, partner coordination</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-next">Next</span><h3>Infrastructure and access</h3><p>Use roads, travel time, markets, schools, clinics, electricity and border corridors to show access constraints.</p><div class="agenda-meta"><div><b>Map</b> roads, travel time, facilities, bridges, logistics corridors</div><div><b>Solution</b> road prioritisation, service access planning, corridor investment screening</div></div></div>
+      <div class="agenda-card"><span class="status-pill status-validate">Validate</span><h3>Mining and environmental safeguards</h3><p>Screen mineral potential together with water, land, community, transport and environmental risk layers.</p><div class="agenda-meta"><div><b>Map</b> mineral areas, water stress, roads, communities, protected landscapes</div><div><b>Solution</b> transparent screening, safeguards, benefit-sharing evidence, risk monitoring</div></div></div>
     </div>
   </div>
 </section>
@@ -781,6 +820,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
     <a href="#tools" data-i18n="nav.tools">Tools</a>
     <a href="#national-map">National Map</a>
     <a href="#data-dashboard">Dashboard</a>
+    <a href="#agenda">Build Agenda</a>
     <a href="#publications" data-i18n="nav.publications">Publications</a>
     <a href="#data-sources">Sources</a>
     <a href="#contribute" data-i18n="nav.contribute">Contribute</a>
@@ -806,12 +846,12 @@ const LANGS = {
     "stat.pillars":"Pillars","stat.tools":"Tools","stat.pubs":"Policy briefs","stat.free":"Always open",
     "pillars.label":"Six Pillars","pillars.title":"Every dimension of development",
     "pillars.sub":"ADI covers Afghanistan's development challenges comprehensively — from soil health to governance, from energy to education.",
-    "p1.title":"Agriculture & Food Security","p1.desc":"Crop suitability mapping, food security indicators, Khosh Tepa canal data, precision agriculture tools, and rural livelihood analysis.","p1.t1":"Soil health","p1.t2":"Crop mapping","p1.t3":"Food systems",
-    "p2.title":"Water & Environment","p2.desc":"Kabul groundwater crisis, river basin management, land degradation monitoring, climate adaptation analysis, and disaster risk mapping.","p2.t1":"Groundwater","p2.t2":"Climate",
-    "p3.title":"Energy","p3.desc":"Solar and hydro potential mapping, rural electrification data, energy access gap analysis, renewable policy briefs, and infrastructure overlays.","p3.t1":"Solar mapping","p3.t2":"Hydro","p3.t3":"Rural access","p3.t4":"Renewables",
-    "p4.title":"Economy & Trade","p4.desc":"GDP and sector analysis, export diversification, trade corridor data, mining resource maps, FDI environment briefs, and value chain analysis.","p4.t1":"Trade","p4.t2":"Mining",
-    "p5.title":"Governance & Policy","p5.desc":"Policy brief series, SDG progress tracking, aid effectiveness data, institutional analysis, rule of law indicators, and development finance.","p5.t1":"Policy briefs","p5.t2":"Aid data","p5.t3":"Governance",
-    "p6.title":"Education & Society","p6.desc":"Literacy and enrolment data, women's rights indicators, youth employment, brain drain analysis, diaspora engagement, and digital access gaps.","p6.t1":"Education","p6.t2":"Women's rights","p6.t3":"Youth","p6.t4":"Diaspora",
+    "p1.title":"Agriculture & Food Security","p1.desc":"Crop suitability, soil health, irrigation potential, food security stress, Khosh Tepa canal influence, livestock/rangelands, and rural livelihood targeting.","p1.t1":"SoilSense","p1.t2":"CropZone","p1.t3":"Food security",
+    "p2.title":"Water & Environment","p2.desc":"Groundwater stress, river basins, drought, rainfall, land degradation neutrality, flood exposure, watershed health, and climate adaptation layers.","p2.t1":"WaterSense","p2.t2":"Climate",
+    "p3.title":"Energy & Infrastructure","p3.desc":"Solar suitability, hydro potential, rural electrification gaps, mini-grid opportunities, productive energy use, and infrastructure access overlays.","p3.t1":"EnergySense","p3.t2":"Hydro","p3.t3":"Mini-grids","p3.t4":"Renewables",
+    "p4.title":"Economy, Trade & Livelihoods","p4.desc":"GDP and sector trends, export diversification, trade corridors, market access, poverty exposure, mining potential, value chains, and investment screening.","p4.t1":"Trade corridors","p4.t2":"Mining",
+    "p5.title":"Governance, Aid & Policy","p5.desc":"Policy briefs, SDG indicators, aid and project coverage, district service gaps, institutional capacity, development finance, and planning evidence.","p5.t1":"Policy briefs","p5.t2":"Aid map","p5.t3":"Governance",
+    "p6.title":"Education, Society & Human Capital","p6.desc":"Schools, literacy, enrolment, gender inclusion, youth employment, displacement/returnee pressure, digital access, diaspora links, and social indicators.","p6.t1":"School access","p6.t2":"Gender","p6.t3":"Youth jobs","p6.t4":"Diaspora",
     "tools.label":"Open Source Tools","tools.title":"Built for real decisions","tools.sub":"Interactive dashboards — free to use, open source, built for field workers, researchers, and programme managers.",
     "status.live":"Live","status.soon":"Coming soon","status.dev":"In development","status.beta":"Beta",
     "t1.desc":"Full screening-level soil assessment for any location across 124 countries — soil health score, erosion risk, degradation probability, and FAO-grounded recommendations in under a minute.","t1.link":"Launch SoilSense →",
@@ -1116,7 +1156,7 @@ renderProvinceList();
 
 // ── SCROLL ANIMATIONS ──
 const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.08});
-document.querySelectorAll('.pillar,.blueprint-main,.delivery-card,.flow-step,.bp-mini,.group-card,.tool-card,.road-item,.region,.layer-card,.data-panel,.province-panel,.pub-card,.src-card,.ctype').forEach(el=>{
+document.querySelectorAll('.pillar,.solution-card,.blueprint-main,.delivery-card,.flow-step,.bp-mini,.group-card,.tool-card,.road-item,.region,.layer-card,.data-panel,.province-panel,.agenda-card,.pub-card,.src-card,.ctype').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';obs.observe(el);
 });
 </script>
