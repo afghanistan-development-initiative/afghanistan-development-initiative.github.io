@@ -42,6 +42,20 @@
     .card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1.2rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
     .card h3{font-size:1.45rem;margin:.45rem 0}
     .card p{color:var(--muted);font-size:.92rem}
+    .tool-card{position:relative;display:flex;flex-direction:column;min-height:315px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s;cursor:pointer}
+    .tool-card:hover{transform:translateY(-3px);border-color:#a9cdb8;box-shadow:var(--shadow)}
+    .tool-card::before{content:'';position:absolute;inset:0 0 auto;height:5px;background:var(--accent,#2f6b4f)}
+    .tool-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
+    .tool-logo{width:3.1rem;height:3.1rem;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft,#eef5ef);color:var(--accent,#2f6b4f);font-size:1.45rem;font-weight:900;border:1px solid rgba(29,61,44,.1)}
+    .tool-card h3{margin:0;font-size:1.5rem}
+    .tool-purpose{color:var(--muted);font-size:.92rem;min-height:4.3rem}
+    .tool-meta{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0}
+    .tool-meta div{background:#fbfcfa;border:1px solid var(--line);border-radius:7px;padding:.55rem}
+    .tool-meta b{display:block;color:var(--green);font-size:.78rem}.tool-meta span{display:block;color:var(--muted);font-size:.72rem;margin-top:.12rem}
+    .tool-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.75rem;border-top:1px solid var(--line);padding-top:.85rem}
+    .tool-open{color:var(--green);font-weight:900;font-size:.86rem}.tool-repo{position:relative;z-index:2;color:var(--muted);font-size:.78rem;text-decoration:none}
+    .tool-repo:hover{color:var(--green)}
+    .screen-chip{position:absolute;right:1rem;top:1rem;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.68rem;font-weight:900;padding:.28rem .5rem;text-transform:uppercase;letter-spacing:.08em}
     .status{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--green);background:#edf5ee;border:1px solid #d8e8da;border-radius:999px;padding:.28rem .55rem}
     .status.beta{color:#755117;background:#fff6df;border-color:#ead7a8}
     .status.planned{color:#5c6470;background:#f1f3f5;border-color:#dde2e7}
@@ -90,12 +104,15 @@
     .bars{display:grid;gap:.45rem;margin:1rem 0}.bar{display:grid;grid-template-columns:4.6rem 1fr 2rem;gap:.5rem;align-items:center;font-size:.72rem;color:var(--muted)}
     .track{height:.45rem;border-radius:999px;background:#edf1ed;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--green-2),var(--gold))}
     .note{background:#fbfcfa;border:1px solid var(--line);border-radius:7px;padding:.8rem;font-size:.82rem;color:var(--muted)}
+    .build-board{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .build-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 20px rgba(24,34,29,.04)}
+    .build-card b{display:block;color:var(--green);font-size:.92rem;margin-bottom:.3rem}.build-card span{display:block;color:var(--muted);font-size:.8rem;line-height:1.45}.build-card .chip{margin-top:.55rem}
     .tool-calc{margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
     .calc-row{display:grid;grid-template-columns:1fr 1.2fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
     .calc-row:last-child{border-bottom:0}
     .calc-row b{color:var(--green)}
     .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
-    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell,.map-guide{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell,.map-guide,.build-board{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
     @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
   </style>
 </head>
@@ -205,6 +222,7 @@
           <div class="detail" id="mapProvinceDetail"></div>
         </aside>
       </div>
+      <div class="build-board" id="mapBuildBoard"></div>
     </section>
 
     <section id="data" style="margin-top:3rem">
@@ -367,6 +385,25 @@
       prs: { Central: 'مرکزی', East: 'شرق', North: 'شمال', Northeast: 'شمال‌شرق', South: 'جنوب', West: 'غرب' },
       ps: { Central: 'مرکزي', East: 'ختیځ', North: 'شمال', Northeast: 'شمال ختیځ', South: 'جنوب', West: 'لویدیځ' }
     };
+
+    const MODULE_UI = {
+      soilsense: { icon: 'S', accent: '#3f8f62', soft: '#edf7ef', purpose: 'Diagnose soil health, degradation, erosion risk and recovery options for land restoration and crop planning.', screen: 'Soil screen' },
+      watersense: { icon: 'W', accent: '#2d7ca8', soft: '#edf6fb', purpose: 'Understand groundwater, basins, drought, flood exposure and household water access for water-security decisions.', screen: 'Water screen' },
+      economysense: { icon: 'E', accent: '#9a6b20', soft: '#fbf4e7', purpose: 'Explore GDP, livelihoods, trade corridors, market access and investment signals for economic planning.', screen: 'Economy screen' },
+      cropzone_mapper: { icon: 'C', accent: '#6b9345', soft: '#f0f6e8', purpose: 'Map crop suitability, NDVI, irrigation opportunity, rangelands and Khosh Tepa influence zones.', screen: 'Crop screen' },
+      energysense: { icon: 'P', accent: '#b8842f', soft: '#fbf1df', purpose: 'Screen solar, hydro, mini-grid opportunity, rural access gaps and productive energy uses.', screen: 'Energy screen' },
+      education_society_atlas: { icon: 'H', accent: '#5b6fa8', soft: '#f0f2fb', purpose: 'Show school access, literacy, youth, digital access, returnee pressure and human-capital gaps.', screen: 'Society screen' },
+      adi_ai_assistant: { icon: 'AI', accent: '#1d3d2c', soft: '#eef5ef', purpose: 'Route users to the right ADI tool, data source, policy brief or province evidence in local languages.', screen: 'Assistant' }
+    };
+
+    const MAP_BUILDS = [
+      ['Province dashboards', 'Turn each province into a printable one-page profile with population, water, soil, energy, economy and action notes.', 'Next'],
+      ['District boundaries', 'Add ADM2 district geometry so implementers can move from national planning to field targeting.', 'Data'],
+      ['Crop and NDVI layers', 'Connect Sentinel vegetation, crop suitability, irrigated areas and Khosh Tepa influence zones.', 'CropZone'],
+      ['Water stress layers', 'Add rainfall, drought, basin, groundwater and household water access layers.', 'WaterSense'],
+      ['Solar and access layers', 'Add solar potential, rural electrification gap, mini-grid opportunity and facility energy needs.', 'EnergySense'],
+      ['Field validation', 'Let partners upload observations, photos and corrections so prototype scores improve over time.', 'ZaminAI link']
+    ];
 
     function t(key){
       return (TEXT[currentLang] && TEXT[currentLang][key]) || TEXT.en[key] || key;
@@ -666,18 +703,47 @@
       renderProvinceMap(provinces, boundaryData);
 
       document.getElementById('moduleGrid').innerHTML = modules.map(module => {
-        const action = module.app_url
-          ? `<a class="btn primary" href="${module.app_url}" target="_blank" rel="noopener">Launch app</a>`
-          : `<a class="btn primary" href="../data/modules.json">Open registry</a>`;
-        const repo = module.repo ? `<a class="btn secondary" href="${module.repo}" target="_blank" rel="noopener">Repository</a>` : '';
-        return `<article class="card">
-          <span class="${statusClass(module.status)}">${module.status}</span>
-          <h3>${module.name}</h3>
-          <p>${module.pillar}</p>
-          <div class="chips">${module.maps.slice(0,5).map(m => `<span class="chip">${m}</span>`).join('')}</div>
-          <div class="actions">${action}${repo}</div>
+        const ui = MODULE_UI[module.id] || { icon: module.name.slice(0,1), accent: '#2f6b4f', soft: '#eef5ef', purpose: module.outputs.join(', '), screen: 'Tool screen' };
+        const href = module.app_url || module.repo || '../data/modules.json';
+        const actionLabel = module.app_url ? `Launch ${module.name}` : module.status === 'planned' ? 'Open build plan' : 'Open prototype plan';
+        const repo = module.repo ? `<a class="tool-repo" href="${module.repo}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Repository</a>` : `<span class="tool-repo">Hub file</span>`;
+        return `<article class="card tool-card" role="link" tabindex="0" data-href="${href}" data-external="${module.app_url || module.repo ? 'true' : 'false'}" style="--accent:${ui.accent};--accent-soft:${ui.soft}">
+          <span class="screen-chip">${ui.screen}</span>
+          <div class="tool-head">
+            <div class="tool-logo" aria-hidden="true">${ui.icon}</div>
+            <div><span class="${statusClass(module.status)}">${module.status}</span><h3>${module.name}</h3></div>
+          </div>
+          <p class="tool-purpose">${ui.purpose}</p>
+          <div class="chips">${module.maps.slice(0,6).map(m => `<span class="chip">${m}</span>`).join('')}</div>
+          <div class="tool-meta">
+            <div><b>Best for</b><span>${module.outputs.slice(0,2).join(', ')}</span></div>
+            <div><b>Next build</b><span>${module.next_build[0]}</span></div>
+          </div>
+          <div class="tool-footer"><span class="tool-open">${actionLabel} -></span>${repo}</div>
         </article>`;
       }).join('');
+
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const open = () => {
+          if(card.dataset.external === 'true') window.open(card.dataset.href, '_blank', 'noopener');
+          else window.location.href = card.dataset.href;
+        };
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', event => {
+          if(event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            open();
+          }
+        });
+      });
+
+      document.getElementById('mapBuildBoard').innerHTML = MAP_BUILDS.map(item => `
+        <div class="build-card">
+          <b>${item[0]}</b>
+          <span>${item[1]}</span>
+          <span class="chip">${item[2]}</span>
+        </div>
+      `).join('');
 
       document.getElementById('indicatorRows').innerHTML = indicators.map(indicator => {
         const modules = indicator.tool_modules.map(id => {
