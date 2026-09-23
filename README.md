@@ -17,7 +17,7 @@ Serious dashboards and applications should live in separate repositories once th
 
 ## Key files
 
-- `index.html` - public ADI site and embedded prototype dashboard
+- `index.html` - simple public ADI landing page that routes visitors to sectors, tools, map/data and publications
 - `tools/index.html` - ADI tool hub connected to module and indicator data
 - Tool Hub map language support - English, Afghanistan Dari (`prs-AF`) and Pashto (`ps-AF`) for the public map interface
 - `sectors/` - simple sector pages so the homepage stays readable while each sector can go deeper
