@@ -23,12 +23,14 @@
     body.rtl{direction:rtl}
     body.rtl .nav,body.rtl .hero-in,body.rtl .section-head,body.rtl .map-shell,body.rtl .tool-calc{direction:rtl}
     body.rtl th,body.rtl td{text-align:right}
-    .hero{background:linear-gradient(135deg,#f6f8f5 0%,#fff 56%,#eef4ee 100%);border-bottom:1px solid var(--line)}
+    .hero{background:linear-gradient(135deg,#f6f8f5 0%,#fff 56%,#eef4ee 100%);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.45}
     .hero-in{max-width:1180px;margin:auto;padding:5rem 1.25rem 3.5rem;display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end}
     .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-weight:800;margin-bottom:.7rem}
     h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--green);line-height:1.05}
     h1{font-size:clamp(2.5rem,6vw,5rem);max-width:850px}
     .lead{margin-top:1.1rem;color:var(--muted);font-size:1.06rem;max-width:760px}
+    .hero-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.5rem}
     .hero-panel{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:1.25rem}
     .metric{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
     .metric:last-child{border-bottom:0}
@@ -39,6 +41,14 @@
     h2{font-size:2.2rem}
     .small{color:var(--muted);font-size:.92rem;max-width:680px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+    .quick-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 22px rgba(24,34,29,.04)}
+    .quick-card b{display:block;color:var(--green);font-size:.95rem;margin-bottom:.25rem}.quick-card span{display:block;color:var(--muted);font-size:.84rem;line-height:1.45}
+    .module-stack{display:grid;gap:1.25rem}
+    .tool-group{background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.58));border:1px solid var(--line);border-radius:10px;padding:1rem;box-shadow:0 12px 34px rgba(24,34,29,.035)}
+    .tool-group-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:1rem}
+    .tool-group-head h3{font-size:1.7rem}.tool-group-head p{color:var(--muted);font-size:.86rem;max-width:560px}
+    .tool-group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:1.2rem;box-shadow:0 8px 24px rgba(24,34,29,.04)}
     .card h3{font-size:1.45rem;margin:.45rem 0}
     .card p{color:var(--muted);font-size:.92rem}
@@ -66,6 +76,9 @@
     .btn.primary{background:var(--green);color:var(--white)}
     .btn.secondary{background:var(--white);color:var(--green)}
     .data-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(24,34,29,.04)}
+    .data-note{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .data-note-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 22px rgba(24,34,29,.04)}
+    .data-note-card b{display:block;color:var(--green);font-size:.9rem;margin-bottom:.25rem}.data-note-card span{display:block;color:var(--muted);font-size:.8rem;line-height:1.45}
     th,td{text-align:left;padding:.9rem;border-bottom:1px solid var(--line);vertical-align:top}
     th{font-size:.76rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);background:#fbfcfa}
     td{font-size:.9rem}
@@ -112,7 +125,7 @@
     .calc-row:last-child{border-bottom:0}
     .calc-row b{color:var(--green)}
     .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
-    @media(max-width:900px){.hero-in,.grid,.tool-calc,.map-shell,.map-guide,.build-board{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:900px){.hero-in,.grid,.quick-grid,.tool-group-grid,.tool-calc,.map-shell,.map-guide,.build-board,.data-note{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
     @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
   </style>
 </head>
@@ -125,7 +138,7 @@
         <a href="#modules">Modules</a>
         <a href="#map">Map</a>
         <a href="#data">Actual data</a>
-        <a href="#calculations">Calculations</a>
+        <a href="#method">Method</a>
         <a href="../data/sources.json">Source registry</a>
       </div>
       <div class="lang-switch" aria-label="Language switcher">
@@ -140,8 +153,13 @@
     <div class="hero-in">
       <div>
         <div class="eyebrow">Afghanistan Development Initiative</div>
-        <h1>Tools, data, and calculations for Afghanistan development work.</h1>
+        <h1>Tools, maps, and source-labelled data for Afghanistan development work.</h1>
         <p class="lead">This hub connects ADI's live tools, planned dashboards, and source-labelled starter datasets. The first data layer uses official World Bank indicators and keeps modelled or prototype values clearly separate.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#map">Open Afghanistan map</a>
+          <a class="btn secondary" href="#modules">Launch a tool</a>
+          <a class="btn secondary" href="#data">View data</a>
+        </div>
       </div>
       <aside class="hero-panel" id="summaryPanel">
         <div class="metric"><span>Modules</span><strong id="moduleCount">Loading</strong></div>
@@ -153,15 +171,23 @@
   </section>
 
   <main>
+    <section aria-label="Start here">
+      <div class="quick-grid">
+        <div class="quick-card"><b>1. Pick the question</b><span>Land, water, energy, economy, education or cross-cutting evidence.</span></div>
+        <div class="quick-card"><b>2. Choose the place</b><span>Use the province map to see where pressure, potential and data gaps are strongest.</span></div>
+        <div class="quick-card"><b>3. Open the tool</b><span>Launch the app or roadmap card connected to the decision you need to make.</span></div>
+      </div>
+    </section>
+
     <section id="modules">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Module registry</div>
-          <h2>Build each pillar as a real tool.</h2>
+          <div class="eyebrow">Tool library</div>
+          <h2>Launch the right tool quickly.</h2>
         </div>
-        <p class="small">Separate repositories are best once a module has its own pipeline, backend, deployment, or maintenance cycle. The hub keeps shared schemas, public pages, and starter data together.</p>
+        <p class="small">Live dashboards come first, beta tools show what should be built next, and planned tools stay visible so the roadmap is easy to explain to partners.</p>
       </div>
-      <div class="grid" id="moduleGrid"></div>
+      <div class="module-stack" id="moduleGrid"></div>
     </section>
 
     <section id="map" style="margin-top:3rem">
@@ -222,6 +248,13 @@
           <div class="detail" id="mapProvinceDetail"></div>
         </aside>
       </div>
+      <div class="section-head" style="margin-top:1.5rem">
+        <div>
+          <div class="eyebrow">Map roadmap</div>
+          <h2>What should be built next?</h2>
+        </div>
+        <p class="small">These are the next practical layers that would make the map more useful for proposals, field teams, researchers and public planning.</p>
+      </div>
       <div class="build-board" id="mapBuildBoard"></div>
     </section>
 
@@ -233,6 +266,11 @@
         </div>
         <p class="small">Latest non-null national values from the World Bank WDI API. These are suitable for proposal context, country profiles, and dashboard baselines; province layers require separate official or clearly modelled datasets.</p>
       </div>
+      <div class="data-note">
+        <div class="data-note-card"><b>Official baseline</b><span>National values are pulled from public source APIs and shown with year, unit and source link.</span></div>
+        <div class="data-note-card"><b>Prototype map layer</b><span>Province scores are planning indices for comparing needs and opportunities, not official rankings.</span></div>
+        <div class="data-note-card"><b>Next step</b><span>District and sector layers should be added only with source notes, method notes and update dates.</span></div>
+      </div>
       <table class="data-table">
         <thead>
           <tr><th>Indicator</th><th>Latest</th><th>Pillar</th><th>Used by</th><th>Source</th></tr>
@@ -241,20 +279,20 @@
       </table>
     </section>
 
-    <section id="calculations" class="tool-calc">
+    <section id="method" class="tool-calc">
       <div class="card">
-        <div class="eyebrow">What each tool should calculate</div>
-        <div class="calc-row"><b>SoilSense</b><span>Soil health score, erosion/degradation risk, organic carbon and pH flags, restoration recommendation.</span></div>
-        <div class="calc-row"><b>WaterSense</b><span>Water access gap, groundwater stress warning, basin priority, drought/flood exposure note.</span></div>
-        <div class="calc-row"><b>CropZone Mapper</b><span>Crop suitability class, irrigation opportunity, NDVI condition, Khosh Tepa influence zone.</span></div>
-        <div class="calc-row"><b>EnergySense</b><span>Solar suitability, mini-grid opportunity, electricity access gap, productive-use energy package.</span></div>
+        <div class="eyebrow">Method</div>
+        <div class="calc-row"><b>1. Source</b><span>Start with official, humanitarian or scientific open datasets.</span></div>
+        <div class="calc-row"><b>2. Label</b><span>Show whether a value is official, satellite/scientific, modelled or prototype.</span></div>
+        <div class="calc-row"><b>3. Compare</b><span>Use the map and tables to compare provinces, sectors and data gaps.</span></div>
+        <div class="calc-row"><b>4. Build</b><span>Move mature tools into their own repositories and keep shared data documented here.</span></div>
       </div>
       <div class="card">
-        <div class="eyebrow">Next data builds</div>
-        <div class="calc-row"><b>Province atlas</b><span>Move embedded province profiles into JSON and connect them to the national map.</span></div>
-        <div class="calc-row"><b>Boundary data</b><span>Add OCHA HDX province and district boundaries as map layers with licensing notes.</span></div>
-        <div class="calc-row"><b>Earth data</b><span>Add SoilGrids, CHIRPS, Sentinel/NDVI, Global Solar Atlas, and AQUASTAT connectors.</span></div>
-        <div class="calc-row"><b>AI assistant</b><span>Answer in Dari, Pashto, Dutch, and English using only ADI registries, source notes, and approved briefs.</span></div>
+        <div class="eyebrow">Usability rules</div>
+        <div class="calc-row"><b>One click</b><span>Every launch card opens the app, repository or build plan directly.</span></div>
+        <div class="calc-row"><b>One map</b><span>Province boundaries, scores and next-build ideas live in the same map section.</span></div>
+        <div class="calc-row"><b>One source trail</b><span>Every data layer must have a source file, source URL and method note.</span></div>
+        <div class="calc-row"><b>Local access</b><span>Map instructions support English, Afghanistan Dari and Pashto.</span></div>
       </div>
     </section>
   </main>
@@ -702,7 +740,7 @@
       document.getElementById('indicatorCount').textContent = indicators.length;
       renderProvinceMap(provinces, boundaryData);
 
-      document.getElementById('moduleGrid').innerHTML = modules.map(module => {
+      const renderToolCard = module => {
         const ui = MODULE_UI[module.id] || { icon: module.name.slice(0,1), accent: '#2f6b4f', soft: '#eef5ef', purpose: module.outputs.join(', '), screen: 'Tool screen' };
         const href = module.app_url || module.repo || '../data/modules.json';
         const actionLabel = module.app_url ? `Launch ${module.name}` : module.status === 'planned' ? 'Open build plan' : 'Open prototype plan';
@@ -721,6 +759,20 @@
           </div>
           <div class="tool-footer"><span class="tool-open">${actionLabel} -></span>${repo}</div>
         </article>`;
+      };
+
+      const groups = [
+        ['live', 'Live tools', 'Ready to open now. These are the strongest tools to show partners first.'],
+        ['beta', 'Beta tools', 'Concepts and prototypes that should become full dashboards next.'],
+        ['planned', 'Planned tools', 'Important tools that should start inside the hub, then move to separate repositories when mature.']
+      ];
+      document.getElementById('moduleGrid').innerHTML = groups.map(([status, title, desc]) => {
+        const groupModules = modules.filter(module => module.status === status);
+        if(!groupModules.length) return '';
+        return `<section class="tool-group">
+          <div class="tool-group-head"><div><h3>${title}</h3><p>${desc}</p></div><span class="${statusClass(status)}">${groupModules.length} ${status}</span></div>
+          <div class="tool-group-grid">${groupModules.map(renderToolCard).join('')}</div>
+        </section>`;
       }).join('');
 
       document.querySelectorAll('.tool-card').forEach(card => {
