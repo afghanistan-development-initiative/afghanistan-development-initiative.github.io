@@ -78,6 +78,7 @@ section{padding:4.5rem 2rem}
 .solution-card h4{font-size:.92rem;color:var(--text);margin-bottom:.35rem}
 .solution-card p{font-size:.78rem;color:var(--text-m);line-height:1.55;margin-bottom:.55rem}
 .solution-card b{color:var(--green);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.solution-card a{display:inline-flex;margin-top:.35rem;color:var(--green);font-size:.78rem;font-weight:800;text-decoration:none}
 
 /* PROJECT BLUEPRINT */
 .blueprint-sec{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -371,6 +372,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
   <ul class="nav-links">
     <li><a href="#project">Project</a></li>
     <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+    <li><a href="sectors/">Sectors</a></li>
     <li><a href="#target-groups">Groups</a></li>
     <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
     <li><a href="tools/">Tool Hub</a></li>
@@ -399,6 +401,7 @@ body.rtl .contact-links{flex-direction:row-reverse}
 <div class="mobile-nav" id="mobileNav">
   <a href="#project" onclick="toggleMenu()">Project</a>
   <a href="#pillars" onclick="toggleMenu()" data-i18n="nav.pillars">Pillars</a>
+  <a href="sectors/" onclick="toggleMenu()">Sectors</a>
   <a href="#target-groups" onclick="toggleMenu()">Target Groups</a>
   <a href="#tools" onclick="toggleMenu()" data-i18n="nav.tools">Tools</a>
   <a href="tools/" onclick="toggleMenu()">Tool Hub</a>
@@ -450,12 +453,12 @@ body.rtl .contact-links{flex-direction:row-reverse}
       <div class="pillar" style="--accent:#c4943a"><div class="pillar-icon">🎓</div><h3 data-i18n="p6.title">Education, Society & Human Capital</h3><p data-i18n="p6.desc">Schools, literacy, enrolment, gender inclusion, youth employment, displacement/returnee pressure, digital access, diaspora links, and social indicators.</p><div class="ptags"><span class="ptag" data-i18n="p6.t1">School access</span><span class="ptag" data-i18n="p6.t2">Gender</span><span class="ptag" data-i18n="p6.t3">Youth jobs</span><span class="ptag">Digital access</span><span class="ptag">Returnees</span><span class="ptag" data-i18n="p6.t4">Diaspora</span></div></div>
     </div>
     <div class="solution-grid">
-      <div class="solution-card"><b>Agriculture solution</b><h4>Where should agriculture support go first?</h4><p>Combine soil, rainfall, irrigation, crop suitability and food-security signals to prioritise seed, irrigation, storage, extension and market support.</p></div>
-      <div class="solution-card"><b>Water solution</b><h4>Where are water risks most urgent?</h4><p>Map groundwater stress, drought, floods, river basins and household access to guide basin planning, water harvesting and monitoring points.</p></div>
-      <div class="solution-card"><b>Energy solution</b><h4>Where can renewable energy unlock services?</h4><p>Screen solar, hydro, roads, settlements and productive-use demand to identify mini-grid, cold-chain, clinic, school and irrigation energy opportunities.</p></div>
-      <div class="solution-card"><b>Economy solution</b><h4>Which value chains can create livelihoods?</h4><p>Compare trade corridors, markets, exports, crops, mining and poverty exposure to select realistic investment and job-creation pathways.</p></div>
-      <div class="solution-card"><b>Policy solution</b><h4>Where are aid and service gaps?</h4><p>Connect policy briefs, SDGs, aid coverage, district indicators and finance data so planners can justify programmes with evidence.</p></div>
-      <div class="solution-card"><b>Education solution</b><h4>Where are human-capital gaps blocking development?</h4><p>Layer schools, literacy, gender, youth jobs, digital access and returnee pressure to target education, skills and social programmes.</p></div>
+      <div class="solution-card"><b>Sector page</b><h4>Agriculture & Food Security</h4><p>Soil, crops, irrigation, NDVI, rangelands and food-security targeting.</p><a href="sectors/agriculture-food-security.html">Open sector page -></a></div>
+      <div class="solution-card"><b>Sector page</b><h4>Water & Environment</h4><p>Groundwater, basins, drought, floods, water access and climate layers.</p><a href="sectors/water-environment.html">Open sector page -></a></div>
+      <div class="solution-card"><b>Sector page</b><h4>Energy & Infrastructure</h4><p>Solar, hydro, mini-grids, productive energy use and access gaps.</p><a href="sectors/energy-infrastructure.html">Open sector page -></a></div>
+      <div class="solution-card"><b>Sector page</b><h4>Economy, Trade & Livelihoods</h4><p>GDP, trade corridors, markets, export potential and value chains.</p><a href="sectors/economy-trade-livelihoods.html">Open sector page -></a></div>
+      <div class="solution-card"><b>Sector page</b><h4>Governance, Aid & Policy</h4><p>Policy briefs, SDGs, aid data, service gaps and finance evidence.</p><a href="sectors/governance-aid-policy.html">Open sector page -></a></div>
+      <div class="solution-card"><b>Sector page</b><h4>Education & Society</h4><p>Schools, literacy, gender inclusion, youth, digital access and returnees.</p><a href="sectors/education-society.html">Open sector page -></a></div>
     </div>
   </div>
 </section>

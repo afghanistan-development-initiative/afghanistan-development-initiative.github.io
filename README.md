@@ -20,6 +20,7 @@ Serious dashboards and applications should live in separate repositories once th
 - `index.html` - public ADI site and embedded prototype dashboard
 - `tools/index.html` - ADI tool hub connected to module and indicator data
 - Tool Hub map language support - English, Afghanistan Dari (`prs-AF`) and Pashto (`ps-AF`) for the public map interface
+- `sectors/` - simple sector pages so the homepage stays readable while each sector can go deeper
 - `data/modules.json` - registry of ADI tools, modules and workstreams
 - `data/sources.json` - registry of official and authoritative data sources
 - `data/afghanistan_indicators.json` - first official Afghanistan indicator layer from the World Bank WDI API
