@@ -21,7 +21,7 @@
     .lang-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.34rem .58rem;color:var(--muted);font-family:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
     .lang-btn.active{background:var(--green);border-color:var(--green);color:#fff}
     body.rtl{direction:rtl}
-    body.rtl .nav,body.rtl .hero-in,body.rtl .section-head,body.rtl .map-shell,body.rtl .tool-calc{direction:rtl}
+    body.rtl .nav,body.rtl .hero-in,body.rtl .section-head,body.rtl .map-shell,body.rtl .work-tools,body.rtl .tool-calc{direction:rtl}
     body.rtl th,body.rtl td{text-align:right}
     .hero{background:linear-gradient(135deg,#f6f8f5 0%,#fff 56%,#eef4ee 100%);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.45}
@@ -120,12 +120,30 @@
     .build-board{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .build-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 20px rgba(24,34,29,.04)}
     .build-card b{display:block;color:var(--green);font-size:.92rem;margin-bottom:.3rem}.build-card span{display:block;color:var(--muted);font-size:.8rem;line-height:1.45}.build-card .chip{margin-top:.55rem}
+    .work-tools{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem}
+    .work-tool{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1rem;box-shadow:0 8px 22px rgba(24,34,29,.04)}
+    .work-tool.wide{grid-column:1/-1}
+    .work-head{display:flex;justify-content:space-between;gap:1rem;align-items:start;margin-bottom:.85rem}
+    .work-head h3{font-size:1.5rem;margin:0}.work-head p{color:var(--muted);font-size:.84rem;max-width:520px}
+    .tool-form{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin:.75rem 0}
+    .tool-form.two{grid-template-columns:1fr 1fr}
+    .tool-form input,.tool-form select,.tool-form textarea{width:100%;border:1px solid var(--line);border-radius:7px;padding:.62rem .72rem;background:#fbfcfa;color:var(--ink);font:inherit;font-size:.84rem}
+    .tool-form textarea{grid-column:1/-1;min-height:76px;resize:vertical}
+    .tool-output{background:#fbfcfa;border:1px solid var(--line);border-radius:7px;padding:.9rem;color:var(--muted);font-size:.86rem;line-height:1.5}
+    .tool-output h4{font-family:'DM Sans',Arial,sans-serif;color:var(--green);font-size:.95rem;margin-bottom:.45rem}
+    .rank-list{display:grid;gap:.45rem}.rank-item{display:grid;grid-template-columns:2rem 1fr 2.4rem;gap:.65rem;align-items:center;border:1px solid var(--line);border-radius:7px;padding:.55rem;background:#fff}
+    .rank-item b{color:var(--green)}.rank-score{font-weight:900;color:var(--gold);text-align:right}
+    .draw-board{height:320px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,#f8fbf6,#eef5ef);position:relative;overflow:hidden;cursor:crosshair}
+    .draw-board svg{position:absolute;inset:0;width:100%;height:100%}
+    .draw-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(29,61,44,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(29,61,44,.08) 1px,transparent 1px);background-size:32px 32px}
+    .draw-help{position:absolute;left:.8rem;top:.8rem;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:.32rem .55rem;font-size:.72rem;color:var(--green);font-weight:800}
+    .draw-point{fill:var(--green);stroke:#fff;stroke-width:2}.draw-line{fill:rgba(47,107,79,.16);stroke:var(--green);stroke-width:2.5}
     .tool-calc{margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
     .calc-row{display:grid;grid-template-columns:1fr 1.2fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
     .calc-row:last-child{border-bottom:0}
     .calc-row b{color:var(--green)}
     .footer{border-top:1px solid var(--line);padding:2rem 1.25rem;color:var(--muted);text-align:center;background:#fff}
-    @media(max-width:900px){.hero-in,.grid,.quick-grid,.tool-group-grid,.tool-calc,.map-shell,.map-guide,.build-board,.data-note{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:900px){.hero-in,.grid,.quick-grid,.tool-group-grid,.tool-calc,.map-shell,.map-guide,.build-board,.data-note,.work-tools,.tool-form,.tool-form.two{grid-template-columns:1fr}.work-tool.wide{grid-column:auto}.nav{align-items:flex-start;flex-direction:column}th:nth-child(4),td:nth-child(4){display:none}.afg-map{min-height:430px}.map-mode,.map-summary{grid-template-columns:repeat(2,1fr)}}
     @media print{.top,.actions{display:none}body{background:#fff}.hero-in,main{padding:1rem}.card,.hero-panel,.data-table{box-shadow:none}}
   </style>
 </head>
@@ -137,6 +155,7 @@
         <a href="../">Main site</a>
         <a href="#modules">Modules</a>
         <a href="#map">Map</a>
+        <a href="#work-tools">Work tools</a>
         <a href="#data">Actual data</a>
         <a href="#method">Method</a>
         <a href="../data/sources.json">Source registry</a>
@@ -248,6 +267,67 @@
           <div class="detail" id="mapProvinceDetail"></div>
         </aside>
       </div>
+      <section id="work-tools" style="margin-top:2rem">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Practical work tools</div>
+            <h2>Turn the map into a field record.</h2>
+          </div>
+          <p class="small">These lightweight tools work from the province atlas now: create a proposal brief, draw a crop field record, and compare where each sector needs attention.</p>
+        </div>
+        <div class="work-tools">
+          <article class="work-tool">
+            <div class="work-head">
+              <div><h3>Province Brief Builder</h3><p>Choose a province and generate a short, proposal-ready note with priorities, gaps, and recommended ADI tools.</p></div>
+              <span class="chip">Printable</span>
+            </div>
+            <div class="tool-form two">
+              <select id="briefProvince" aria-label="Province for brief"></select>
+              <button class="btn secondary" type="button" id="copyBrief">Copy brief</button>
+            </div>
+            <div class="tool-output" id="briefOutput"></div>
+          </article>
+          <article class="work-tool">
+            <div class="work-head">
+              <div><h3>Sector Compare</h3><p>Rank provinces by agriculture, water, energy, economy, data gaps, or overall priority.</p></div>
+              <span class="chip">Decision aid</span>
+            </div>
+            <div class="tool-form two">
+              <select id="compareLayer" aria-label="Layer to compare"></select>
+              <button class="btn secondary" type="button" id="printTools">Print tools</button>
+            </div>
+            <div class="tool-output" id="compareOutput"></div>
+          </article>
+          <article class="work-tool wide">
+            <div class="work-head">
+              <div><h3>Crop Mapping Field Recorder</h3><p>Click the board to draw a simple field boundary, then record crop, irrigation and issue notes. This is a lightweight prototype for CropZone Mapper and field validation.</p></div>
+              <span class="chip">CropZone prototype</span>
+            </div>
+            <div class="tool-form">
+              <select id="cropProvince" aria-label="Province for crop record"></select>
+              <input id="cropName" type="text" placeholder="Crop, e.g. wheat, saffron, orchard">
+              <select id="cropIrrigation" aria-label="Irrigation type">
+                <option value="Unknown irrigation">Irrigation unknown</option>
+                <option value="Rainfed">Rainfed</option>
+                <option value="Canal irrigated">Canal irrigated</option>
+                <option value="Groundwater irrigated">Groundwater irrigated</option>
+                <option value="Spring or kareze">Spring or kareze</option>
+              </select>
+              <textarea id="cropNotes" placeholder="Field notes: soil, water, pest, yield, photos needed, farmer concern"></textarea>
+            </div>
+            <div class="draw-board" id="cropDrawBoard" aria-label="Click to draw crop field boundary">
+              <div class="draw-grid"></div>
+              <div class="draw-help">Click points to draw a field. Use reset to start again.</div>
+              <svg id="cropDrawSvg" viewBox="0 0 800 320" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="actions">
+              <button class="btn secondary" type="button" id="resetCropDraw">Reset drawing</button>
+              <button class="btn primary" type="button" id="saveCropRecord">Build field record</button>
+            </div>
+            <div class="tool-output" id="cropRecordOutput">No field record yet. Draw at least three points and add crop notes.</div>
+          </article>
+        </div>
+      </section>
       <div class="section-head" style="margin-top:1.5rem">
         <div>
           <div class="eyebrow">Map roadmap</div>
@@ -306,6 +386,7 @@
     let activeLayer = 'priority';
     let currentProvince = null;
     let rerenderMap = null;
+    let rerenderMiniTools = null;
 
     const TEXT = {
       en: {
@@ -478,6 +559,7 @@
       });
       updateLayerText();
       if(rerenderMap) rerenderMap();
+      if(rerenderMiniTools) rerenderMiniTools();
       if(currentProvince) renderProvinceDetail(currentProvince);
     }
 
@@ -720,6 +802,103 @@
       render();
     }
 
+    function provinceBriefText(province){
+      return `${province.name} province brief\nRegion: ${province.region}\nPopulation: ${fmt.format(province.pop)}\nArea: ${fmt.format(province.area)} km2\nPriority score: ${priorityScore(province)}\nPotential: ${province.potential}.\nMain problems: ${province.problems}.\nMissing data: ${province.gaps}.\nHow ADI can help: ${province.solutions}.\nRecommended tools: ${bestTools(province)}.`;
+    }
+
+    function provinceBriefHtml(province){
+      return `<h4>${province.name} province brief</h4>
+        <p><strong>Priority score:</strong> ${priorityScore(province)} | <strong>${LAYER_LABELS[currentLang][activeLayer]}:</strong> ${layerScore(province)}</p>
+        <p><strong>Potential:</strong> ${province.potential}.</p>
+        <p><strong>Main problems:</strong> ${province.problems}.</p>
+        <p><strong>Missing data:</strong> ${province.gaps}.</p>
+        <p><strong>ADI response:</strong> ${province.solutions}.</p>
+        <p><strong>Recommended tools:</strong> ${bestTools(province)}.</p>`;
+    }
+
+    function renderRankList(provinces, layer){
+      return `<div class="rank-list">${provinces.slice().sort((a,b) => layerScore(b, layer) - layerScore(a, layer)).slice(0,7).map((province, index) => `
+        <div class="rank-item"><b>${index + 1}</b><span>${province.name}<br><small>${province.potential}</small></span><span class="rank-score">${layerScore(province, layer)}</span></div>
+      `).join('')}</div>`;
+    }
+
+    function renderCropDrawing(points){
+      const svg = document.getElementById('cropDrawSvg');
+      if(!svg) return;
+      const pointMarkup = points.map(point => `<circle class="draw-point" cx="${point.x}" cy="${point.y}" r="5"></circle>`).join('');
+      const polygon = points.length > 1 ? `<polygon class="draw-line" points="${points.map(point => `${point.x},${point.y}`).join(' ')}"></polygon>` : '';
+      svg.innerHTML = polygon + pointMarkup;
+    }
+
+    function renderMiniTools(provinces){
+      const briefSelect = document.getElementById('briefProvince');
+      const compareSelect = document.getElementById('compareLayer');
+      const cropSelect = document.getElementById('cropProvince');
+      if(!briefSelect || !compareSelect || !cropSelect) return;
+
+      const provinceOptions = provinces.map(province => `<option value="${province.name}">${province.name}</option>`).join('');
+      briefSelect.innerHTML = provinceOptions;
+      cropSelect.innerHTML = provinceOptions;
+      compareSelect.innerHTML = Object.keys(LAYER_LABELS.en).map(layer => `<option value="${layer}">${LAYER_LABELS[currentLang][layer]}</option>`).join('');
+
+      const briefOutput = document.getElementById('briefOutput');
+      const compareOutput = document.getElementById('compareOutput');
+      const cropOutput = document.getElementById('cropRecordOutput');
+      const drawBoard = document.getElementById('cropDrawBoard');
+      const points = [];
+
+      const selectedProvince = select => provinces.find(province => province.name === select.value) || provinces[0];
+      const renderBrief = () => {
+        briefOutput.innerHTML = provinceBriefHtml(selectedProvince(briefSelect));
+      };
+      const renderCompare = () => {
+        const layer = compareSelect.value || 'priority';
+        compareOutput.innerHTML = `<h4>Top provinces for ${LAYER_LABELS[currentLang][layer]}</h4>${renderRankList(provinces, layer)}`;
+      };
+      const renderAll = () => {
+        const oldLayer = compareSelect.value || 'priority';
+        compareSelect.innerHTML = Object.keys(LAYER_LABELS.en).map(layer => `<option value="${layer}" ${layer === oldLayer ? 'selected' : ''}>${LAYER_LABELS[currentLang][layer]}</option>`).join('');
+        renderBrief();
+        renderCompare();
+      };
+
+      briefSelect.addEventListener('change', renderBrief);
+      compareSelect.addEventListener('change', renderCompare);
+      document.getElementById('copyBrief').addEventListener('click', async () => {
+        const text = provinceBriefText(selectedProvince(briefSelect));
+        try { await navigator.clipboard.writeText(text); }
+        catch(error) { window.prompt('Copy province brief', text); }
+      });
+      document.getElementById('printTools').addEventListener('click', () => window.print());
+
+      drawBoard.addEventListener('click', event => {
+        const rect = drawBoard.getBoundingClientRect();
+        points.push({ x: Math.round(((event.clientX - rect.left) / rect.width) * 800), y: Math.round(((event.clientY - rect.top) / rect.height) * 320) });
+        renderCropDrawing(points);
+      });
+      document.getElementById('resetCropDraw').addEventListener('click', () => {
+        points.splice(0, points.length);
+        renderCropDrawing(points);
+        cropOutput.textContent = 'No field record yet. Draw at least three points and add crop notes.';
+      });
+      document.getElementById('saveCropRecord').addEventListener('click', () => {
+        const province = selectedProvince(cropSelect);
+        const crop = document.getElementById('cropName').value.trim() || 'Crop not named';
+        const irrigation = document.getElementById('cropIrrigation').value;
+        const notes = document.getElementById('cropNotes').value.trim() || 'No notes added yet.';
+        const areaIndex = points.length >= 3 ? Math.round(points.length * 12 + province.scores.agri * 0.8) : 0;
+        cropOutput.innerHTML = `<h4>${crop} field record - ${province.name}</h4>
+          <p><strong>Boundary points:</strong> ${points.length} ${points.length >= 3 ? '(draft field polygon saved in browser view)' : '(add at least three points for a field polygon)'}</p>
+          <p><strong>Irrigation:</strong> ${irrigation}. <strong>Agriculture score:</strong> ${province.scores.agri}. <strong>Draft field index:</strong> ${areaIndex || 'not ready'}.</p>
+          <p><strong>Province context:</strong> ${province.potential}. Main problem: ${province.problems}.</p>
+          <p><strong>Field notes:</strong> ${notes}</p>
+          <p><strong>Next action:</strong> validate crop, water source, soil condition and coordinates before using this as official data.</p>`;
+      });
+
+      rerenderMiniTools = renderAll;
+      renderAll();
+      renderCropDrawing(points);
+    }
     async function loadHub(){
       const [modulesRes, indicatorsRes, provincesRes, boundariesRes] = await Promise.all([
         fetch('../data/modules.json'),
@@ -739,6 +918,7 @@
       document.getElementById('liveCount').textContent = modules.filter(m => m.status === 'live').length;
       document.getElementById('indicatorCount').textContent = indicators.length;
       renderProvinceMap(provinces, boundaryData);
+      renderMiniTools(provinces);
 
       const renderToolCard = module => {
         const ui = MODULE_UI[module.id] || { icon: module.name.slice(0,1), accent: '#2f6b4f', soft: '#eef5ef', purpose: module.outputs.join(', '), screen: 'Tool screen' };
